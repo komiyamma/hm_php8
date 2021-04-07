@@ -5,6 +5,7 @@
 #include "convert_string.h"
 using namespace std;
 
+/*
 PHP_FUNCTION(add_extension) {
     // 引数の格納先
     zend_long val1, val2;
@@ -33,7 +34,7 @@ ZEND_ARG_INFO(0, val1)
 ZEND_ARG_INFO(0, val2)
 ZEND_END_ARG_INFO()
 
-
+*/
 
 static size_t php_ub_write(const char* str, unsigned int str_length)
 {
@@ -65,12 +66,22 @@ static void php_sapi_error(int type, const char* fmt, ...)
 void SetGlobalStringVariable(wstring utf16_key, wstring utf16_value) {
     string utf8_key = utf16_to_utf8(utf16_key);
     string utf8_value = utf16_to_utf8(utf16_value);
-    zval ztmp;
-    ZVAL_STRING(&ztmp, utf8_value.c_str(), utf8_value.length(), 1);
     zval zkey;
-    ZVAL_STRING(&zkey, utf8_key.c_str(), utf8_key.length(), 1);
+    ZVAL_STRING(&zkey, utf8_key.c_str());
+    zval ztmp;
+    ZVAL_STRING(&ztmp, utf8_value.c_str());
     zend_hash_update(&EG(symbol_table), Z_STR_P(&zkey), &ztmp);
 }
+
+void SetGlobalZLongVariable(wstring utf16_key, zend_long value) {
+    string utf8_key = utf16_to_utf8(utf16_key);
+    zval ztmp;
+    ZVAL_LONG(&ztmp,(zend_long)value);
+    zval zkey;
+    ZVAL_STRING(&zkey, utf8_key.c_str());
+    zend_hash_update(&EG(symbol_table), Z_STR_P(&zkey), &ztmp);
+}
+
 
 wstring GetGlobalStringVariable(wstring utf16_key) {
     string utf8_key = utf16_to_utf8(utf16_key);
@@ -81,6 +92,15 @@ wstring GetGlobalStringVariable(wstring utf16_key) {
     zend_string_release(str);
     return utf8_to_utf16(ret);
 }
+
+zend_long GetGlobalZLongVariable(wstring utf16_key) {
+    string utf8_key = utf16_to_utf8(utf16_key);
+    zval zkey;
+    zend_eval_string_ex((char*)("$" + utf8_key).c_str(), &zkey, (char*)"getgloballongvariable", 1);
+    zend_long lval = zval_get_long(&zkey);
+    return lval;
+}
+
 
 int main(int argc, char* argv[]) {
 
@@ -99,6 +119,8 @@ int main(int argc, char* argv[]) {
         zend_eval_string_ex((char *)"include 'C:/abc/main.php';", &retval, (char *)"main", 1);
         wstring ret = GetGlobalStringVariable(L"hello3");
         MessageBoxW(NULL, ret.c_str(), ret.c_str(), NULL);
+        zend_long ret2 = GetGlobalZLongVariable(L"hello4");
+        printf("%d", ret2);
     }
     zend_catch {
         ;
