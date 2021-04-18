@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>G:\repogitory\hm_php_test\HmPHP8\Release\hmPH8.dll</FullPath>
+      <FullPath>G:\repogitory\hm_php8\HmPHP8\Release\hmPH8.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
