@@ -1,0 +1,4 @@
+﻿  mytest.c
+C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\mytest\mytest.c(35,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+     ライブラリ C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\mytest\mytest2\Debug\mytest2.lib とオブジェクト C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\mytest\mytest2\Debug\mytest2.exp を作成中
+  mytest2.vcxproj -> C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\mytest\mytest2\Debug\mytest2.dll

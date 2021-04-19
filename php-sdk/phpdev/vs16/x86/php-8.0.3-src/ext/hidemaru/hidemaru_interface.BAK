@@ -1,0 +1,11 @@
+#include "windows.h"
+#include <string>
+#include "convert_string.h"
+
+using namespace std;
+
+string aaa = "";
+
+__declspec(dllexport) void abc() {
+	aaa = utf16_to_utf8(L"あいうえお");
+}
