@@ -3,6 +3,7 @@
 
 /* hidemaru extension for PHP */
 
+// そうである
 
 #ifdef HAVE_CONFIG_H
 # include "config.h"
@@ -107,8 +108,12 @@ PHP_FUNCTION(hidemaru_edit_linetext)
 /* {{{ bool hidemaru_outputpane_output( [ string $var ] ) */
 PHP_FUNCTION(hidemaru_outputpane_output)
 {
-	char* var;
+	char* var = NULL;
 	size_t var_size;
+	char* strg;
+
+
+	MessageBoxA(NULL, "hidemaru_outputpane_output", "hidemaru_outputpane_output", NULL);
 
 	ZEND_PARSE_PARAMETERS_START(1, 1)
 		Z_PARAM_STRING(var, var_size)
@@ -118,14 +123,27 @@ PHP_FUNCTION(hidemaru_outputpane_output)
 	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
 		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
 		if (CHidemaruExeExport::HmOutputPane_Output) {
-			wstring utf16_value = utf8_to_utf16(var);
+
+			MessageBoxA(NULL, "HmOutputPane_Output実行", "HmOutputPane_Output実行", NULL);
+
+			var_size = spprintf(&strg, 0, "%s", var);
+
+			wstring utf16_value = utf8_to_utf16(strg);
 			auto encode_byte_data = EncodeWStringToOriginalEncodeVector(utf16_value);
 			BOOL result = CHidemaruExeExport::HmOutputPane_Output(hHidemaruWindow, encode_byte_data.data());
-			if (result) {}
+			if (result) {
+				MessageBoxA(NULL, "HmOutputPane_Output成功", "HmOutputPane_Output成功", NULL);
+				RETURN_TRUE;
+			}
+			else {
+				MessageBoxA(NULL, "HmOutputPane_Output失敗", "HmOutputPane_Output失敗", NULL);
+				RETURN_FALSE;
+			}
 
 		}
 	}
 
+	MessageBoxA(NULL, "HmOutputPane_Outputドロップ", "HmOutputPane_Outputドロップ", NULL);
 	RETURN_FALSE;
 }
 /* }}}*/
@@ -152,6 +170,7 @@ PHP_RINIT_FUNCTION(hidemaru)
 #if defined(ZTS) && defined(COMPILE_DL_HIDEMARU)
 	ZEND_TSRMLS_CACHE_UPDATE();
 #endif
+	MessageBox(NULL, L"CHidemaruExeExport::init()", L"CHidemaruExeExport::init()", NULL);
 	CHidemaruExeExport::init();
 
 	return SUCCESS;
