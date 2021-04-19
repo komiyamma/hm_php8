@@ -31,6 +31,9 @@
     <Filter Include="秀丸デバッグモニター表示用">
       <UniqueIdentifier>{8fc39702-8095-4fde-83a1-82f5aa5f9187}</UniqueIdentifier>
     </Filter>
+    <Filter Include="秀丸独自のChar渡しでのUnicode扱い">
+      <UniqueIdentifier>{434983b6-6111-4361-9ec5-d95156c9ec1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\hidemaru_interface.cpp">
@@ -53,6 +56,12 @@
     </ClCompile>
     <ClCompile Include="..\output_debugstream.cpp">
       <Filter>秀丸デバッグモニター表示用</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hm_original_encode_map.cpp">
+      <Filter>秀丸独自のChar渡しでのUnicode扱い</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hm_original_encode_mapfunc.cpp">
+      <Filter>秀丸独自のChar渡しでのUnicode扱い</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +96,9 @@
     </ClInclude>
     <ClInclude Include="..\hidemaru_arginfo.h">
       <Filter>PHP用に登録するグローバル関数</Filter>
+    </ClInclude>
+    <ClInclude Include="..\hm_original_encode_mapfunc.h">
+      <Filter>秀丸独自のChar渡しでのUnicode扱い</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

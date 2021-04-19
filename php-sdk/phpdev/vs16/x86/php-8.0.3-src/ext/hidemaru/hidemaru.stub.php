@@ -13,3 +13,5 @@ function hidemaru_edit_totaltext(): string {}
 function hidemaru_edit_selectedtext(): string {}
 
 function hidemaru_edit_linetext(): string {}
+
+function hidemaru_outputpane_output(string $str): bool {}
