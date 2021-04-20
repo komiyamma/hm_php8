@@ -86,18 +86,63 @@ PHP_FUNCTION(hidemaru_edit_filepath)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
-	const int WM_USER = 0x400;
 	const int WM_HIDEMARUINFO = WM_USER + 181;
 	const int HIDEMARUINFO_GETFILEFULLPATH = 4;
 	HWND hWndHidemaru = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
 	if (hWndHidemaru) {
-		wchar_t filepath[MAX_PATH*3];
+		wchar_t filepath[MAX_PATH*3] = L"";
 		int cwch = SendMessageW(hWndHidemaru, WM_HIDEMARUINFO, HIDEMARUINFO_GETFILEFULLPATH, (LPARAM)filepath);
 		string utf8_filepath = utf16_to_utf8(filepath);
 		RETURN_STRING(utf8_filepath.c_str());
 	}
 
 	RETURN_STRING("");
+}
+/* }}}*/
+
+/* {{{ string hidemaru_edit_getcursorpos() */
+PHP_FUNCTION(hidemaru_edit_getcursorpos)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	auto pos = CHidemaruExeExport::GetCursorPos();
+
+	zval lineno, column;
+
+	ZVAL_LONG(&lineno, pos.lineno);
+	ZVAL_LONG(&column, pos.column);
+
+	zval pos_arr;
+	array_init(&pos_arr);
+	zend_hash_index_add(Z_ARRVAL(pos_arr), 0, &lineno);
+	zend_hash_index_add(Z_ARRVAL(pos_arr), 1, &column);
+
+	RETURN_ARR(Z_ARRVAL(pos_arr));
+}
+/* }}}*/
+
+/* {{{ string hidemaru_edit_getcursorposfrommousepos() */
+PHP_FUNCTION(hidemaru_edit_getcursorposfrommousepos)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	auto pos = CHidemaruExeExport::GetCursorPosFromMousePos();
+
+	zval lineno, column, x, y;
+
+	ZVAL_LONG(&lineno, pos.lineno);
+	ZVAL_LONG(&column, pos.column);
+	ZVAL_LONG(&x, pos.x);
+	ZVAL_LONG(&y, pos.y);
+
+	zval pos_arr;
+	array_init(&pos_arr);
+	zend_hash_index_add(Z_ARRVAL(pos_arr), 0, &lineno);
+	zend_hash_index_add(Z_ARRVAL(pos_arr), 1, &column);
+	zend_hash_index_add(Z_ARRVAL(pos_arr), 2, &x);
+	zend_hash_index_add(Z_ARRVAL(pos_arr), 3, &y);
+
+	RETURN_ARR(Z_ARRVAL(pos_arr));
 }
 /* }}}*/
 
