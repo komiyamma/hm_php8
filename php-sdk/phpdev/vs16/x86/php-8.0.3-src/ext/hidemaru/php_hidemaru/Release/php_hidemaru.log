@@ -1,9 +1,6 @@
-﻿  hidemaru_php_func.cpp
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(108,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-     ライブラリ G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.lib とオブジェクト G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.exp を作成中
+﻿     ライブラリ G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.lib とオブジェクト G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.exp を作成中
   コード生成しています。
-  3 of 484 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 484 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   コード生成が終了しました。
   php_hidemaru.vcxproj -> G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.dll

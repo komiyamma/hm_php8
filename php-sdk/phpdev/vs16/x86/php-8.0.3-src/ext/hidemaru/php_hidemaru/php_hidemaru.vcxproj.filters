@@ -106,4 +106,9 @@
       <Filter>PHP用に登録するグローバル関数</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\embed_hidemaru.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
+  </ItemGroup>
 </Project>

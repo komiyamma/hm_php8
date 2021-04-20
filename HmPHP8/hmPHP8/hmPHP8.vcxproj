@@ -153,6 +153,9 @@
     <ClInclude Include="convert_string.h" />
     <ClInclude Include="dllfunc_interface.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="embed_hidemaru.rc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
