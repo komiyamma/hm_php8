@@ -86,7 +86,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;COMPILE_DL_HIDEMARU</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;PHPHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;COMPILE_DL_HIDEMARU</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\main;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\Zend;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\TSRM;</AdditionalIncludeDirectories>
     </ClCompile>
@@ -101,7 +101,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;COMPILE_DL_HIDEMARU</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;PHPHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;COMPILE_DL_HIDEMARU;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\main;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\Zend;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\TSRM;</AdditionalIncludeDirectories>
       <StringPooling>false</StringPooling>
@@ -118,7 +118,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;PHPHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;COMPILE_DL_HIDEMARU</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -132,7 +132,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;PHPHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;COMPILE_DL_HIDEMARU</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
