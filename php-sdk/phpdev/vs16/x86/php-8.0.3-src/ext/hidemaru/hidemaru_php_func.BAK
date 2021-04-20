@@ -17,6 +17,7 @@
 #include "hidemaru_interface.h"
 #include "hidemaruexe_export.h"
 #include "hm_original_encode_mapfunc.h"
+#include "output_debugstream.h"
 
 /* For compatibility with older PHP versions */
 #ifndef ZEND_PARSE_PARAMETERS_NONE
@@ -63,6 +64,25 @@ PHP_FUNCTION(hidemaru_version)
 
 	RETURN_DOUBLE(ret_var);
 }
+
+/* {{{ void hidemaru_debuginfo( [ string $var ] ) */
+PHP_FUNCTION(hidemaru_debuginfo)
+{
+	char* var = NULL;
+	size_t var_size;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(var, var_size)
+	ZEND_PARSE_PARAMETERS_END();
+
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		wstring utf16_value = utf8_to_utf16(var);
+		OutputDebugStream(utf16_value.c_str());
+	}
+}
+/* }}}*/
+
 
 /* {{{ string hidemaru_edit_totaltext() */
 PHP_FUNCTION(hidemaru_edit_totaltext)
@@ -182,6 +202,20 @@ PHP_FUNCTION(hidemaru_outputpane_pop)
 }
 /* }}}*/
 
+// アウトプットパネルのハンドルの取得  (この関数はPHP層へは公開していない)
+static HWND OutputPane_GetWindowHanndle() {
+
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		if (CHidemaruExeExport::HmOutputPane_GetWindowHandle) {
+			return CHidemaruExeExport::HmOutputPane_GetWindowHandle(hHidemaruWindow);
+		}
+	}
+
+	return NULL;
+}
+
 /* {{{ int hidemaru_outputpane_sendmessage( [int $var] ) */
 PHP_FUNCTION(hidemaru_outputpane_sendmessage)
 {
@@ -194,9 +228,9 @@ PHP_FUNCTION(hidemaru_outputpane_sendmessage)
 	zend_long retval = 0;
 
 	// ちゃんと関数がある時だけ
-	HWND OutputWindowHandle = CHidemaruExeExport::HmOutputPane_GetWindowHandle();
+	HWND OutputWindowHandle = OutputPane_GetWindowHanndle();
 	if (OutputWindowHandle) {
-		// (#h,0x111/*WM_COMMAND*/,1009,0);//1009=クリア
+		// (#h,0x111/*WM_COMMAND*/,1009,0); //1009=クリア
 		// 0x111 = WM_COMMAND
 		zend_long command_id = var;
 		LRESULT r = SendMessageW(OutputWindowHandle, 0x111, command_id, 0);
@@ -207,6 +241,29 @@ PHP_FUNCTION(hidemaru_outputpane_sendmessage)
 	RETURN_LONG(0);
 }
 /* }}}*/
+
+/* {{{ int hidemaru_outputpane_sendmessage() */
+PHP_FUNCTION(hidemaru_outputpane_clear)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	zend_long retval = 0;
+
+	// ちゃんと関数がある時だけ
+	HWND OutputWindowHandle = OutputPane_GetWindowHanndle();
+	if (OutputWindowHandle) {
+		// (#h,0x111/*WM_COMMAND*/,1009,0); //1009=クリア
+		// 0x111 = WM_COMMAND
+		zend_long command_id = 1009;
+		LRESULT r = SendMessageW(OutputWindowHandle, 0x111, command_id, 0);
+		retval = r;
+		RETURN_LONG(retval);
+	}
+
+	RETURN_LONG(0);
+}
+/* }}}*/
+
 
 /*
 * 
