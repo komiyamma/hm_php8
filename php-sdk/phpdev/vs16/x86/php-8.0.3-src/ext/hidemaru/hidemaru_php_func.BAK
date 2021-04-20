@@ -75,11 +75,29 @@ PHP_FUNCTION(hidemaru_debuginfo)
 		Z_PARAM_STRING(var, var_size)
 	ZEND_PARSE_PARAMETERS_END();
 
-	// ちゃんと関数がある時だけ
-	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
-		wstring utf16_value = utf8_to_utf16(var);
-		OutputDebugStream(utf16_value.c_str());
+	wstring utf16_value = utf8_to_utf16(var);
+	OutputDebugStream(utf16_value.c_str());
+}
+/* }}}*/
+
+
+/* {{{ string hidemaru_edit_filepath() */
+PHP_FUNCTION(hidemaru_edit_filepath)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	const int WM_USER = 0x400;
+	const int WM_HIDEMARUINFO = WM_USER + 181;
+	const int HIDEMARUINFO_GETFILEFULLPATH = 4;
+	HWND hWndHidemaru = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+	if (hWndHidemaru) {
+		wchar_t filepath[MAX_PATH*3];
+		int cwch = SendMessageW(hWndHidemaru, WM_HIDEMARUINFO, HIDEMARUINFO_GETFILEFULLPATH, (LPARAM)filepath);
+		string utf8_filepath = utf16_to_utf8(filepath);
+		RETURN_STRING(utf8_filepath.c_str());
 	}
+
+	RETURN_STRING("");
 }
 /* }}}*/
 
