@@ -71,13 +71,7 @@ PHP_FUNCTION(hidemaru_edit_totaltext)
 
 	wstring utf16_totaltext = CHidemaruExeExport::GetTotalText();
 	string utf8_totaltext = utf16_to_utf8(utf16_totaltext);
-	zend_string* retval;
-	retval = strpprintf(0, "%s", utf8_totaltext.c_str());
-
-	RETURN_STR(retval);
-	if (retval) {
-		efree(retval);
-	}
+	RETURN_STRING(utf8_totaltext.c_str());
 }
 /* }}}*/
 
@@ -88,13 +82,8 @@ PHP_FUNCTION(hidemaru_edit_selectedtext)
 
 	wstring utf16_selectedtext = CHidemaruExeExport::GetSelectedText();
 	string utf8_selectedtext = utf16_to_utf8(utf16_selectedtext);
-	zend_string* retval;
-	retval = strpprintf(0, "%s", utf8_selectedtext.c_str());
 
-	RETURN_STR(retval);
-	if (retval) {
-		efree(retval);
-	}
+	RETURN_STRING(utf8_selectedtext.c_str());
 }
 /* }}}*/
 
@@ -105,13 +94,8 @@ PHP_FUNCTION(hidemaru_edit_linetext)
 
 	wstring utf16_linetext = CHidemaruExeExport::GetLineText();
 	string utf8_linetext = utf16_to_utf8(utf16_linetext);
-	zend_string* retval;
-	retval = strpprintf(0, "%s", utf8_linetext.c_str());
 
-	RETURN_STR(retval);
-	if (retval) {
-		efree(retval);
-	}
+	RETURN_STRING(utf8_linetext.c_str());
 }
 /* }}}*/
 
@@ -120,7 +104,6 @@ PHP_FUNCTION(hidemaru_outputpane_output)
 {
 	char* var = NULL;
 	size_t var_size;
-	char* strg;
 
 	ZEND_PARSE_PARAMETERS_START(1, 1)
 		Z_PARAM_STRING(var, var_size)
@@ -131,11 +114,7 @@ PHP_FUNCTION(hidemaru_outputpane_output)
 		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
 		if (CHidemaruExeExport::HmOutputPane_Output) {
 
-			var_size = spprintf(&strg, 0, "%s", var);
-			wstring utf16_value = utf8_to_utf16(strg);
-			if (strg) {
-				efree(strg);
-			}
+			wstring utf16_value = utf8_to_utf16(var);
 
 			auto encode_byte_data = EncodeWStringToOriginalEncodeVector(utf16_value);
 			BOOL result = CHidemaruExeExport::HmOutputPane_Output(hHidemaruWindow, encode_byte_data.data());
@@ -163,7 +142,7 @@ PHP_FUNCTION(hidemaru_outputpane_push)
 		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
 		if (CHidemaruExeExport::HmOutputPane_Push) {
 
-			BOOL result = CHidemaruExeExport::HmOutputPane_Push();
+			BOOL result = CHidemaruExeExport::HmOutputPane_Push(hHidemaruWindow);
 			if (result) {
 				RETURN_TRUE;
 			}
@@ -178,7 +157,56 @@ PHP_FUNCTION(hidemaru_outputpane_push)
 }
 /* }}}*/
 
+/* {{{ bool hidemaru_outputpane_pop() */
+PHP_FUNCTION(hidemaru_outputpane_pop)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
 
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		if (CHidemaruExeExport::HmOutputPane_Pop) {
+
+			BOOL result = CHidemaruExeExport::HmOutputPane_Pop(hHidemaruWindow);
+			if (result) {
+				RETURN_TRUE;
+			}
+			else {
+				RETURN_FALSE;
+			}
+
+		}
+	}
+
+	RETURN_FALSE;
+}
+/* }}}*/
+
+/* {{{ int hidemaru_outputpane_sendmessage( [int $var] ) */
+PHP_FUNCTION(hidemaru_outputpane_sendmessage)
+{
+	zend_long var;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(var)
+	ZEND_PARSE_PARAMETERS_END();
+
+	zend_long retval = 0;
+
+	// ちゃんと関数がある時だけ
+	HWND OutputWindowHandle = CHidemaruExeExport::HmOutputPane_GetWindowHandle();
+	if (OutputWindowHandle) {
+		// (#h,0x111/*WM_COMMAND*/,1009,0);//1009=クリア
+		// 0x111 = WM_COMMAND
+		zend_long command_id = var;
+		LRESULT r = SendMessageW(OutputWindowHandle, 0x111, command_id, 0);
+		retval = r;
+		RETURN_LONG(retval);
+	}
+
+	RETURN_LONG(0);
+}
+/* }}}*/
 
 /*
 * 
