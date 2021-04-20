@@ -177,9 +177,6 @@
     <ClInclude Include="..\self_dll_info.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\hidemaru.stub.php" />
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="..\embed_hidemaru.rc">
       <Culture Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">0x0411</Culture>
       <Culture Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">0x0411</Culture>

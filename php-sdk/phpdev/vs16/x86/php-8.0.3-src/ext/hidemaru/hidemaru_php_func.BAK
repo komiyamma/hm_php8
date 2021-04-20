@@ -204,16 +204,42 @@ PHP_FUNCTION(hidemaru_outputpane_output)
 			if (result) {
 				RETURN_TRUE;
 			}
-			else {
-				RETURN_FALSE;
-			}
-
 		}
 	}
 
 	RETURN_FALSE;
 }
 /* }}}*/
+
+/* {{{ bool hidemaru_outputpane_setbasedir( [ string $var ] ) */
+PHP_FUNCTION(hidemaru_outputpane_setbasedir)
+{
+	char* var = NULL;
+	size_t var_size;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(var, var_size)
+		ZEND_PARSE_PARAMETERS_END();
+
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		if (CHidemaruExeExport::HmOutputPane_SetBaseDir) {
+
+			wstring utf16_value = utf8_to_utf16(var);
+
+			auto encode_byte_data = EncodeWStringToOriginalEncodeVector(utf16_value);
+			BOOL result = CHidemaruExeExport::HmOutputPane_SetBaseDir(hHidemaruWindow, encode_byte_data.data());
+			if (result) {
+				RETURN_TRUE;
+			}
+		}
+	}
+
+	RETURN_FALSE;
+}
+/* }}}*/
+
 
 /* {{{ bool hidemaru_outputpane_push() */
 PHP_FUNCTION(hidemaru_outputpane_push)
@@ -229,10 +255,6 @@ PHP_FUNCTION(hidemaru_outputpane_push)
 			if (result) {
 				RETURN_TRUE;
 			}
-			else {
-				RETURN_FALSE;
-			}
-
 		}
 	}
 
@@ -254,10 +276,6 @@ PHP_FUNCTION(hidemaru_outputpane_pop)
 			if (result) {
 				RETURN_TRUE;
 			}
-			else {
-				RETURN_FALSE;
-			}
-
 		}
 	}
 
@@ -278,6 +296,17 @@ static HWND OutputPane_GetWindowHanndle() {
 
 	return NULL;
 }
+
+/* {{{ int hidemaru_outputpane_getwindowhandle() */
+PHP_FUNCTION(hidemaru_outputpane_getwindowhandle)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	// ちゃんと関数がある時だけ
+	HWND OutputWindowHandle = OutputPane_GetWindowHanndle();
+	RETURN_LONG((zend_long)OutputWindowHandle);
+}
+/* }}}*/
 
 /* {{{ int hidemaru_outputpane_sendmessage( [int $var] ) */
 PHP_FUNCTION(hidemaru_outputpane_sendmessage)

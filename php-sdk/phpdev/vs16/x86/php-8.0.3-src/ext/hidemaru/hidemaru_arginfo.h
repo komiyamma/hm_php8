@@ -37,6 +37,10 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_outputpane_output, 0, 0
 	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_outputpane_setbasedir, 0, 0, _IS_BOOL, 0)
+ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_outputpane_push, 0, 0, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
@@ -66,6 +70,7 @@ ZEND_FUNCTION(hidemaru_edit_totaltext);
 ZEND_FUNCTION(hidemaru_edit_selectedtext);
 ZEND_FUNCTION(hidemaru_edit_linetext);
 ZEND_FUNCTION(hidemaru_outputpane_output);
+ZEND_FUNCTION(hidemaru_outputpane_setbasedir);
 ZEND_FUNCTION(hidemaru_outputpane_push);
 ZEND_FUNCTION(hidemaru_outputpane_pop);
 ZEND_FUNCTION(hidemaru_outputpane_sendmessage);
@@ -85,6 +90,7 @@ static const zend_function_entry ext_functions[] = {
 	ZEND_FE(hidemaru_edit_selectedtext, arginfo_hidemaru_edit_selectedtext)
 	ZEND_FE(hidemaru_edit_linetext, arginfo_hidemaru_edit_linetext)
 	ZEND_FE(hidemaru_outputpane_output, arginfo_hidemaru_outputpane_output)
+	ZEND_FE(hidemaru_outputpane_setbasedir, arginfo_hidemaru_outputpane_setbasedir)
 	ZEND_FE(hidemaru_outputpane_push, arginfo_hidemaru_outputpane_push)
 	ZEND_FE(hidemaru_outputpane_pop, arginfo_hidemaru_outputpane_pop)
 	ZEND_FE(hidemaru_outputpane_sendmessage, arginfo_hidemaru_outputpane_sendmessage)
