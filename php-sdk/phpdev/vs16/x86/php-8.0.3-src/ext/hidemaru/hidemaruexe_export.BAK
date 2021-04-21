@@ -60,8 +60,14 @@ double CHidemaruExeExport::QueryFileVersion(wchar_t* path){
 	return 0;
 }
 
+extern BOOL isEntryPointIsHidemaru();
+
 
 BOOL CHidemaruExeExport::init() {
+
+	if (!isEntryPointIsHidemaru()) {
+		return FALSE;
+	}
 
 	if (hHideExeHandle) {
 		return TRUE;

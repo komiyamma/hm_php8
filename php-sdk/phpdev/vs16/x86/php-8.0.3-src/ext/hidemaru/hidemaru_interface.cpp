@@ -4,12 +4,12 @@
 
 using namespace std;
 
-string aaa = "";
+BOOL entry_point_is_hidemaru = FALSE;
 
-string getaaa() {
-	return aaa;
+BOOL isEntryPointIsHidemaru() {
+	return entry_point_is_hidemaru;
 }
 
 extern "C" __declspec(dllexport) void abc() {
-	aaa = utf16_to_utf8(L"eeeeefffffgggg");
+	entry_point_is_hidemaru = TRUE;
 }

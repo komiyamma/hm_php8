@@ -60,6 +60,11 @@ PHP_FUNCTION(hidemaru_version)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
+	if (!isEntryPointIsHidemaru()) {
+		RETURN_DOUBLE(0);
+	}
+
+
 	double ret_var = CHidemaruExeExport::hm_version;
 
 	RETURN_DOUBLE(ret_var);
@@ -84,6 +89,11 @@ PHP_FUNCTION(hidemaru_debuginfo)
 PHP_FUNCTION(hidemaru_getwindowhandle)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
+
+	if (!isEntryPointIsHidemaru()) {
+		RETURN_LONG(0);
+	}
+
 
 	// ちゃんと関数がある時だけ
 	HWND hWndHidemaru = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();

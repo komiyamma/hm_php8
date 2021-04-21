@@ -1,0 +1,17 @@
+PHP本体を含めるためには、PHP License 3.1に従う必要あり。
+https://licenses.opensource.jp/PHP-3.0/PHP-3.0.html
+
+
+
+
+セットアップ中の画面下、著作の部分には
+
+This product includes PHP, freely available from <http://www.php.net/>.
+
+の文字を入れること。
+
+例えば、Setup Windows Installer Project ならば、
+「表示」「エディター」「ユーザーインターフェイス」で
+「ようこそ」の部分のCopyrightのところに文面を入れる。
+
+普通の「Install」と「Administrative Install」の両方に同一文面を入れること。
