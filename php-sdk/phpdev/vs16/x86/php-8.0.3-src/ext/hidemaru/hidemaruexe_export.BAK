@@ -64,7 +64,6 @@ double CHidemaruExeExport::QueryFileVersion(wchar_t* path){
 BOOL CHidemaruExeExport::init() {
 
 	if (hHideExeHandle) {
-		MessageBox(NULL, L"Dll登録済み", L"Dll登録済み", NULL);
 		return TRUE;
 	}
 

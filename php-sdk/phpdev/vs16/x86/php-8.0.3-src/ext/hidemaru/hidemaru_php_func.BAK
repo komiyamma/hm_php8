@@ -80,9 +80,20 @@ PHP_FUNCTION(hidemaru_debuginfo)
 }
 /* }}}*/
 
+/* {{{ int hidemaru_getwindowhandle() */
+PHP_FUNCTION(hidemaru_getwindowhandle)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
 
-/* {{{ string hidemaru_edit_filepath() */
-PHP_FUNCTION(hidemaru_edit_filepath)
+	// ちゃんと関数がある時だけ
+	HWND hWndHidemaru = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+	RETURN_LONG((zend_long)hWndHidemaru);
+}
+/* }}}*/
+
+
+/* {{{ string hidemaru_edit_getfilepath() */
+PHP_FUNCTION(hidemaru_edit_getfilepath)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
@@ -147,8 +158,8 @@ PHP_FUNCTION(hidemaru_edit_getcursorposfrommousepos)
 /* }}}*/
 
 
-/* {{{ string hidemaru_edit_totaltext() */
-PHP_FUNCTION(hidemaru_edit_totaltext)
+/* {{{ string hidemaru_edit_gettotaltext() */
+PHP_FUNCTION(hidemaru_edit_gettotaltext)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
@@ -158,8 +169,8 @@ PHP_FUNCTION(hidemaru_edit_totaltext)
 }
 /* }}}*/
 
-/* {{{ string hidemaru_edit_selectedtext() */
-PHP_FUNCTION(hidemaru_edit_selectedtext)
+/* {{{ string hidemaru_edit_getselectedtext() */
+PHP_FUNCTION(hidemaru_edit_getselectedtext)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
@@ -170,8 +181,8 @@ PHP_FUNCTION(hidemaru_edit_selectedtext)
 }
 /* }}}*/
 
-/* {{{ string hidemaru_edit_linetext() */
-PHP_FUNCTION(hidemaru_edit_linetext)
+/* {{{ string hidemaru_edit_getlinetext() */
+PHP_FUNCTION(hidemaru_edit_getlinetext)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
@@ -179,6 +190,33 @@ PHP_FUNCTION(hidemaru_edit_linetext)
 	string utf8_linetext = utf16_to_utf8(utf16_linetext);
 
 	RETURN_STRING(utf8_linetext.c_str());
+}
+/* }}}*/
+
+/* {{{ bool hidemaru_macro_eval( [ string $var ] ) */
+PHP_FUNCTION(hidemaru_macro_eval)
+{
+	char* var = NULL;
+	size_t var_size;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(var, var_size)
+	ZEND_PARSE_PARAMETERS_END();
+
+	wstring utf16_expression = utf8_to_utf16(var);
+	BOOL success = CHidemaruExeExport::EvalMacro(utf16_expression);
+	if (success) {
+		RETURN_TRUE;
+	}
+	else {
+		/*
+		*
+		php_error(L"マクロの実行に失敗しました。\n");
+		OutputDebugStream(L"マクロ内容:\n");
+		OutputDebugStream(utf16_expression);
+		*/
+		RETURN_FALSE;
+	}
 }
 /* }}}*/
 
