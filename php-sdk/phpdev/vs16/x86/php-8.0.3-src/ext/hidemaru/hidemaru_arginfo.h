@@ -30,6 +30,10 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_edit_gettotaltext, 0, 0, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_edit_settotaltext, 0, 0, _IS_BOOL, 0)
+ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_edit_getselectedtext, 0, 0, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
@@ -75,6 +79,7 @@ ZEND_FUNCTION(hidemaru_edit_getfilepath);
 ZEND_FUNCTION(hidemaru_edit_getcursorpos);
 ZEND_FUNCTION(hidemaru_edit_getcursorposfrommousepos);
 ZEND_FUNCTION(hidemaru_edit_gettotaltext);
+ZEND_FUNCTION(hidemaru_edit_settotaltext);
 ZEND_FUNCTION(hidemaru_edit_getselectedtext);
 ZEND_FUNCTION(hidemaru_edit_getlinetext);
 ZEND_FUNCTION(hidemaru_macro_eval);
@@ -97,6 +102,7 @@ static const zend_function_entry ext_functions[] = {
 	ZEND_FE(hidemaru_edit_getcursorpos, arginfo_hidemaru_edit_getcursorpos)
 	ZEND_FE(hidemaru_edit_getcursorposfrommousepos, arginfo_hidemaru_edit_getcursorposfrommousepos)
 	ZEND_FE(hidemaru_edit_gettotaltext, arginfo_hidemaru_edit_gettotaltext)
+	ZEND_FE(hidemaru_edit_settotaltext, arginfo_hidemaru_edit_settotaltext)
 	ZEND_FE(hidemaru_edit_getselectedtext, arginfo_hidemaru_edit_getselectedtext)
 	ZEND_FE(hidemaru_edit_getlinetext, arginfo_hidemaru_edit_getlinetext)
 	ZEND_FE(hidemaru_macro_eval, arginfo_hidemaru_macro_eval)

@@ -18,6 +18,8 @@
 #include "hidemaruexe_export.h"
 #include "hm_original_encode_mapfunc.h"
 #include "output_debugstream.h"
+#include "dllfunc_interface_internal.h"
+#include "self_dll_info.h"
 
 /* For compatibility with older PHP versions */
 #ifndef ZEND_PARSE_PARAMETERS_NONE
@@ -60,11 +62,6 @@ PHP_FUNCTION(hidemaru_version)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
-	if (!isEntryPointIsHidemaru()) {
-		RETURN_DOUBLE(0);
-	}
-
-
 	double ret_var = CHidemaruExeExport::hm_version;
 
 	RETURN_DOUBLE(ret_var);
@@ -89,11 +86,6 @@ PHP_FUNCTION(hidemaru_debuginfo)
 PHP_FUNCTION(hidemaru_getwindowhandle)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-
-	if (!isEntryPointIsHidemaru()) {
-		RETURN_LONG(0);
-	}
-
 
 	// ちゃんと関数がある時だけ
 	HWND hWndHidemaru = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
@@ -176,6 +168,41 @@ PHP_FUNCTION(hidemaru_edit_gettotaltext)
 	wstring utf16_totaltext = CHidemaruExeExport::GetTotalText();
 	string utf8_totaltext = utf16_to_utf8(utf16_totaltext);
 	RETURN_STRING(utf8_totaltext.c_str());
+}
+/* }}}*/
+
+
+
+/* {{{ bool hidemaru_edit_settotaltext( [ string $var ] ) */
+PHP_FUNCTION(hidemaru_edit_settotaltext)
+{
+	char* var = NULL;
+	size_t var_size;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(var, var_size)
+	ZEND_PARSE_PARAMETERS_END();
+
+	BOOL success = 0;
+
+	auto dll_invocant = CSelfDllInfo::GetInvocantString();
+
+	wstring utf16_value = utf8_to_utf16(var);
+	PushStrVar(utf16_value.data());
+	wstring cmd =
+		L"begingroupundo;\n"
+		L"selectall;\n"
+		L"insert dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n"
+		L"endgroupundo;\n";
+	MessageBox(NULL, cmd.c_str(), cmd.c_str(), NULL);
+	success = CHidemaruExeExport::EvalMacro(cmd);
+
+	if (success) {
+		RETURN_TRUE;
+	}
+	else {
+		RETURN_FALSE;
+	}
 }
 /* }}}*/
 
