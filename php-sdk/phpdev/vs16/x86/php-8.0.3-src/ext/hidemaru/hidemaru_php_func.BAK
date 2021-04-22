@@ -28,13 +28,14 @@
 	ZEND_PARSE_PARAMETERS_END()
 #endif
 
-/* {{{ void test1() */
-PHP_FUNCTION(test1)
-{
-	ZEND_PARSE_PARAMETERS_NONE();
 
-	php_printf("The extension %s is loaded and working!\r\n", "hidemaru");
-}
+/* {{{ void test1() */
+// PHP_FUNCTION(test1)
+// {
+// 	ZEND_PARSE_PARAMETERS_NONE();
+// 
+// 	php_printf("The extension %s is loaded and working!\r\n", "hidemaru");
+// }
 /* }}} */
 
 
@@ -171,8 +172,6 @@ PHP_FUNCTION(hidemaru_edit_gettotaltext)
 }
 /* }}}*/
 
-
-
 /* {{{ bool hidemaru_edit_settotaltext( [ string $var ] ) */
 PHP_FUNCTION(hidemaru_edit_settotaltext)
 {
@@ -194,7 +193,7 @@ PHP_FUNCTION(hidemaru_edit_settotaltext)
 		L"selectall;\n"
 		L"insert dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n"
 		L"endgroupundo;\n";
-	MessageBox(NULL, cmd.c_str(), cmd.c_str(), NULL);
+
 	success = CHidemaruExeExport::EvalMacro(cmd);
 
 	if (success) {
@@ -218,6 +217,39 @@ PHP_FUNCTION(hidemaru_edit_getselectedtext)
 }
 /* }}}*/
 
+/* {{{ bool hidemaru_edit_setselectedtext( [ string $var ] ) */
+PHP_FUNCTION(hidemaru_edit_setselectedtext)
+{
+	char* var = NULL;
+	size_t var_size;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(var, var_size)
+		ZEND_PARSE_PARAMETERS_END();
+
+	BOOL success = 0;
+
+	auto dll_invocant = CSelfDllInfo::GetInvocantString();
+
+	wstring utf16_value = utf8_to_utf16(var);
+	PushStrVar(utf16_value.data());
+	wstring cmd =
+		L"if (selecting) {\n"
+		L"insert dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n"
+		L"};\n";
+
+	success = CHidemaruExeExport::EvalMacro(cmd);
+
+	if (success) {
+		RETURN_TRUE;
+	}
+	else {
+		RETURN_FALSE;
+	}
+}
+/* }}}*/
+
+
 /* {{{ string hidemaru_edit_getlinetext() */
 PHP_FUNCTION(hidemaru_edit_getlinetext)
 {
@@ -229,6 +261,43 @@ PHP_FUNCTION(hidemaru_edit_getlinetext)
 	RETURN_STRING(utf8_linetext.c_str());
 }
 /* }}}*/
+
+/* {{{ bool hidemaru_edit_setlinetext( [ string $var ] ) */
+PHP_FUNCTION(hidemaru_edit_setlinetext)
+{
+	char* var = NULL;
+	size_t var_size;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(var, var_size)
+		ZEND_PARSE_PARAMETERS_END();
+
+	BOOL success = 0;
+
+	auto dll_invocant = CSelfDllInfo::GetInvocantString();
+
+	auto pos = CHidemaruExeExport::GetCursorPos();
+
+	wstring utf16_value = utf8_to_utf16(var);
+	PushStrVar(utf16_value.data());
+	wstring cmd =
+		L"begingroupundo;\n"
+		L"selectline;\n"
+		L"insert dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n"
+		L"moveto2 " + std::to_wstring(pos.column) + L", " + std::to_wstring(pos.lineno) + L";\n" +
+		L"endgroupundo;\n";
+
+	success = CHidemaruExeExport::EvalMacro(cmd);
+
+	if (success) {
+		RETURN_TRUE;
+	}
+	else {
+		RETURN_FALSE;
+	}
+}
+/* }}}*/
+
 
 /* {{{ bool hidemaru_macro_eval( [ string $var ] ) */
 PHP_FUNCTION(hidemaru_macro_eval)
