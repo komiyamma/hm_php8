@@ -45,6 +45,9 @@
     <ClInclude Include="dllfunc_interface.h">
       <Filter>秀丸マクロとのAPI Interface</Filter>
     </ClInclude>
+    <ClInclude Include="embed_hidemaru.h">
+      <Filter>PHPのエンジン</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="文字列の相互変換 cp932⇔utf16⇔utf8">
