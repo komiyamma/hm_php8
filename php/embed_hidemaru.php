@@ -1,7 +1,4 @@
 ﻿<?php
-$hello3 = "eeeee";
-$hello4 = 2222;
-
 class _TEdit {
 
 	public function getFilePath(): string {
@@ -12,13 +9,26 @@ class _TEdit {
 		return hidemaru_edit_gettotaltext();
     }
 
+    public function setTotalText(string $text): bool {
+		return hidemaru_edit_settotaltext($text);
+    }
+
     public function getSelectedText(): string {
 		return hidemaru_edit_getselectedtext();
+    }
+
+    public function setSelectedText(string $text): bool {
+		return hidemaru_edit_setselectedtext($text);
     }
 
     public function getLineText(): string {
 		return hidemaru_edit_getlinetext();
     }
+
+    public function setLineText(string $text): bool {
+		return hidemaru_edit_setlinetext($text);
+    }
+
 
 	public function getCursorPos(): array {
 		$pos = hidemaru_edit_getcursorpos();
