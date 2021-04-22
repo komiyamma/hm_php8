@@ -61,6 +61,9 @@
     <Filter Include="★わけのわからないコンパイルエラーが出たら">
       <UniqueIdentifier>{412e294e-93ab-4ba6-932a-02c1fb0c05e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="php_hidemaruへのPinとUnpin">
+      <UniqueIdentifier>{12fe8f53-2e12-4b33-81b7-e6aacf70d8b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="★わけのわからないコンパイルエラーが出たら.txt">

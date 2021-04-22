@@ -114,9 +114,9 @@ class _THidemaru {
 		return hidemaru_getwindowhandle();
 	}
 
-    function onDestroyScope(): void {
-	    if (function_exists("DestroyScope")) {
-			DestroyScope();
+    function onDisposeScope(): void {
+	    if (function_exists("onDestroyScope")) {
+			onDestroyScope();
 		}
 	}
 
