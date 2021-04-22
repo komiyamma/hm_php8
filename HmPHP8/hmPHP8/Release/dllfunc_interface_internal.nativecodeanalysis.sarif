@@ -1,0 +1,895 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'CDynamicValue::num' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///G:/repogitory/hm_php8/HmPHP8/hmPHP8/dllfunc_interface_internal.h"
+                },
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 1,
+                  "endLine": 34,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0CDynamicValue@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": [],
+          "properties": {
+            "targetSymbol": "CDynamicValue::num"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'CDynamicValue::type' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///G:/repogitory/hm_php8/HmPHP8/hmPHP8/dllfunc_interface_internal.h"
+                },
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 1,
+                  "endLine": 34,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0CDynamicValue@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": [],
+          "properties": {
+            "targetSymbol": "CDynamicValue::type"
+          }
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "列挙型 'CDynamicValue::TDynamicType' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///G:/repogitory/hm_php8/HmPHP8/hmPHP8/dllfunc_interface_internal.cpp"
+                },
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 2,
+                  "endLine": 19,
+                  "endColumn": 29
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?Clear@CDynamicValue@@QAEXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": []
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.28.29914.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29910\\bin\\HostX86\\x86\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x0096B1C0 -il C:\\Users\\admin\\AppData\\Local\\Temp\\_CL_756ed7c8ast -typedil -f dllfunc_interface_internal.cpp -Ze -D_MSC_EXTENSIONS -Zp8 -Gs -pc \\:/ -D_MSC_VER=1928 -D_MSC_FULL_VER=192829914 -D_MSC_BUILD=0 -D_WIN32 -D_M_IX86=600 -D_M_IX86_FP=2 -GR -D_CPPRTTI -I C:\\php-dev\\include -I C:\\php-dev\\include\\Zend -I C:\\php-dev\\include\\TSRM -I C:\\php-dev\\include\\main -nologo -W 3 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -GF -Og -Ot -Oi -ltcg -DCODE_ANALYSIS -DWIN32 -DNDEBUG -DEMBEDHIDEMARU_EXPORTS -D_WINDOWS -D_USRDLL -D_WINDLL -D_UNICODE -DUNICODE -DPHP_WIN32 -DZEND_WIN32 -DZTS -EHs -D_CPPUNWIND -EHc -MD -D_MT -D_DLL -GS -D_M_FP_PRECISE -permissive- -Zc:wchar_t -Zc:forScope -FoRelease\\dllfunc_interface_internal.obj -FdRelease\\vc142.pdb -Gd -analyze:projectdirectory G:\\repogitory\\hm_php8\\HmPHP8\\hmPHP8 -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\Rule Sets\\NativeRecommendedRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29910\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29910\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29910\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\Include\\um",
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///g:/repogitory/hm_php8/hmphp8/hmphp8/self_dll_info.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "36dd5bf3cdd7b37efddced171df02dfc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///g:/repogitory/hm_php8/hmphp8/hmphp8/self_dll_info.h"
+          },
+          "hashes": {
+            "md5": "38a1819a268f9b956800cb09af614f72"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///g:/repogitory/hm_php8/hmphp8/hmphp8/hidemaruexe_export.h"
+          },
+          "hashes": {
+            "md5": "a014d209d68f5f30b07b0a99013ecca9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///g:/repogitory/hm_php8/hmphp8/hmphp8/output_debugstream.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "1a1b4e62be0001f3c438ea6bf5c13487"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///g:/repogitory/hm_php8/hmphp8/hmphp8/convert_string.h"
+          },
+          "hashes": {
+            "md5": "bb7a3c20a3bf3f11a6c0fb17e458df10"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///G:/repogitory/hm_php8/HmPHP8/hmPHP8/hidemaruexe_export.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "d7177e467b21b757bb052b7b39134730"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///g:/repogitory/hm_php8/hmphp8/hmphp8/convert_string.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "ffdea45c4d66ef9e4e09355497085a07"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/php-dev/include/Zend/zend_hash.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "26409925c4ac08baadc4559146410efb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/php-dev/include/win32/ioutil.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "09837afb897b3cec932bc87788c53a66"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/php-dev/include/main/php.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "0cd9e2ecc115ac25a4ed2713e8f8a6f2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///g:/repogitory/hm_php8/hmphp8/hmphp8/embed_hidemaru.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "43b47410cc425fed5054d5044f48f18e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/sapi/embed/php_embed.h"
+          },
+          "hashes": {
+            "md5": "3e0eeb401f9e4e169af5b61c9ff9dd34"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_version.h"
+          },
+          "hashes": {
+            "md5": "0e6150032ce07b56f6ce0c23f661d07c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend.h"
+          },
+          "hashes": {
+            "md5": "c94a6d77fe78de38b45a2928518f8a2c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_types.h"
+          },
+          "hashes": {
+            "md5": "3dc518b9c3c094c038c55d614c3e7a6d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_portability.h"
+          },
+          "hashes": {
+            "md5": "4f21ea803c286eeff8aebbe7020310cb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_config.w32.h"
+          },
+          "hashes": {
+            "md5": "aa976d5f5f9ae86f9b292cdbad7c5e2f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/config.w32.h"
+          },
+          "hashes": {
+            "md5": "400334b6d109d667296d9f4fafdcfa9b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/tsrm/tsrm.h"
+          },
+          "hashes": {
+            "md5": "629a05db8015f99de9f7158b6ed4aa95"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_stdint.h"
+          },
+          "hashes": {
+            "md5": "4f36715f7602cd99a7fd825ac2cff834"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_range_check.h"
+          },
+          "hashes": {
+            "md5": "e62160584faa6387f902dad53dc9d2f3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_long.h"
+          },
+          "hashes": {
+            "md5": "539bcf099dd1f82cf97d440f18e2a5ad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_map_ptr.h"
+          },
+          "hashes": {
+            "md5": "040aead0a158ce80741d98c45030c1b6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_errors.h"
+          },
+          "hashes": {
+            "md5": "ffa0df50db48d8a248ab0c1de5305e59"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_alloc.h"
+          },
+          "hashes": {
+            "md5": "eeee6ce71e0a8de5f776181c9c242600"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_alloc_sizes.h"
+          },
+          "hashes": {
+            "md5": "a830bff1f5259ff94ae99b0c36523866"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_llist.h"
+          },
+          "hashes": {
+            "md5": "d2a2432c4afc05d8966a14a56b758bf1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_string.h"
+          },
+          "hashes": {
+            "md5": "49e6b41754d4a920cfb50bb197493ecb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_ast.h"
+          },
+          "hashes": {
+            "md5": "30b66d30baffa533a8a90ec896f02dae"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_gc.h"
+          },
+          "hashes": {
+            "md5": "9c11ff5919f0511f5a9fff57c07bfe75"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_variables.h"
+          },
+          "hashes": {
+            "md5": "ae60f135237f54763a4d1a7e690261e6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_iterators.h"
+          },
+          "hashes": {
+            "md5": "fb6de6d73354a1900c40c3ee92b80714"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_stream.h"
+          },
+          "hashes": {
+            "md5": "3f2f680ae69181e9791e64b9c400381f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/win32/winutil.h"
+          },
+          "hashes": {
+            "md5": "7133989a6c0c9f860f9170c4a217be75"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/win32/codepage.h"
+          },
+          "hashes": {
+            "md5": "4e4543c1b74234037e8c4ee670e4c8f8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_smart_str_public.h"
+          },
+          "hashes": {
+            "md5": "99904271e6c781c074c0285f2e8d9ed3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_smart_string_public.h"
+          },
+          "hashes": {
+            "md5": "7caefeae361422bf1b895cf1d72a1513"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_signal.h"
+          },
+          "hashes": {
+            "md5": "cd9470d80d7089079d089df7db3c28a5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_object_handlers.h"
+          },
+          "hashes": {
+            "md5": "fd6acd30921f4170587e58d381cfc7ce"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_operators.h"
+          },
+          "hashes": {
+            "md5": "9ac9c3f3a388f2b6a6b024210771e18b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_strtod.h"
+          },
+          "hashes": {
+            "md5": "7dd304aad9ae04625ab9e721d94a09c7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_multiply.h"
+          },
+          "hashes": {
+            "md5": "3eb25d91be2f15b69090cfd131e676e3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_sort.h"
+          },
+          "hashes": {
+            "md5": "e7d408709841dc1423b6fe1e80c25b39"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_compat.h"
+          },
+          "hashes": {
+            "md5": "c9796ecab941cb104d5af82995806925"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_api.h"
+          },
+          "hashes": {
+            "md5": "f3b45e2a60066268bdc590ece4180acf"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_modules.h"
+          },
+          "hashes": {
+            "md5": "04a96494966425986ccc2c34b6f9aea4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_compile.h"
+          },
+          "hashes": {
+            "md5": "258d7edf1c6ac17f05c1e9b7c7264ddb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_globals.h"
+          },
+          "hashes": {
+            "md5": "2acb56c9bf70cb018572eb667b2d49a8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_globals_macros.h"
+          },
+          "hashes": {
+            "md5": "54371363d1112261efaa2da2870dbefa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_stack.h"
+          },
+          "hashes": {
+            "md5": "93a0f0238a2b8f782dcfd5352dd1ef69"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_ptr_stack.h"
+          },
+          "hashes": {
+            "md5": "4dae181022a1dabb970177667ce81694"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_objects.h"
+          },
+          "hashes": {
+            "md5": "d1d51e234ecb228fb9ddcc817af5b3fc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_objects_api.h"
+          },
+          "hashes": {
+            "md5": "36d83ff6bd98d099c1cec160459b43bb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_float.h"
+          },
+          "hashes": {
+            "md5": "92e669c3aa93cafdc2bfcf3b752034a1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_multibyte.h"
+          },
+          "hashes": {
+            "md5": "a52f7bdf264b65726ebe22c39ba22709"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_arena.h"
+          },
+          "hashes": {
+            "md5": "927d585a3806732a8cbff00b7343a7fe"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_vm_opcodes.h"
+          },
+          "hashes": {
+            "md5": "bd4dd1ed8db6ee69aaa8cded69c80a9e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_build.h"
+          },
+          "hashes": {
+            "md5": "dc3e2bf60b5b6e96f99c509ca95dc1b8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_list.h"
+          },
+          "hashes": {
+            "md5": "c0cc02274ba8e4e9cab0620b2a30fc00"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_execute.h"
+          },
+          "hashes": {
+            "md5": "dbb6992f9c0c020a9a5e88c7461552b7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_type_info.h"
+          },
+          "hashes": {
+            "md5": "4f56f73df93fa3c58d4e01b94f8d38d4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/tsrm/tsrm_win32.h"
+          },
+          "hashes": {
+            "md5": "dbfe7573e8b54f88ae17a4334cd6d236"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/win32/ipc.h"
+          },
+          "hashes": {
+            "md5": "8cf1089bdad333f15065f2535ccd7abd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/snprintf.h"
+          },
+          "hashes": {
+            "md5": "9e63da503f773388133df71e2697fbec"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/spprintf.h"
+          },
+          "hashes": {
+            "md5": "543988767f24765a6701d49293b38722"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_syslog.h"
+          },
+          "hashes": {
+            "md5": "5328a00d32fd8143656ea8efae7ac397"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/win32/syslog.h"
+          },
+          "hashes": {
+            "md5": "03c26692989c367ec29da748c0d86b68"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_output.h"
+          },
+          "hashes": {
+            "md5": "b31271ead625267e66da3ee0d42b9147"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_streams.h"
+          },
+          "hashes": {
+            "md5": "ac0cfc3d07b6071453bb49306cc61287"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/streams/php_stream_context.h"
+          },
+          "hashes": {
+            "md5": "1882b2425363adc002bbcc45e8d13ab8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/streams/php_stream_filter_api.h"
+          },
+          "hashes": {
+            "md5": "8a416670ea6c15c2eaf38da3ec9fdbae"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/streams/php_stream_transport.h"
+          },
+          "hashes": {
+            "md5": "04e0a5cb59cd2d0a28d53b2341074393"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/streams/php_stream_plain_wrapper.h"
+          },
+          "hashes": {
+            "md5": "09c666662f9f2d58f3a6585e81628dad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/streams/php_stream_glob_wrapper.h"
+          },
+          "hashes": {
+            "md5": "99bcd4386aa76177219fab88992e788c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/streams/php_stream_userspace.h"
+          },
+          "hashes": {
+            "md5": "4366574416920cde2458fb4e06abc06b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/streams/php_stream_mmap.h"
+          },
+          "hashes": {
+            "md5": "4a7608cf8eeccd0e1ec4ab443ef7de2f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_memory_streams.h"
+          },
+          "hashes": {
+            "md5": "739056e97ec29b2e28d86a5802ff2397"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/fopen_wrappers.h"
+          },
+          "hashes": {
+            "md5": "5de6b913b4a20346766f903adfea22e8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_globals.h"
+          },
+          "hashes": {
+            "md5": "36aa49fb1afc804e4cc2119bd1e63bd2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_ini.h"
+          },
+          "hashes": {
+            "md5": "885cb77fa83a129ec48882f42ee9fd0b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_ini.h"
+          },
+          "hashes": {
+            "md5": "27c8d6e6432a38ce37ea7e53f6cd3181"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_virtual_cwd.h"
+          },
+          "hashes": {
+            "md5": "ee403c1c9a786a398026c43fbb4e2d3a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/win32/readdir.h"
+          },
+          "hashes": {
+            "md5": "e71b9e9b75080b646f65e4cc2035fb4a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/zend/zend_constants.h"
+          },
+          "hashes": {
+            "md5": "6baaad03a856ba13b29a834240dc4e75"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_reentrancy.h"
+          },
+          "hashes": {
+            "md5": "2e1f12f02bcf813747836622c38a8365"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/sapi.h"
+          },
+          "hashes": {
+            "md5": "d05465e1906a72314dda03f5d644cd53"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_main.h"
+          },
+          "hashes": {
+            "md5": "a40f4879c2120a686f8be400eaacc88f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/php-dev/include/main/php_variables.h"
+          },
+          "hashes": {
+            "md5": "c61947f5dca4cfd8ed82dff19d458ae0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///g:/repogitory/hm_php8/hmphp8/hmphp8/dllfunc_interface.h"
+          },
+          "hashes": {
+            "md5": "e65a078e2e332a52da225be607fb2aeb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///g:/repogitory/hm_php8/hmphp8/hmphp8/dllmain.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "406d7640356898d94412c13022b1bbf5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///g:/repogitory/hm_php8/hmphp8/hmphp8/output_debugstream.h"
+          },
+          "hashes": {
+            "md5": "ece63838fd981266eda58492cd017565"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///G:/repogitory/hm_php8/HmPHP8/hmPHP8/dllfunc_interface_internal.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "ef1f7aa78b50d8657583624c06d6b5f0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///G:/repogitory/hm_php8/HmPHP8/hmPHP8/dllfunc_interface_internal.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "d73c1f1b9f5d2ac2cb544f937570cbb7"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -123,10 +123,12 @@ wstring CHidemaruExeExport::GetTotalText() {
 	HGLOBAL hGlobal = CHidemaruExeExport::Hidemaru_GetTotalTextUnicode();
 	if (hGlobal) {
 		wchar_t* pwsz = (wchar_t*)GlobalLock(hGlobal);
-		wstring text(pwsz); // コピー
-		GlobalUnlock(hGlobal);
-		GlobalFree(hGlobal); // 元のは解放
-		return text;
+		if (pwsz) {
+			wstring text(pwsz); // コピー
+			GlobalUnlock(hGlobal);
+			GlobalFree(hGlobal); // 元のは解放
+			return text;
+		}
 	}
 	return L"";
 }
@@ -136,10 +138,12 @@ wstring CHidemaruExeExport::GetSelectedText() {
 	HGLOBAL hGlobal = CHidemaruExeExport::Hidemaru_GetSelectedTextUnicode();
 	if (hGlobal) {
 		wchar_t* pwsz = (wchar_t*)GlobalLock(hGlobal);
-		wstring text(pwsz); // コピー
-		GlobalUnlock(hGlobal);
-		GlobalFree(hGlobal); // 元のは解放
-		return text;
+		if (pwsz) {
+			wstring text(pwsz); // コピー
+			GlobalUnlock(hGlobal);
+			GlobalFree(hGlobal); // 元のは解放
+			return text;
+		}
 	}
 	return L"";
 }
@@ -153,10 +157,12 @@ wstring CHidemaruExeExport::GetLineText(int lineno) {
 	HGLOBAL hGlobal = CHidemaruExeExport::Hidemaru_GetLineTextUnicode(lineno);
 	if (hGlobal) {
 		wchar_t* pwsz = (wchar_t*)GlobalLock(hGlobal);
-		wstring text(pwsz); // コピー
-		GlobalUnlock(hGlobal);
-		GlobalFree(hGlobal); // 元のは解放
-		return text;
+		if (pwsz) {
+			wstring text(pwsz); // コピー
+			GlobalUnlock(hGlobal);
+			GlobalFree(hGlobal); // 元のは解放
+			return text;
+		}
 	}
 	return L"";
 }
@@ -214,11 +220,13 @@ wstring CHidemaruExeExport::LoadFileUnicode(wstring filename, int nHmEncode, UIN
 		HGLOBAL hGlobal = CHidemaruExeExport::Hidemaru_LoadFileUnicode(filename.data(), nHmEncode, pcwchOut, lParam1, lParam2);
 		if (hGlobal) {
 			wchar_t* pwsz = (wchar_t*)GlobalLock(hGlobal);
-			wstring text(pwsz); // コピー
-			GlobalUnlock(hGlobal);
-			GlobalFree(hGlobal); // 元のは解放
-			*success = true;
-			return text;
+			if (pwsz) {
+				wstring text(pwsz); // コピー
+				GlobalUnlock(hGlobal);
+				GlobalFree(hGlobal); // 元のは解放
+				*success = true;
+				return text;
+			}
 		}
 	}
 

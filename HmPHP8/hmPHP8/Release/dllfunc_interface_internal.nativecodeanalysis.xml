@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>G:\repogitory\hm_php8\HmPHP8\hmPHP8\</FILEPATH>
+      <FILENAME>dllfunc_interface_internal.h</FILENAME>
+      <LINE>34</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>変数 'CDynamicValue::num' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。</DESCRIPTION>
+    <FUNCTION>CDynamicValue::{ctor}</FUNCTION>
+    <DECORATED>??0CDynamicValue@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>CDynamicValue::num</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>G:\repogitory\hm_php8\HmPHP8\hmPHP8\</FILEPATH>
+      <FILENAME>dllfunc_interface_internal.h</FILENAME>
+      <LINE>34</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>変数 'CDynamicValue::type' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。</DESCRIPTION>
+    <FUNCTION>CDynamicValue::{ctor}</FUNCTION>
+    <DECORATED>??0CDynamicValue@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>CDynamicValue::type</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>G:\repogitory\hm_php8\HmPHP8\hmPHP8\</FILEPATH>
+      <FILENAME>dllfunc_interface_internal.cpp</FILENAME>
+      <LINE>19</LINE>
+      <COLUMN>12</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>列挙型 'CDynamicValue::TDynamicType' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。</DESCRIPTION>
+    <FUNCTION>CDynamicValue::Clear</FUNCTION>
+    <DECORATED>?Clear@CDynamicValue@@QAEXXZ</DECORATED>
+    <FUNCLINE>16</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

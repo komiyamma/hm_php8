@@ -1,0 +1,2 @@
+G:\repogitory\hm_php8\HmPHP8\Release\embed_hidemaru.dll.lastcodeanalysissucceeded
+G:\repogitory\hm_php8\HmPHP8\hmPHP8\Release\NativeCodeAnalysis.read.1.tlog

@@ -1,8 +1,8 @@
-﻿  hidemaru_interface.cpp
+﻿  hidemaruexe_export.cpp
      ライブラリ G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.lib とオブジェクト G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.exp を作成中
   コード生成しています。
-  16 of 595 functions ( 2.7%) were compiled, the rest were copied from previous compilation.
-    3 functions were new in current compilation
-    11 functions had inline decision re-evaluated but remain unchanged
+  0 of 595 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。
   php_hidemaru.vcxproj -> G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.dll
