@@ -7,6 +7,7 @@
 #include <shlwapi.h>
 
 #include "hidemaruexe_export.h"
+#include "hidemaru_interface.h"
 
 #pragma comment(lib, "version.lib")
 #pragma comment(lib, "shlwapi.lib")
@@ -60,7 +61,6 @@ double CHidemaruExeExport::QueryFileVersion(wchar_t* path){
 	return 0;
 }
 
-extern BOOL isEntryPointIsHidemaru();
 
 
 BOOL CHidemaruExeExport::init() {
@@ -80,6 +80,8 @@ BOOL CHidemaruExeExport::init() {
 		MessageBox(NULL, L"秀丸のバージョンが不足しています。\n秀丸エディタ v8.66以上が必要です。", L"情報", MB_ICONERROR);
 		return FALSE;
 	}
+
+	MessageBoxA(NULL, "FuncLoad", "FuncLoad", NULL);
 
 	// 秀丸本体に関数があるのは 8.66以上
 	hHideExeHandle = LoadLibrary(szHidemaruFullPath);

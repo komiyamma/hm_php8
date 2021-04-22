@@ -58,5 +58,13 @@
     <Filter Include="秀丸マクロとのAPI Interface">
       <UniqueIdentifier>{00c7d745-e073-4073-9128-706c7da5522f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="★わけのわからないコンパイルエラーが出たら">
+      <UniqueIdentifier>{412e294e-93ab-4ba6-932a-02c1fb0c05e3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="★わけのわからないコンパイルエラーが出たら.txt">
+      <Filter>★わけのわからないコンパイルエラーが出たら</Filter>
+    </Text>
   </ItemGroup>
 </Project>

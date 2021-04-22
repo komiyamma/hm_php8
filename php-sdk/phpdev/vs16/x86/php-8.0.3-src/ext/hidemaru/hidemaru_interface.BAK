@@ -4,8 +4,12 @@
 
 using namespace std;
 
-string aaa = "";
+BOOL entry_point_is_hidemaru = FALSE;
 
-__declspec(dllexport) void abc() {
-	aaa = utf16_to_utf8(L"あいうえお");
+BOOL isEntryPointIsHidemaru() {
+	return entry_point_is_hidemaru;
+}
+
+extern "C" __declspec(dllexport) void abc() {
+	entry_point_is_hidemaru = TRUE;
 }
