@@ -19,3 +19,13 @@ extern "C" __declspec(dllexport) void set_embed_hideamru_dll_path(const wchar_t*
 	embed_hideamru_dll_path = wstring(dllpath);
 	MessageBox(NULL, embed_hideamru_dll_path.c_str(), embed_hideamru_dll_path.c_str(), NULL);
 }
+
+int DllIdOfEmbedHideamruBindType = 0;
+extern "C" __declspec(dllexport) void dll_id_of_embed_hideamru(int dll_id_of_embed_hidemaru) {
+	DllIdOfEmbedHideamruBindType = dll_id_of_embed_hidemaru;
+	MessageBox(NULL, L"dll_id_of_embed_hideamru in php_hideamru", L"dll_id_of_embed_hideamru in php_hidemaru", NULL);
+}
+
+
+
+

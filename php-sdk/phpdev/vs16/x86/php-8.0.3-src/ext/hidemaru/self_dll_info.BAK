@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2017 Akitsugu Komiyama
+ * Copyright (c) 2021 Akitsugu Komiyama
  * under the Apache License Version 2.0
  */
 
@@ -31,17 +31,17 @@ int CSelfDllInfo::GetBindDllType() {
 }
 
 BOOL CSelfDllInfo::SetBindDllHandle() {
-	// –{‘Ì‚©‚ç‚ÌŠÖ”‚Ì¶¬‚ªæ
+	// æœ¬ä½“ã‹ã‚‰ã®é–¢æ•°ã®ç”ŸæˆãŒå…ˆ
 	CHidemaruExeExport::init();
 
-	// GŠÛ8.66ˆÈã
+	// ç§€ä¸¸8.66ä»¥ä¸Š
 	if (CHidemaruExeExport::Hidemaru_GetDllFuncCalledType) {
-		int dll = CHidemaruExeExport::Hidemaru_GetDllFuncCalledType(-1); // ©•ª‚Ìdll‚ÌŒÄ‚Î‚ê•û‚ğƒ`ƒFƒbƒN
+		int dll = CHidemaruExeExport::Hidemaru_GetDllFuncCalledType(-1); // è‡ªåˆ†ã®dllã®å‘¼ã°ã‚Œæ–¹ã‚’ãƒã‚§ãƒƒã‚¯
 		CSelfDllInfo::iSelfBindedType = dll;
 		return TRUE;
 	}
 	else {
-		MessageBox(NULL, L"loadll‚Ìƒpƒ^[ƒ“‚ª”F¯o—ˆ‚Ü‚¹‚ñ‚Å‚µ‚½B", L"loadll‚Ìƒpƒ^[ƒ“‚ª”F¯o—ˆ‚Ü‚¹‚ñ‚Å‚µ‚½B", MB_ICONERROR);
+		MessageBox(NULL, L"loadllã®ãƒ‘ã‚¿ãƒ¼ãƒ³ãŒèªè­˜å‡ºæ¥ã¾ã›ã‚“ã§ã—ãŸã€‚", L"loadllã®ãƒ‘ã‚¿ãƒ¼ãƒ³ãŒèªè­˜å‡ºæ¥ã¾ã›ã‚“ã§ã—ãŸã€‚", MB_ICONERROR);
 	}
 
 
@@ -49,12 +49,13 @@ BOOL CSelfDllInfo::SetBindDllHandle() {
 
 }
 
+extern int DllIdOfEmbedHideamruBindType;
 wstring CSelfDllInfo::GetInvocantString() {
-	if (iSelfBindedType == -1) {
+	if (DllIdOfEmbedHideamruBindType == -1) {
 		return L"";
 	}
 	else {
-		return to_wstring(iSelfBindedType) + L",";
+		return to_wstring(DllIdOfEmbedHideamruBindType) + L",";
 	}
 }
 

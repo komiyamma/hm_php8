@@ -30,14 +30,33 @@ int CSelfDllInfo::GetBindDllType() {
 	return iSelfBindedType;
 }
 
+
+
+extern HMODULE hmod_php_hidemaru;
+using PFNDllIDOfEmbedHidemaru = void (*)(int DllIDOfEmbedHidemaru);
+PFNDllIDOfEmbedHidemaru pNDllIDOfEmbedHidemaru = NULL;
 BOOL CSelfDllInfo::SetBindDllHandle() {
 	// 本体からの関数の生成が先
 	CHidemaruExeExport::init();
+
+
 
 	// 秀丸8.66以上
 	if (CHidemaruExeExport::Hidemaru_GetDllFuncCalledType) {
 		int dll = CHidemaruExeExport::Hidemaru_GetDllFuncCalledType(-1); // 自分のdllの呼ばれ方をチェック
 		CSelfDllInfo::iSelfBindedType = dll;
+
+		MessageBox(NULL, L"SetBindDllHandle", L"SetBindDllHandle in embed_hidemaru", NULL);
+
+		if (hmod_php_hidemaru) {
+			if (!pNDllIDOfEmbedHidemaru) {
+				pNDllIDOfEmbedHidemaru = (PFNDllIDOfEmbedHidemaru)GetProcAddress(hmod_php_hidemaru, "dll_id_of_embed_hideamru");
+			}
+			if (pNDllIDOfEmbedHidemaru) {
+				pNDllIDOfEmbedHidemaru(iSelfBindedType);
+			}
+		}
+
 		return TRUE;
 	}
 	else {
