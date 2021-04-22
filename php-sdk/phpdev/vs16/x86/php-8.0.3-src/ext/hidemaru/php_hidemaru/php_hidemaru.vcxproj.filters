@@ -37,6 +37,9 @@
     <Filter Include="★わけのわからないコンパイルエラーが出たら">
       <UniqueIdentifier>{c5d8a722-09c7-4b88-a081-719a4deead1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="秀丸マクロとのAPI Interface">
+      <UniqueIdentifier>{a5bc00ec-beb9-4015-bb8f-c45f11185bf4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\hidemaru_interface.cpp">
@@ -65,6 +68,9 @@
     </ClCompile>
     <ClCompile Include="..\hm_original_encode_mapfunc.cpp">
       <Filter>秀丸独自のChar渡しでのUnicode扱い</Filter>
+    </ClCompile>
+    <ClCompile Include="..\dllfunc_interface_internal.cpp">
+      <Filter>秀丸マクロとのAPI Interface</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +108,12 @@
     </ClInclude>
     <ClInclude Include="..\hm_original_encode_mapfunc.h">
       <Filter>秀丸独自のChar渡しでのUnicode扱い</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dllfunc_interface_internal.h">
+      <Filter>秀丸マクロとのAPI Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dllfunc_interface.h">
+      <Filter>秀丸マクロとのAPI Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

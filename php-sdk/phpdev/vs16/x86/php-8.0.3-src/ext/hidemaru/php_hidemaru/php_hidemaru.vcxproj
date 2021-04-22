@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\convert_string.cpp" />
+    <ClCompile Include="..\dllfunc_interface_internal.cpp" />
     <ClCompile Include="..\dllmain.cpp" />
     <ClCompile Include="..\hidemaru_php_func.cpp" />
     <ClCompile Include="..\hidemaruexe_export.cpp" />
@@ -169,6 +170,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\convert_string.h" />
+    <ClInclude Include="..\dllfunc_interface.h" />
+    <ClInclude Include="..\dllfunc_interface_internal.h" />
     <ClInclude Include="..\hidemaruexe_export.h" />
     <ClInclude Include="..\hidemaru_arginfo.h" />
     <ClInclude Include="..\hidemaru_interface.h" />
