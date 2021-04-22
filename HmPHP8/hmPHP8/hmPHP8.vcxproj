@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dllfunc_interface.cpp" />
     <ClCompile Include="dllfunc_interface_internal.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="embed_hidemaru.cpp" />

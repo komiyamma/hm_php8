@@ -20,9 +20,11 @@
     <ClCompile Include="dllfunc_interface_internal.cpp">
       <Filter>秀丸マクロとのAPI Interface</Filter>
     </ClCompile>
+    <ClCompile Include="dllfunc_interface.cpp">
+      <Filter>秀丸マクロとのAPI Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dllfunc_interface.h" />
     <ClInclude Include="convert_string.h">
       <Filter>文字列の相互変換 cp932⇔utf16⇔utf8</Filter>
     </ClInclude>
@@ -36,6 +38,9 @@
       <Filter>秀丸デバッグモニター表示用</Filter>
     </ClInclude>
     <ClInclude Include="dllfunc_interface_internal.h">
+      <Filter>秀丸マクロとのAPI Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="dllfunc_interface.h">
       <Filter>秀丸マクロとのAPI Interface</Filter>
     </ClInclude>
   </ItemGroup>
