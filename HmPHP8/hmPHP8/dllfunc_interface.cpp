@@ -21,6 +21,7 @@ extern BOOL DoDestroy();
 extern intHM_t Include(const wchar_t* utf16_expression);
 extern intHM_t PHPGetNumVar(const wchar_t* utf16_simbol);
 extern intHM_t PHPSetNumVar(const wchar_t* utf16_simbol, intHM_t value);
+extern wstring PHPGetStrVar(wstring utf16_simbol);
 //------------------------------------------------------------------------------------
 // 対象のシンボル名の値を数値として得る
 MACRO_DLL intHM_t GetNumVar(const wchar_t *utf16_simbol) {
@@ -61,7 +62,7 @@ MACRO_DLL const wchar_t * GetStrVar(const wchar_t *utf16_simbol) {
 
 	CSelfDllInfo::SetBindDllHandle();
 
-	// strvars = PHPEngine::GetStrVar(utf16_simbol);
+	strvars = PHPGetStrVar(utf16_simbol);
 
 	return strvars.c_str();
 }

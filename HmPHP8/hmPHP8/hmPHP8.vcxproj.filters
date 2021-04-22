@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="embed_hidemaru.cpp" />
     <ClCompile Include="convert_string.cpp">
       <Filter>文字列の相互変換 cp932⇔utf16⇔utf8</Filter>
     </ClCompile>
@@ -22,6 +21,9 @@
     </ClCompile>
     <ClCompile Include="dllfunc_interface.cpp">
       <Filter>秀丸マクロとのAPI Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="embed_hidemaru.cpp">
+      <Filter>PHPのエンジン</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -45,9 +47,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="embed_hidemaru.rc" />
-  </ItemGroup>
-  <ItemGroup>
     <Filter Include="文字列の相互変換 cp932⇔utf16⇔utf8">
       <UniqueIdentifier>{e00699e5-5b38-4925-9052-e2690d0f8a95}</UniqueIdentifier>
     </Filter>
@@ -69,10 +68,21 @@
     <Filter Include="php_hidemaruへのPinとUnpin">
       <UniqueIdentifier>{12fe8f53-2e12-4b33-81b7-e6aacf70d8b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PHPのエンジン">
+      <UniqueIdentifier>{2e6bada5-f15c-47ce-a877-d39c1bc234c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース">
+      <UniqueIdentifier>{d0b71a3e-659e-45d6-8dc6-18cb90beb430}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="★わけのわからないコンパイルエラーが出たら.txt">
       <Filter>★わけのわからないコンパイルエラーが出たら</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="embed_hidemaru.rc">
+      <Filter>リソース</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
