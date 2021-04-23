@@ -1,4 +1,5 @@
 ﻿<?php
+
 class _TEdit {
 
 	public function getFilePath(): string {
@@ -32,38 +33,39 @@ class _TEdit {
 
 	public function getCursorPos(): array {
 		$pos = hidemaru_edit_getcursorpos();
-		return array(
-			"LineNo" => $pos[0],
-			"Column" => $pos[1]
-		);
+		return $pos;
 	}
 
 	public function getMousePos(): array {
 		$pos = hidemaru_edit_getcursorposfrommousepos();
-		return array(
-			"LineNo" => $pos[0],
-			"Column" => $pos[1],
-			"X" => $pos[2],
-			"Y" => $pos[3]
-		);
+		return $pos;
 	}
 }
 
 class _TMacro {
+
+	function getVar(string $simbol): string|int {
+		if ( is_string($simbol) ) {
+			return hidemaru_macro_getvar($simbol);
+		} else {
+			new TypeError($simbol);
+		}
+	}
+
+	function setVar(string $simbol, string|int|float $value): bool {
+		if ( is_string($simbol) ) {
+			return hidemaru_macro_setvar($simbol, strval($value));
+		} else {
+			new TypeError($simbol);
+		}
+	}
+
 	function doEval(string $expression): array {
-		$success = hidemaru_macro_eval($exporession);
+		$success = hidemaru_macro_eval($expression);
         if ($success) {
-			return array(
-				"Result" => $success,
-				"Message"=> "",
-				"Error"  => null
-			);
+			return array($success, "", null);
         } else {
-			return array(
-				"Result" => 0,
-				"Message"=> "",
-				"Error"  => new RuntimeException("Hidemaru Macro Runtime Exception:\n" . $expression)
-			);
+			return array(0, "", new RuntimeException("Hidemaru Macro doEval(...):\n" . $expression));
 		}
 	}
 }
