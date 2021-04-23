@@ -30,7 +30,6 @@ class _TEdit {
 		return hidemaru_edit_setlinetext($text);
     }
 
-
 	public function getCursorPos(): array {
 		$pos = hidemaru_edit_getcursorpos();
 		return $pos;
@@ -93,8 +92,8 @@ class _TOutputPane {
 		return hidemaru_outputpane_setbasedir($dirpath);
 	}
 
-	function sendMessage(int $command_id): int {
-		return hidemaru_outputpane_sendmessage($command_id);
+	function sendMessage(int $command): int {
+		return hidemaru_outputpane_sendmessage($command);
 	}
 
 	function getWindowHandle(): int {
@@ -116,10 +115,6 @@ class _THidemaru {
 
 	function getVersion(): float {
 		return hidemaru_version();
-	}
-
-	function debugInfo(string $message): void {
-		hidemaru_debuginfo($message);
 	}
 
 	function getWindowHandle(): int {
