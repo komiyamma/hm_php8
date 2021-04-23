@@ -1,7 +1,7 @@
 This product includes PHP software, freely available from <http://www.php.net/software/>
 
 
-- hmPeach
+- hmPeach.dll・hmPeach.php・php_hidemaru.dll
 
    Copyright (c) 2021-2021 Akitsugu Komiyama
 

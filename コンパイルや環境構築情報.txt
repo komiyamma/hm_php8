@@ -1,0 +1,22 @@
+環境整備基本
+① https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2
+
+拡張を作る
+②https://field-notes.hatenablog.jp/entry/20110723/1311410469
+ただし、今だと
+「php-sdk-binary-tools-php-sdk-2.2.0.zip」と
+「php-devel-pack-8.0.3-Win32-vs16-x86.zip」の２つを展開して組んでいくことになる。
+
+③hm_php8 のギットリポジトリの構成をよく見る
+
+
+④組み込みの最低限（出発点）
+　https://programmersought.com/article/25292242370/
+
+
+⑤x86でもx64でも共通でプリプロセッサ定義が結構必要なのでよくみること。
+
+⑥コンソールのプリプロセッサ定義つけた状態で、親アプリがウィンドウ起動（コンソールではないところから起動）した状態で、printf使うと、
+　フリーズするので注意。
+
+⑥x86とx64 で大きく分ける必要があるので、2系列コンパイルするのは結構めんどくさい。
