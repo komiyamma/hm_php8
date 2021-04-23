@@ -1,9 +1,9 @@
-﻿  embed_hidemaru.cpp
-     ライブラリ G:\repogitory\hm_php8\HmPHP8\Release\embed_hidemaru.lib とオブジェクト G:\repogitory\hm_php8\HmPHP8\Release\embed_hidemaru.exp を作成中
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(519,5): warning MSB8028: 中間ディレクトリ (Release\) に別のプロジェクト (embed_hidemaru.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
+     ライブラリ G:\repogitory\hm_php8\HmPHP8\Release\hmPeach.lib とオブジェクト G:\repogitory\hm_php8\HmPHP8\Release\hmPeach.exp を作成中
   コード生成しています。
-  3 of 425 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+  0 of 425 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。
-php8embed.lib(php_embed.obj) : warning LNK4099: PDB 'vc140.pdb' が 'php8embed.lib(php_embed.obj)' で、または 'G:\repogitory\hm_php8\HmPHP8\Release\vc140.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
-  hmPHP8.vcxproj -> G:\repogitory\hm_php8\HmPHP8\Release\embed_hidemaru.dll
+php8embed.lib(php_embed.obj) : warning LNK4099: PDB '' が 'php8embed.lib(php_embed.obj)' で、または '' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+  hmPHP8.vcxproj -> G:\repogitory\hm_php8\HmPHP8\Release\hmPeach.dll
