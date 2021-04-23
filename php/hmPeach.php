@@ -1,6 +1,6 @@
 ﻿<?php
 /*-------------------- coding: utf-8 ---------------------------
- * hmPH8 1.8.1.1用 ライブラリ
+ * hmPeach 1.8.1.1用 ライブラリ
  * Copyright (c) 2021-2021 Akitsugu Komiyama
  * under the Apache License Version 2.0
  *

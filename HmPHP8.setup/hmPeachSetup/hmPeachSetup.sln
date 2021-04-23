@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "hmPeachSetup", "hmPeachSetup_x86.vdproj", "{92031295-75E9-49C8-987E-0311518D703F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92031295-75E9-49C8-987E-0311518D703F}.Debug|Default.ActiveCfg = Debug
+		{92031295-75E9-49C8-987E-0311518D703F}.Debug|Default.Build.0 = Debug
+		{92031295-75E9-49C8-987E-0311518D703F}.Release|Default.ActiveCfg = Release
+		{92031295-75E9-49C8-987E-0311518D703F}.Release|Default.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00915544-3BF5-4DEA-9780-D64EB7A16553}
+	EndGlobalSection
+EndGlobal
