@@ -46,8 +46,6 @@ BOOL CSelfDllInfo::SetBindDllHandle() {
 		int dll = CHidemaruExeExport::Hidemaru_GetDllFuncCalledType(-1); // 自分のdllの呼ばれ方をチェック
 		CSelfDllInfo::iSelfBindedType = dll;
 
-		MessageBox(NULL, L"SetBindDllHandle", L"SetBindDllHandle in embed_hidemaru", NULL);
-
 		if (hmod_php_hidemaru) {
 			if (!pNDllIDOfEmbedHidemaru) {
 				pNDllIDOfEmbedHidemaru = (PFNDllIDOfEmbedHidemaru)GetProcAddress(hmod_php_hidemaru, "dll_id_of_embed_hideamru");

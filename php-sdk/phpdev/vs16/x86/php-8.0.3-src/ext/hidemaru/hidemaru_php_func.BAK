@@ -342,39 +342,72 @@ PHP_FUNCTION(hidemaru_macro_getvar)
 	wstring cmd =
 		L"##_tmp_dll_id_ret = dllfuncw( " + dll_invocant + L"\"SetDynamicVar\", " + utf16_simbol + L");\n"
 		L"##_tmp_dll_id_ret = 0;\n";
+
 	BOOL success = CHidemaruExeExport::EvalMacro(cmd);
+	MessageBox(NULL, cmd.c_str(), cmd.c_str(), NULL);
 
 	// 数値なら
 	if (TestDynamicVar.type == CDynamicValue::TDynamicType::TypeInteger)
 	{
-		zval vartype, val;
-
-		ZVAL_LONG(&vartype, 0);
-		ZVAL_LONG(&val, TestDynamicVar.num);
-
-		zval varstatus_arr;
-		array_init(&varstatus_arr);
-		zend_hash_index_add(Z_ARRVAL(varstatus_arr), 0, &vartype);
-		zend_hash_index_add(Z_ARRVAL(varstatus_arr), 1, &val);
-
-		RETURN_ARR(Z_ARRVAL(varstatus_arr));
+		RETURN_LONG(TestDynamicVar.num);
 	}
 	// 文字列なら
 	else {
 		string utf8_value = utf16_to_utf8(TestDynamicVar.wstr);
+		RETURN_STRING(utf8_value.c_str());
+	}
+}
+/* }}}*/
 
-		zval vartype, val;
+/* {{{ bool hidemaru_macro_setvar( [ string $var ] ) */
+PHP_FUNCTION(hidemaru_macro_setvar)
+{
+	char* var = NULL;
+	size_t var_size;
+	char* value = NULL;
+	size_t value_size;
 
-		ZVAL_LONG(&vartype, 0);
-		string utf8_str_value = utf16_to_utf8(TestDynamicVar.wstr);
-		ZVAL_STRING(&val, utf8_str_value.c_str());
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_STRING(var, var_size)
+		Z_PARAM_STRING(value, value_size)
+	ZEND_PARSE_PARAMETERS_END();
 
-		zval varstatus_arr;
-		array_init(&varstatus_arr);
-		zend_hash_index_add(Z_ARRVAL(varstatus_arr), 0, &vartype);
-		zend_hash_index_add(Z_ARRVAL(varstatus_arr), 1, &val);
+	BOOL success = 0;
+	auto dll_invocant = CSelfDllInfo::GetInvocantString();
 
-		RETURN_ARR(Z_ARRVAL(varstatus_arr));
+	wstring utf16_simbol = utf8_to_utf16(var);
+	wchar_t start = utf16_simbol[0];
+	if (start == L'#') {
+
+		wstring utf16_value = utf8_to_utf16(value);
+
+		// 数字を数値にトライ。ダメなら0だよ。
+		intHM_t n = 0;
+		try {
+			n = (intHM_t)std::stoll(utf16_value);
+		}
+		catch (...) {}
+
+		PushNumVar(n);
+		wstring cmd = L" = dllfuncw( " + dll_invocant + L"\"PopNumVar\" );\n";
+		cmd = utf16_simbol + cmd;
+		success = CHidemaruExeExport::EvalMacro(cmd);
+	}
+	else if (start == L'$') {
+
+		wstring utf16_value = utf8_to_utf16(value);
+
+		PushStrVar(utf16_value.data());
+		wstring cmd = L" = dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n";
+		cmd = utf16_simbol + cmd;
+		success = CHidemaruExeExport::EvalMacro(cmd);
+	}
+
+	if (success) {
+		RETURN_TRUE;
+	}
+	else {
+		RETURN_FALSE;
 	}
 }
 /* }}}*/
