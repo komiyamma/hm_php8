@@ -4,8 +4,8 @@
  * Copyright (c) 2021-2021 Akitsugu Komiyama
  * under the Apache License Version 2.0
  *
- *This product includes PHP, freely available from
- *<http://www.php.net/>.
+ * This product includes PHP, freely available from
+ * <http://www.php.net/>.
  *--------------------------------------------------------------
  */
 

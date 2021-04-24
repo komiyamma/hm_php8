@@ -68,7 +68,7 @@ BOOL CHidemaruExeExport::init() {
 	GetModuleFileName(NULL, szHidemaruFullPath, _countof(szHidemaruFullPath));
 	hm_version = QueryFileVersion(szHidemaruFullPath);
 
-	if (hm_version < 866) {
+	if (hm_version < 873) {
 		MessageBox(NULL, L"秀丸のバージョンが不足しています。\n秀丸エディタ v8.66以上が必要です。", L"情報", MB_ICONERROR);
 		return FALSE;
 	}

@@ -166,6 +166,8 @@ PHP_FUNCTION(hidemaru_edit_gettotaltext)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
+	MessageBox(NULL, L"GetTotalText", L"GetTotalText", NULL);
+
 	wstring utf16_totaltext = CHidemaruExeExport::GetTotalText();
 	string utf8_totaltext = utf16_to_utf8(utf16_totaltext);
 	RETURN_STRING(utf8_totaltext.c_str());
@@ -273,7 +275,7 @@ PHP_FUNCTION(hidemaru_edit_setlinetext)
 	ZEND_PARSE_PARAMETERS_END();
 
 	BOOL success = 0;
-
+	MessageBox(NULL, L"SetLineText", L"SetLineText", NULL);
 	auto dll_invocant = CSelfDllInfo::GetInvocantString();
 
 	auto pos = CHidemaruExeExport::GetCursorPos();
@@ -344,7 +346,6 @@ PHP_FUNCTION(hidemaru_macro_getvar)
 		L"##_tmp_dll_id_ret = 0;\n";
 
 	BOOL success = CHidemaruExeExport::EvalMacro(cmd);
-	MessageBox(NULL, cmd.c_str(), cmd.c_str(), NULL);
 
 	// 数値なら
 	if (TestDynamicVar.type == CDynamicValue::TDynamicType::TypeInteger)
@@ -609,7 +610,6 @@ PHP_RINIT_FUNCTION(hidemaru)
 #if defined(ZTS) && defined(COMPILE_DL_HIDEMARU)
 	ZEND_TSRMLS_CACHE_UPDATE();
 #endif
-	MessageBox(NULL, L"CHidemaruExeExport::init()", L"CHidemaruExeExport::init()", NULL);
 	CHidemaruExeExport::init();
 
 	return SUCCESS;
