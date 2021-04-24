@@ -375,12 +375,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CD0B563BC8444AEE8186E241111F2F44"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_CF016C709E434FA9917117988BF87AD0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1792,26 +1786,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CD0B563BC8444AEE8186E241111F2F44"
-            {
-            "SourcePath" = "8:..\\..\\php\\license.txt"
-            "TargetName" = "8:license.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_948844B4E8D2427B8F6DA2CC1D4DE234"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CF016C709E434FA9917117988BF87AD0"
             {
             "SourcePath" = "8:..\\..\\php\\libsqlite3.dll"
@@ -2366,7 +2340,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:hmPeach x86 版"
         "ProductCode" = "8:{AC9EEB64-3672-4797-AEC3-8AAF73887DFB}"
-        "PackageCode" = "8:{8A6CFEE4-C4D8-4886-A90D-729A6A80CC8B}"
+        "PackageCode" = "8:{2F2B1588-4B8B-49C8-82CE-AFBF114A6CBB}"
         "UpgradeCode" = "8:{44A3E624-F5FC-42BE-88BE-D4E1EDC22651}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
