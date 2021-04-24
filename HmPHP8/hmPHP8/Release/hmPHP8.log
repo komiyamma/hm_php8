@@ -1,5 +1,4 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(519,5): warning MSB8028: 中間ディレクトリ (Release\) に別のプロジェクト (embed_hidemaru.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
-  dllfunc_interface.cpp
+﻿  dllfunc_interface.cpp
   dllfunc_interface_internal.cpp
   dllmain.cpp
   embed_hidemaru.cpp

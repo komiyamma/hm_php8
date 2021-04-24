@@ -9,8 +9,6 @@
  *--------------------------------------------------------------
  */
 
-
-
 class _TEdit {
 
 	/**
@@ -111,9 +109,9 @@ class _TMacro {
 	function doEval(string $expression): array {
 		$success = hidemaru_macro_eval($expression);
         if ($success) {
-			return array($success, "", null);
+			return array($success, null, "");
         } else {
-			return array(0, "", new RuntimeException("Hidemaru Macro doEval(...):\n" . $expression));
+			return array(0, new RuntimeException("Hidemaru Macro doEval(...):\n" . $expression), "");
 		}
 	}
 }

@@ -1,2 +1,0 @@
-﻿  ConsoleApplication1.cpp
-C:\php-deev\include\Zend\zend_portability.h(43,11): fatal error C1083: include ファイルを開けません。'zend_config.h':No such file or directory
