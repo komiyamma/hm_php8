@@ -166,8 +166,6 @@ PHP_FUNCTION(hidemaru_edit_gettotaltext)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
-	MessageBox(NULL, L"GetTotalText", L"GetTotalText", NULL);
-
 	wstring utf16_totaltext = CHidemaruExeExport::GetTotalText();
 	string utf8_totaltext = utf16_to_utf8(utf16_totaltext);
 	RETURN_STRING(utf8_totaltext.c_str());
@@ -227,7 +225,7 @@ PHP_FUNCTION(hidemaru_edit_setselectedtext)
 
 	ZEND_PARSE_PARAMETERS_START(1, 1)
 		Z_PARAM_STRING(var, var_size)
-		ZEND_PARSE_PARAMETERS_END();
+	ZEND_PARSE_PARAMETERS_END();
 
 	BOOL success = 0;
 
@@ -275,7 +273,6 @@ PHP_FUNCTION(hidemaru_edit_setlinetext)
 	ZEND_PARSE_PARAMETERS_END();
 
 	BOOL success = 0;
-	MessageBox(NULL, L"SetLineText", L"SetLineText", NULL);
 	auto dll_invocant = CSelfDllInfo::GetInvocantString();
 
 	auto pos = CHidemaruExeExport::GetCursorPos();
@@ -452,7 +449,7 @@ PHP_FUNCTION(hidemaru_outputpane_setbasedir)
 
 	ZEND_PARSE_PARAMETERS_START(1, 1)
 		Z_PARAM_STRING(var, var_size)
-		ZEND_PARSE_PARAMETERS_END();
+	ZEND_PARSE_PARAMETERS_END();
 
 	// ちゃんと関数がある時だけ
 	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
