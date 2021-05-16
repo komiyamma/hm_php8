@@ -423,31 +423,65 @@ PHP_FUNCTION(hidemaru_macro_getvar)
 	char* var = NULL;
 	size_t var_size;
 
-	ZEND_PARSE_PARAMETERS_START(1, 1)
-		Z_PARAM_STRING(var, var_size)
-	ZEND_PARSE_PARAMETERS_END();
+ZEND_PARSE_PARAMETERS_START(1, 1)
+Z_PARAM_STRING(var, var_size)
+ZEND_PARSE_PARAMETERS_END();
 
-	wstring utf16_simbol = utf8_to_utf16(var);
-	TestDynamicVar.Clear();
-	auto dll_invocant = CSelfDllInfo::GetInvocantString();
-	wstring cmd =
-		L"##_tmp_dll_id_ret = dllfuncw( " + dll_invocant + L"\"SetDynamicVar\", " + utf16_simbol + L");\n"
-		L"##_tmp_dll_id_ret = 0;\n";
+wstring utf16_simbol = utf8_to_utf16(var);
+TestDynamicVar.Clear();
+auto dll_invocant = CSelfDllInfo::GetInvocantString();
+wstring cmd =
+L"##_tmp_dll_id_ret = dllfuncw( " + dll_invocant + L"\"SetDynamicVar\", " + utf16_simbol + L");\n"
+L"##_tmp_dll_id_ret = 0;\n";
 
-	BOOL success = CHidemaruExeExport::EvalMacro(cmd);
+BOOL success = CHidemaruExeExport::EvalMacro(cmd);
 
-	// 数値なら
-	if (TestDynamicVar.type == CDynamicValue::TDynamicType::TypeInteger)
-	{
-		RETURN_LONG(TestDynamicVar.num);
-	}
-	// 文字列なら
-	else {
-		string utf8_value = utf16_to_utf8(TestDynamicVar.wstr);
-		RETURN_STRING(utf8_value.c_str());
-	}
+// 数値なら
+if (TestDynamicVar.type == CDynamicValue::TDynamicType::TypeInteger)
+{
+	RETURN_LONG(TestDynamicVar.num);
+}
+// 文字列なら
+else {
+	string utf8_value = utf16_to_utf8(TestDynamicVar.wstr);
+	RETURN_STRING(utf8_value.c_str());
+}
 }
 /* }}}*/
+
+BOOL Macro_SetZendLongVar(wstring utf16_simbol, zend_long value) {
+	BOOL success = 0;
+	auto dll_invocant = CSelfDllInfo::GetInvocantString();
+
+	wchar_t start = utf16_simbol[0];
+	if (start == L'#') {
+
+		PushNumVar(value);
+		wstring cmd = L" = dllfuncw( " + dll_invocant + L"\"PopNumVar\" );\n";
+		cmd = utf16_simbol + cmd;
+		success = CHidemaruExeExport::EvalMacro(cmd);
+	}
+
+	return success;
+}
+
+BOOL Macro_SetWStringVar(wstring utf16_simbol, wstring utf16_value) {
+	BOOL success = 0;
+	auto dll_invocant = CSelfDllInfo::GetInvocantString();
+
+	wchar_t start = utf16_simbol[0];
+	if (start == L'$') {
+
+		PushStrVar(utf16_value.data());
+		wstring cmd = L" = dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n";
+		cmd = utf16_simbol + cmd;
+		success = CHidemaruExeExport::EvalMacro(cmd);
+	}
+
+	return success;
+
+}
+
 
 /* {{{ bool hidemaru_macro_setvar( [ string $var ] ) */
 PHP_FUNCTION(hidemaru_macro_setvar)
@@ -503,18 +537,39 @@ PHP_FUNCTION(hidemaru_macro_setvar)
 /* }}}*/
 
 
-
+// ★★★★この関数制作途中★★★★
 /* {{{ array hidemaru_macro_statement( [ string $funcname, array $params ] ) */
 PHP_FUNCTION(hidemaru_macro_statement)
 {
 	char* var = NULL;
 	size_t var_size;
-	
-	zval* arr;
+
+	zval* z_arr;
 	ZEND_PARSE_PARAMETERS_START(2, 2)
 		Z_PARAM_STRING(var, var_size)
-		Z_PARAM_ARRAY(arr)
-	ZEND_PARSE_PARAMETERS_END();
+		Z_PARAM_ARRAY(z_arr)
+		ZEND_PARSE_PARAMETERS_END();
+
+	zval* z_val = NULL;
+
+	int cur_random = rand() + 1;
+	int i = 0;
+	vector<wstring> varname_list;
+	ZEND_HASH_FOREACH_VAL(Z_ARR_P(z_arr), z_val) {
+		i++;
+		if (Z_TYPE_P(z_val) == IS_LONG) {
+			wstring varname = L"#AsMacroArs_" + to_wstring(cur_random + i);
+			varname_list.push_back(varname);
+			Macro_SetZendLongVar(varname, z_val->value.lval);
+		}
+		else if (Z_TYPE_P(z_val) == IS_STRING) {
+			wstring varname = L"$AsMacroArs_" + to_wstring(cur_random + i);
+			varname_list.push_back(varname);
+			wstring utf16_value = utf8_to_utf16(Z_STRVAL_P(z_val));
+			Macro_SetWStringVar(varname, utf16_value);
+
+		}
+	} ZEND_HASH_FOREACH_END();
 
 	zval result;
 	ZVAL_LONG(&result, 1);
@@ -966,10 +1021,15 @@ PHP_RINIT_FUNCTION(hidemaru)
 	ZEND_TSRMLS_CACHE_UPDATE();
 #endif
 	CHidemaruExeExport::init();
-	if (zend_register_auto_global(L"Hm", sizeof(L"Hm") - 1, NULL) == FAILURE) {
-		MessageBoxA(NULL, "FAILURE", "FAILURE", NULL);
-		return FAILURE;
+	zend_string* str;
+	str = zend_string_init("Hm", strlen("Hm"), 0);
+	zend_bool zb = false;
+	if (zend_register_auto_global(str, zb, NULL) == FAILURE) {
+		// zend_string_release(str);
 	}
+	else {
+	}
+	// zend_string_release(str);
 	return SUCCESS;
 }
 /* }}} */
