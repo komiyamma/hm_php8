@@ -100,9 +100,15 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_explorerpane_saveprojec
 	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_explorerpane_getupdated, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
 
-// ZEND_FUNCTION(test1);
-// ZEND_FUNCTION(test2);
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_explorerpane_sendmessage, 0, 1, IS_LONG, 0)
+ZEND_ARG_TYPE_INFO(0, var, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_explorerpane_getwindowhandle, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
 
 
 ZEND_FUNCTION(hidemaru_version);
@@ -131,6 +137,9 @@ ZEND_FUNCTION(hidemaru_explorerpane_setmode);
 ZEND_FUNCTION(hidemaru_explorerpane_getmode);
 ZEND_FUNCTION(hidemaru_explorerpane_loadproject);
 ZEND_FUNCTION(hidemaru_explorerpane_saveproject);
+ZEND_FUNCTION(hidemaru_explorerpane_getupdated);
+ZEND_FUNCTION(hidemaru_explorerpane_sendmessage);
+ZEND_FUNCTION(hidemaru_explorerpane_getwindowhandle);
 
 
 static const zend_function_entry ext_functions[] = {
@@ -160,5 +169,8 @@ static const zend_function_entry ext_functions[] = {
 	ZEND_FE(hidemaru_explorerpane_getmode, arginfo_hidemaru_explorerpane_getmode)
 	ZEND_FE(hidemaru_explorerpane_loadproject, arginfo_hidemaru_explorerpane_loadproject)
 	ZEND_FE(hidemaru_explorerpane_saveproject, arginfo_hidemaru_explorerpane_saveproject)
+	ZEND_FE(hidemaru_explorerpane_getupdated, arginfo_hidemaru_explorerpane_getupdated)
+	ZEND_FE(hidemaru_explorerpane_sendmessage, arginfo_hidemaru_explorerpane_sendmessage)
+	ZEND_FE(hidemaru_explorerpane_getwindowhandle, arginfo_hidemaru_explorerpane_getwindowhandle)
 	ZEND_FE_END
 };

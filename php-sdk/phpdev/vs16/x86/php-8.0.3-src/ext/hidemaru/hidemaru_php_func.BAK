@@ -566,19 +566,18 @@ PHP_FUNCTION(hidemaru_explorerpane_setmode)
 		Z_PARAM_LONG(var)
 	ZEND_PARSE_PARAMETERS_END();
 
-	zend_long retval = 0;
-
 	// ちゃんと関数がある時だけ
 	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
 		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
 
 		zend_long mode = var;
-		int r = CHidemaruExeExport::HmExplorerPane_SetMode(hHidemaruWindow, mode);
-		retval = r;
-		RETURN_LONG(retval);
+		int result = CHidemaruExeExport::HmExplorerPane_SetMode(hHidemaruWindow, mode);
+		if (result) {
+			RETURN_TRUE;
+		}
 	}
 
-	RETURN_LONG(0);
+	RETURN_FALSE;
 }
 /* }}}*/
 
@@ -659,6 +658,23 @@ PHP_FUNCTION(hidemaru_explorerpane_saveproject)
 }
 /* }}}*/
 
+/* {{{ int hidemaru_explorerpane_getupdated() */
+PHP_FUNCTION(hidemaru_explorerpane_getupdated)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		int result = CHidemaruExeExport::HmExplorerPane_GetUpdated(hHidemaruWindow);
+		if (result) {
+			RETURN_TRUE;
+		}
+	}
+
+	RETURN_FALSE;
+}
+/* }}}*/
 
 /*
 * 
