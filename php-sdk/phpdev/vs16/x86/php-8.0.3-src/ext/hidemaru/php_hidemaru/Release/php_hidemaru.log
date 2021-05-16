@@ -2,19 +2,19 @@
   dllfunc_interface_internal.cpp
   dllmain.cpp
   hidemaru_php_func.cpp
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(48,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(152,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(197,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(242,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(304,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(370,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(425,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(459,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(513,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(547,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(576,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(764,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(793,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(49,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(153,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(198,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(243,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(305,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(371,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(426,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(460,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(514,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(548,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(577,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(765,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(794,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
   hidemaruexe_export.cpp
   hidemaru_interface.cpp
   hm_original_encode_map.cpp

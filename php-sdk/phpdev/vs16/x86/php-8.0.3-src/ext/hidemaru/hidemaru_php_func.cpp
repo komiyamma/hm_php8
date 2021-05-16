@@ -10,6 +10,7 @@
 #endif
 
 #include "php.h"
+#include "zend_types.h"
 #include "ext/standard/info.h"
 #include "php_hidemaru.h"
 #include "hidemaru_arginfo.h"
@@ -508,7 +509,7 @@ PHP_FUNCTION(hidemaru_macro_statement)
 {
 	char* var = NULL;
 	size_t var_size;
-
+	
 	zval* arr;
 	ZEND_PARSE_PARAMETERS_START(2, 2)
 		Z_PARAM_STRING(var, var_size)
@@ -965,7 +966,15 @@ PHP_RINIT_FUNCTION(hidemaru)
 	ZEND_TSRMLS_CACHE_UPDATE();
 #endif
 	CHidemaruExeExport::init();
-
+	zend_string* str;
+	str = zend_string_init("Hm", strlen("Hm"), 0);
+	zend_bool zb = false;
+	if (zend_register_auto_global(str, zb, NULL) == FAILURE) {
+		// zend_string_release(str);
+	}
+	else {
+	}
+	// zend_string_release(str);
 	return SUCCESS;
 }
 /* }}} */
