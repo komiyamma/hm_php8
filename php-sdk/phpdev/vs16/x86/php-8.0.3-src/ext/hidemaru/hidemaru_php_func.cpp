@@ -268,6 +268,18 @@ PHP_FUNCTION(hidemaru_edit_setlinetext)
 }
 /* }}}*/
 
+BOOL Macro_IsExecuting() {
+
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		const int WM_ISMACROEXECUTING = WM_USER + 167;
+		LRESULT r = SendMessageW(hHidemaruWindow, WM_ISMACROEXECUTING, 0, 0);
+		return (BOOL)r;
+	}
+
+	return FALSE;
+}
+
 
 /* {{{ bool hidemaru_macro_eval( [ string $var ] ) */
 PHP_FUNCTION(hidemaru_macro_eval)
@@ -727,6 +739,55 @@ PHP_FUNCTION(hidemaru_explorerpane_sendmessage)
 }
 /* }}}*/
 
+/* {{{ string hidemaru_explorerpane_getcurrentdir() */
+PHP_FUNCTION(hidemaru_explorerpane_getcurrentdir)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	if (CHidemaruExeExport::HmExplorerPane_GetCurrentDir) {
+		if (Macro_IsExecuting()) {
+			wstring utf16_expression = LR"RAW(dllfuncstr(loaddll("HmExplorerPane"), "GetCurrentDir", hidemaruhandle(0)))RAW";
+			TestDynamicVar.Clear();
+			auto dll_invocant = CSelfDllInfo::GetInvocantString();
+			wstring cmd =
+				L"##_tmp_dll_id_ret = dllfuncw( " + dll_invocant + L"\"SetDynamicVar\", " + utf16_expression + L");\n"
+				L"##_tmp_dll_id_ret = 0;\n";
+
+			BOOL success = CHidemaruExeExport::EvalMacro(cmd);
+			string utf8_value = utf16_to_utf8(TestDynamicVar.wstr);
+			TestDynamicVar.Clear();
+			RETURN_STRING(utf8_value.c_str());
+		}
+	}
+
+	RETURN_STRING("");
+}
+/* }}}*/
+
+/* {{{ string hidemaru_explorerpane_getproject() */
+PHP_FUNCTION(hidemaru_explorerpane_getproject)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	if (CHidemaruExeExport::HmExplorerPane_GetProject) {
+		if (Macro_IsExecuting()) {
+				wstring utf16_expression = LR"RAW(dllfuncstr(loaddll("HmExplorerPane"), "GetProject", hidemaruhandle(0)))RAW";
+			TestDynamicVar.Clear();
+			auto dll_invocant = CSelfDllInfo::GetInvocantString();
+			wstring cmd =
+				L"##_tmp_dll_id_ret = dllfuncw( " + dll_invocant + L"\"SetDynamicVar\", " + utf16_expression + L");\n"
+				L"##_tmp_dll_id_ret = 0;\n";
+
+			BOOL success = CHidemaruExeExport::EvalMacro(cmd);
+			string utf8_value = utf16_to_utf8(TestDynamicVar.wstr);
+			TestDynamicVar.Clear();
+			RETURN_STRING(utf8_value.c_str());
+		}
+	}
+
+	RETURN_STRING("");
+}
+/* }}}*/
 
 /*
 * 
