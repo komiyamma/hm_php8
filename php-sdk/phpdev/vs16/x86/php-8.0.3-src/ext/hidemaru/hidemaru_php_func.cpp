@@ -322,6 +322,100 @@ PHP_FUNCTION(hidemaru_macro_eval)
 }
 /* }}}*/
 
+struct TMacroResult {
+	int Result;
+	wstring Message;
+	wstring Error;
+};
+TMacroResult Macro_Exec_EvalMemory(wstring utf16_expression) {
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		const int WM_REMOTE_EXECMACRO_MEMORY = WM_USER + 272;
+
+		WCHAR wszReturn[65535];
+		*(WORD*)wszReturn = sizeof(wszReturn) / sizeof(wszReturn[0]); // 最初のバイトにバッファーのサイズを格納することで秀丸本体がバッファーサイズの上限を知る。
+		LRESULT lRet = SendMessage(hHidemaruWindow, WM_REMOTE_EXECMACRO_MEMORY, (WPARAM)wszReturn, (LPARAM)utf16_expression.c_str());
+		if (lRet) {
+			TMacroResult ret_tuple;
+			ret_tuple.Result = lRet;
+			ret_tuple.Message = wszReturn;
+			ret_tuple.Error = L"";
+			return ret_tuple;
+		}
+		else {
+			OutputDebugStream(L"マクロの実行に失敗しました。\n");
+			OutputDebugStream(L"マクロ内容:\n");
+			OutputDebugStream(utf16_expression);
+			TMacroResult ret_tuple;
+			ret_tuple.Result = lRet;
+			ret_tuple.Message = L"";
+			ret_tuple.Error = L"HidemaruMacroExecEvalException";
+			return ret_tuple;
+		}
+	}
+	TMacroResult ret_tuple;
+	ret_tuple.Result = 0;
+	ret_tuple.Message = L"";
+	ret_tuple.Error = L"HidemaruMacroExecEvalException";
+	return ret_tuple;
+}
+
+/* {{{ bool hidemaru_macro_exec_eval_memory( [ string $var ] ) */
+PHP_FUNCTION(hidemaru_macro_exec_eval_memory)
+{
+	char* var = NULL;
+	size_t var_size;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(var, var_size)
+	ZEND_PARSE_PARAMETERS_END();
+
+	wstring utf16_expression = utf8_to_utf16(var);
+	TMacroResult ret = Macro_Exec_EvalMemory(utf16_expression);
+	if (ret.Result > 0) {
+		zval result;
+		ZVAL_LONG(&result, ret.Result);
+
+		string utf8_message = utf16_to_utf8(ret.Message);
+		zval message = { {0} };
+		ZVAL_STRING(&message, utf8_message.c_str());
+
+		string utf8_error = utf16_to_utf8(ret.Error);
+		zval error = { {0} };
+		ZVAL_STRING(&error, utf8_error.c_str());
+
+		zval ret_arr;
+		array_init(&ret_arr);
+		zend_hash_index_add(Z_ARRVAL(ret_arr), 0, &result);
+		zend_hash_index_add(Z_ARRVAL(ret_arr), 1, &message);
+		zend_hash_index_add(Z_ARRVAL(ret_arr), 2, &error);
+
+		RETURN_ARR(Z_ARRVAL(ret_arr));
+	}
+	else {
+		zval result;
+		ZVAL_LONG(&result, ret.Result);
+
+		zval message = { {0} };
+		ZVAL_STRING(&message, "");
+
+		string utf8_error = utf16_to_utf8(ret.Error);
+		zval error = { {0} };
+		ZVAL_STRING(&error, utf8_error.c_str());
+
+		zval ret_arr;
+		array_init(&ret_arr);
+		zend_hash_index_add(Z_ARRVAL(ret_arr), 0, &result);
+		zend_hash_index_add(Z_ARRVAL(ret_arr), 1, &message);
+		zend_hash_index_add(Z_ARRVAL(ret_arr), 2, &error);
+
+		RETURN_ARR(Z_ARRVAL(ret_arr));
+	}
+}
+/* }}}*/
+
+
 /* {{{ bool hidemaru_macro_getvar( [ string $var ] ) */
 PHP_FUNCTION(hidemaru_macro_getvar)
 {
@@ -772,6 +866,12 @@ PHP_FUNCTION(hidemaru_explorerpane_getcurrentdir)
 			TestDynamicVar.Clear();
 			RETURN_STRING(utf8_value.c_str());
 		}
+		else {
+			wstring utf16_expression = LR"RAW(endmacro dllfuncstr(loaddll("HmExplorerPane"), "GetCurrentDir", hidemaruhandle(0));)RAW";
+			TMacroResult ret = Macro_Exec_EvalMemory(utf16_expression);
+			string utf8_value = utf16_to_utf8(ret.Message);
+			RETURN_STRING(utf8_value.c_str());
+		}
 	}
 
 	RETURN_STRING("");
@@ -798,7 +898,10 @@ PHP_FUNCTION(hidemaru_explorerpane_getproject)
 			RETURN_STRING(utf8_value.c_str());
 		}
 		else {
-
+			wstring utf16_expression = LR"RAW(endmacro dllfuncstr(loaddll("HmExplorerPane"), "GetProject", hidemaruhandle(0));)RAW";
+			TMacroResult ret = Macro_Exec_EvalMemory(utf16_expression);
+			string utf8_value = utf16_to_utf8(ret.Message);
+			RETURN_STRING(utf8_value.c_str());
 		}
 	}
 
