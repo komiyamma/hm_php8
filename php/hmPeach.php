@@ -121,6 +121,11 @@ class _TMacro {
 			return array(0, new RuntimeException("Hidemaru Macro doEval(...):\n" . $expression), "");
 		}
 	}
+
+	function doStatement(string $statement_name, ...$params): array {
+		$ret = hidemaru_macro_statement($statement_name, $params);
+        return $ret;
+	}
 }
 
 class _TOutputPane {

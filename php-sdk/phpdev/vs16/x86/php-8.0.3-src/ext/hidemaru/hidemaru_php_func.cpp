@@ -503,6 +503,41 @@ PHP_FUNCTION(hidemaru_macro_setvar)
 
 
 
+/* {{{ array hidemaru_macro_statement( [ string $funcname, array $params ] ) */
+PHP_FUNCTION(hidemaru_macro_statement)
+{
+	char* var = NULL;
+	size_t var_size;
+
+	zval* arr;
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_STRING(var, var_size)
+		Z_PARAM_ARRAY(arr)
+	ZEND_PARSE_PARAMETERS_END();
+
+	zval result;
+	ZVAL_LONG(&result, 1);
+
+	string utf8_message = utf16_to_utf8(L"OK");
+	zval message = { {0} };
+	ZVAL_STRING(&message, utf8_message.c_str());
+
+	string utf8_error = utf16_to_utf8(L"MyException");
+	zval error = { {0} };
+	ZVAL_STRING(&error, utf8_error.c_str());
+
+
+	zval ret_arr;
+	array_init(&ret_arr);
+	zend_hash_index_add(Z_ARRVAL(ret_arr), 0, &result);
+	zend_hash_index_add(Z_ARRVAL(ret_arr), 1, &message);
+	zend_hash_index_add(Z_ARRVAL(ret_arr), 2, &error);
+
+	RETURN_ARR(Z_ARRVAL(ret_arr));
+}
+/* }}}*/
+
+
 /* {{{ bool hidemaru_outputpane_output( [ string $var ] ) */
 PHP_FUNCTION(hidemaru_outputpane_output)
 {
