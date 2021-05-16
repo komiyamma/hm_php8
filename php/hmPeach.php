@@ -220,6 +220,21 @@ class _TExplorerPane {
 	}
 
 	/**
+	 * ファイルマネージャ枠のプロジェクトのファイルパスを取得する
+	 */
+	function getProject(): string {
+		return hidemaru_explorerpane_getproject();
+	}
+
+	/**
+	 * ファイルマネージャ枠のカレントディレクトリ
+	 */
+	function getCurrentDir(): string {
+		return hidemaru_explorerpane_getcurrentdir();
+	}
+
+
+	/**
 	 * ファイルマネージャ枠の表示がプロジェクトのとき、更新された状態であるかどうかを返します。
 	 */
 	function getUpdated(): bool {
