@@ -187,6 +187,16 @@ class _TOutputPane {
 	}
 }
 
+class _TExplorerPane {
+	function setMode(int $mode): int {
+		return hidemaru_explorerpane_setmode($mode);
+	}
+
+	function getMode(): int {
+		return hidemaru_explorerpane_getmode();
+	}
+
+
 class _THidemaru {
 
 	/**
@@ -204,10 +214,16 @@ class _THidemaru {
 	 */
 	public $OutputPane;
 
+	/**
+	 * ファイルマネージャ枠関連
+	 */
+	public $OutputPane;
+
 	function __construct() {
 		$this->Edit = new _TEdit();
 		$this->Macro = new _TMacro();
 		$this->OutputPane = new _TOutputPane();
+		$this->ExplorerPane = new _TExplorerPane();
 	}
 
 	/**

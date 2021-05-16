@@ -1,4 +1,4 @@
-﻿/* mytest extension for PHP */
+/* mytest extension for PHP */
 #define ZEND_DEBUG 0
 
 /* hidemaru extension for PHP */
@@ -535,7 +535,7 @@ PHP_FUNCTION(hidemaru_outputpane_sendmessage)
 }
 /* }}}*/
 
-/* {{{ int hidemaru_outputpane_sendmessage() */
+/* {{{ int hidemaru_outputpane_clear() */
 PHP_FUNCTION(hidemaru_outputpane_clear)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
@@ -549,6 +549,50 @@ PHP_FUNCTION(hidemaru_outputpane_clear)
 		// 0x111 = WM_COMMAND
 		zend_long command_id = 1009;
 		LRESULT r = SendMessageW(OutputWindowHandle, 0x111, command_id, 0);
+		retval = r;
+		RETURN_LONG(retval);
+	}
+
+	RETURN_LONG(0);
+}
+/* }}}*/
+
+/* {{{ int hidemaru_explorerpane_setmode( [int $var] ) */
+PHP_FUNCTION(hidemaru_explorerpane_setmode)
+{
+	zend_long var;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(var)
+	ZEND_PARSE_PARAMETERS_END();
+
+	zend_long retval = 0;
+
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+
+		zend_long mode = var;
+		int r = CHidemaruExeExport::HmExplorerPane_SetMode(hHidemaruWindow, mode);
+		retval = r;
+		RETURN_LONG(retval);
+	}
+
+	RETURN_LONG(0);
+}
+/* }}}*/
+
+/* {{{ int hidemaru_explorerpane_getmode() */
+PHP_FUNCTION(hidemaru_explorerpane_getmode)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	zend_long retval = 0;
+
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		int r = CHidemaruExeExport::HmExplorerPane_GetMode(hHidemaruWindow);
 		retval = r;
 		RETURN_LONG(retval);
 	}
