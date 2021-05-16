@@ -310,7 +310,7 @@ class _THidemaru {
 	/**
 	 * ファイルマネージャ枠関連
 	 */
-	public $OutputPane;
+	public $ExplorerPane;
 
 	function __construct() {
 		$this->Edit = new _TEdit();

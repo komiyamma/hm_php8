@@ -668,13 +668,69 @@ PHP_FUNCTION(hidemaru_explorerpane_getupdated)
 		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
 		int result = CHidemaruExeExport::HmExplorerPane_GetUpdated(hHidemaruWindow);
 		if (result) {
+			MessageBoxA(NULL, "TRUE", "TRUE", NULL);
 			RETURN_TRUE;
+		}
+		else {
+			MessageBoxA(NULL, "FALSE", "FALSE", NULL);
 		}
 	}
 
 	RETURN_FALSE;
 }
 /* }}}*/
+
+// アウトプットパネルのハンドルの取得  (この関数はPHP層へは公開していない)
+static HWND ExplorerPane_GetWindowHanndle() {
+
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		if (CHidemaruExeExport::HmExplorerPane_GetWindowHandle) {
+			return CHidemaruExeExport::HmExplorerPane_GetWindowHandle(hHidemaruWindow);
+		}
+	}
+
+	return NULL;
+}
+
+/* {{{ int hidemaru_explorerpane_getwindowhandle() */
+PHP_FUNCTION(hidemaru_explorerpane_getwindowhandle)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	// ちゃんと関数がある時だけ
+	HWND ExplorerWindowHandle = ExplorerPane_GetWindowHanndle();
+	RETURN_LONG((zend_long)ExplorerWindowHandle);
+}
+/* }}}*/
+
+/* {{{ int hidemaru_explorerpane_sendmessage( [int $var] ) */
+PHP_FUNCTION(hidemaru_explorerpane_sendmessage)
+{
+	zend_long var;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(var)
+	ZEND_PARSE_PARAMETERS_END();
+
+	zend_long retval = 0;
+
+	// ちゃんと関数がある時だけ
+	HWND ExplorerWindowHandle = ExplorerPane_GetWindowHanndle();
+	if (ExplorerWindowHandle) {
+		// (#h,0x111/*WM_COMMAND*/,1009,0); //1009=クリア
+		// 0x111 = WM_COMMAND
+		zend_long command_id = var;
+		LRESULT r = SendMessageW(ExplorerWindowHandle, 0x111, command_id, 0);
+		retval = r;
+		RETURN_LONG(retval);
+	}
+
+	RETURN_LONG(0);
+}
+/* }}}*/
+
 
 /*
 * 
