@@ -48,6 +48,9 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_edit_setlinetext, 0, 1,
 	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_macro_isexecuting, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_macro_eval, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
 ZEND_END_ARG_INFO()
@@ -128,6 +131,7 @@ ZEND_FUNCTION(hidemaru_edit_getselectedtext);
 ZEND_FUNCTION(hidemaru_edit_setselectedtext);
 ZEND_FUNCTION(hidemaru_edit_getlinetext);
 ZEND_FUNCTION(hidemaru_edit_setlinetext);
+ZEND_FUNCTION(hidemaru_macro_isexecuting);
 ZEND_FUNCTION(hidemaru_macro_eval);
 ZEND_FUNCTION(hidemaru_macro_getvar);
 ZEND_FUNCTION(hidemaru_macro_setvar);
@@ -162,6 +166,7 @@ static const zend_function_entry ext_functions[] = {
 	ZEND_FE(hidemaru_edit_setselectedtext, arginfo_hidemaru_edit_setselectedtext)
 	ZEND_FE(hidemaru_edit_getlinetext, arginfo_hidemaru_edit_getlinetext)
 	ZEND_FE(hidemaru_edit_setlinetext, arginfo_hidemaru_edit_setlinetext)
+	ZEND_FE(hidemaru_macro_isexecuting, arginfo_hidemaru_macro_isexecuting)
 	ZEND_FE(hidemaru_macro_eval, arginfo_hidemaru_macro_eval)
 	ZEND_FE(hidemaru_macro_getvar, arginfo_hidemaru_macro_getvar)
 	ZEND_FE(hidemaru_macro_setvar, arginfo_hidemaru_macro_setvar)

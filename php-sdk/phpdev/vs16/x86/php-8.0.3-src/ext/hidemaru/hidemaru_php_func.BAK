@@ -280,6 +280,20 @@ BOOL Macro_IsExecuting() {
 	return FALSE;
 }
 
+/* {{{ int hidemaru_macro_isexecuting() */
+PHP_FUNCTION(hidemaru_macro_isexecuting)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	// ちゃんと関数がある時だけ
+	int result = Macro_IsExecuting();
+	if (result) {
+		RETURN_TRUE;
+	}
+
+	RETURN_FALSE;
+}
+
 
 /* {{{ bool hidemaru_macro_eval( [ string $var ] ) */
 PHP_FUNCTION(hidemaru_macro_eval)
@@ -768,9 +782,10 @@ PHP_FUNCTION(hidemaru_explorerpane_getcurrentdir)
 PHP_FUNCTION(hidemaru_explorerpane_getproject)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
+
 	if (CHidemaruExeExport::HmExplorerPane_GetProject) {
 		if (Macro_IsExecuting()) {
-				wstring utf16_expression = LR"RAW(dllfuncstr(loaddll("HmExplorerPane"), "GetProject", hidemaruhandle(0)))RAW";
+			wstring utf16_expression = LR"RAW(dllfuncstr(loaddll("HmExplorerPane"), "GetProject", hidemaruhandle(0)))RAW";
 			TestDynamicVar.Clear();
 			auto dll_invocant = CSelfDllInfo::GetInvocantString();
 			wstring cmd =
@@ -781,6 +796,9 @@ PHP_FUNCTION(hidemaru_explorerpane_getproject)
 			string utf8_value = utf16_to_utf8(TestDynamicVar.wstr);
 			TestDynamicVar.Clear();
 			RETURN_STRING(utf8_value.c_str());
+		}
+		else {
+
 		}
 	}
 
