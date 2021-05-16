@@ -56,13 +56,12 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_macro_eval, 0, 1, _IS_B
 	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_macro_exec_eval_memory, 0, 1, IS_ARRAY, 0)
-	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_macro_eval_function, 0, 1, IS_ARRAY, 0)
+ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_macro_statement, 0, 2, IS_ARRAY, 0)
-	ZEND_ARG_TYPE_INFO(0, var, IS_STRING, 0)
-	ZEND_ARG_TYPE_INFO(0, arr, IS_ARRAY, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_macro_exec_eval_memory, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_hidemaru_macro_getvar, 0, 1, IS_OBJECT, 0)
@@ -143,8 +142,8 @@ ZEND_FUNCTION(hidemaru_edit_getlinetext);
 ZEND_FUNCTION(hidemaru_edit_setlinetext);
 ZEND_FUNCTION(hidemaru_macro_isexecuting);
 ZEND_FUNCTION(hidemaru_macro_eval);
+ZEND_FUNCTION(hidemaru_macro_eval_function);
 ZEND_FUNCTION(hidemaru_macro_exec_eval_memory);
-ZEND_FUNCTION(hidemaru_macro_statement);
 ZEND_FUNCTION(hidemaru_macro_getvar);
 ZEND_FUNCTION(hidemaru_macro_setvar);
 ZEND_FUNCTION(hidemaru_outputpane_output);
@@ -180,8 +179,8 @@ static const zend_function_entry ext_functions[] = {
 	ZEND_FE(hidemaru_edit_setlinetext, arginfo_hidemaru_edit_setlinetext)
 	ZEND_FE(hidemaru_macro_isexecuting, arginfo_hidemaru_macro_isexecuting)
 	ZEND_FE(hidemaru_macro_eval, arginfo_hidemaru_macro_eval)
+	ZEND_FE(hidemaru_macro_eval_function, arginfo_hidemaru_macro_eval_function)
 	ZEND_FE(hidemaru_macro_exec_eval_memory, arginfo_hidemaru_macro_exec_eval_memory)
-	ZEND_FE(hidemaru_macro_statement, arginfo_hidemaru_macro_statement)
 	ZEND_FE(hidemaru_macro_getvar, arginfo_hidemaru_macro_getvar)
 	ZEND_FE(hidemaru_macro_setvar, arginfo_hidemaru_macro_setvar)
 	ZEND_FE(hidemaru_outputpane_output, arginfo_hidemaru_outputpane_output)

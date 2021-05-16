@@ -1,4 +1,4 @@
-﻿/* mytest extension for PHP */
+/* mytest extension for PHP */
 #define ZEND_DEBUG 0
 
 /* hidemaru extension for PHP */
@@ -323,6 +323,61 @@ PHP_FUNCTION(hidemaru_macro_eval)
 }
 /* }}}*/
 
+/* {{{ (int, object) hidemaru_macro_eval_function( [ string $var ] ) */
+PHP_FUNCTION(hidemaru_macro_eval_function)
+{
+	char* var = NULL;
+	size_t var_size;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(var, var_size)
+	ZEND_PARSE_PARAMETERS_END();
+
+	wstring utf16_expression = utf8_to_utf16(var);
+	TestDynamicVar.Clear();
+	auto dll_invocant = CSelfDllInfo::GetInvocantString();
+	wstring cmd =
+		L"##_tmp_dll_id_ret = dllfuncw( " + dll_invocant + L"\"SetDynamicVar\", " + utf16_expression + L");\n"
+		L"##_tmp_dll_id_ret = 0;\n";
+
+	BOOL success = CHidemaruExeExport::EvalMacro(cmd);
+
+	// 数値なら
+	if (TestDynamicVar.type == CDynamicValue::TDynamicType::TypeInteger)
+	{
+		zval result;
+		ZVAL_LONG(&result, success);
+
+		zval ivalue;
+		ZVAL_LONG(&ivalue, TestDynamicVar.num);
+
+		zval ret_arr;
+		array_init(&ret_arr);
+		zend_hash_index_add(Z_ARRVAL(ret_arr), 0, &result);
+		zend_hash_index_add(Z_ARRVAL(ret_arr), 1, &ivalue);
+
+		RETURN_ARR(Z_ARRVAL(ret_arr));
+	}
+	// 文字列なら
+	else {
+		zval result;
+		ZVAL_LONG(&result, success);
+
+		string utf8_value = utf16_to_utf8(TestDynamicVar.wstr);
+		zval svalue;
+		ZVAL_STRING(&svalue, utf8_value.c_str());
+
+		zval ret_arr;
+		array_init(&ret_arr);
+		zend_hash_index_add(Z_ARRVAL(ret_arr), 0, &result);
+		zend_hash_index_add(Z_ARRVAL(ret_arr), 1, &svalue);
+
+		RETURN_ARR(Z_ARRVAL(ret_arr));
+	}
+}
+/* }}}*/
+
+
 struct TMacroResult {
 	int Result;
 	wstring Message;
@@ -423,29 +478,29 @@ PHP_FUNCTION(hidemaru_macro_getvar)
 	char* var = NULL;
 	size_t var_size;
 
-ZEND_PARSE_PARAMETERS_START(1, 1)
-Z_PARAM_STRING(var, var_size)
-ZEND_PARSE_PARAMETERS_END();
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+	Z_PARAM_STRING(var, var_size)
+	ZEND_PARSE_PARAMETERS_END();
 
-wstring utf16_simbol = utf8_to_utf16(var);
-TestDynamicVar.Clear();
-auto dll_invocant = CSelfDllInfo::GetInvocantString();
-wstring cmd =
-L"##_tmp_dll_id_ret = dllfuncw( " + dll_invocant + L"\"SetDynamicVar\", " + utf16_simbol + L");\n"
-L"##_tmp_dll_id_ret = 0;\n";
+	wstring utf16_simbol = utf8_to_utf16(var);
+	TestDynamicVar.Clear();
+	auto dll_invocant = CSelfDllInfo::GetInvocantString();
+	wstring cmd =
+	L"##_tmp_dll_id_ret = dllfuncw( " + dll_invocant + L"\"SetDynamicVar\", " + utf16_simbol + L");\n"
+	L"##_tmp_dll_id_ret = 0;\n";
 
-BOOL success = CHidemaruExeExport::EvalMacro(cmd);
+	BOOL success = CHidemaruExeExport::EvalMacro(cmd);
 
-// 数値なら
-if (TestDynamicVar.type == CDynamicValue::TDynamicType::TypeInteger)
-{
-	RETURN_LONG(TestDynamicVar.num);
-}
-// 文字列なら
-else {
-	string utf8_value = utf16_to_utf8(TestDynamicVar.wstr);
-	RETURN_STRING(utf8_value.c_str());
-}
+	// 数値なら
+	if (TestDynamicVar.type == CDynamicValue::TDynamicType::TypeInteger)
+	{
+		RETURN_LONG(TestDynamicVar.num);
+	}
+	// 文字列なら
+	else {
+		string utf8_value = utf16_to_utf8(TestDynamicVar.wstr);
+		RETURN_STRING(utf8_value.c_str());
+	}
 }
 /* }}}*/
 
@@ -500,65 +555,6 @@ PHP_FUNCTION(hidemaru_macro_setvar)
 	else {
 		RETURN_FALSE;
 	}
-}
-/* }}}*/
-
-
-// ★★★★この関数制作途中★★★★
-/* {{{ array hidemaru_macro_statement( [ string $funcname, array $params ] ) */
-PHP_FUNCTION(hidemaru_macro_statement)
-{
-	char* var = NULL;
-	size_t var_size;
-
-	zval* z_arr;
-	ZEND_PARSE_PARAMETERS_START(2, 2)
-		Z_PARAM_STRING(var, var_size)
-		Z_PARAM_ARRAY(z_arr)
-		ZEND_PARSE_PARAMETERS_END();
-
-	zval* z_val = NULL;
-
-	int cur_random = rand() + 1;
-	int i = 0;
-	vector<wstring> varname_list;
-	/*
-	ZEND_HASH_FOREACH_VAL(Z_ARR_P(z_arr), z_val) {
-		i++;
-		if (Z_TYPE_P(z_val) == IS_LONG) {
-			wstring varname = L"#AsMacroArs_" + to_wstring(cur_random + i);
-			varname_list.push_back(varname);
-			Macro_SetZendLongVar(varname, z_val->value.lval);
-		}
-		else if (Z_TYPE_P(z_val) == IS_STRING) {
-			wstring varname = L"$AsMacroArs_" + to_wstring(cur_random + i);
-			varname_list.push_back(varname);
-			wstring utf16_value = utf8_to_utf16(Z_STRVAL_P(z_val));
-			Macro_SetWStringVar(varname, utf16_value);
-
-		}
-	} ZEND_HASH_FOREACH_END();
-	*/
-
-	zval result;
-	ZVAL_LONG(&result, 1);
-
-	string utf8_message = utf16_to_utf8(L"OK");
-	zval message = { {0} };
-	ZVAL_STRING(&message, utf8_message.c_str());
-
-	string utf8_error = utf16_to_utf8(L"MyException");
-	zval error = { {0} };
-	ZVAL_STRING(&error, utf8_error.c_str());
-
-
-	zval ret_arr;
-	array_init(&ret_arr);
-	zend_hash_index_add(Z_ARRVAL(ret_arr), 0, &result);
-	zend_hash_index_add(Z_ARRVAL(ret_arr), 1, &message);
-	zend_hash_index_add(Z_ARRVAL(ret_arr), 2, &error);
-
-	RETURN_ARR(Z_ARRVAL(ret_arr));
 }
 /* }}}*/
 

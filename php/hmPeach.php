@@ -127,6 +127,23 @@ class _TMacro {
         }
     }
 
+    function doFunction(string $function_name, ...$args): array {
+		
+		list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
+
+        $arg_varname_join = join(',', $args_key);
+        $expression = $function_name . '(' . $arg_varname_join . ')';
+        list($success, $result) = hidemaru_macro_eval_function($expression);
+
+		$args_result = $this->_clearMacroVarAndUpdateArgs($args_key, $args_value);
+		if ($success) {
+	        return array($result, $args_result, null, "");
+		} else {
+            var_fump($args_result);
+	        return array(null, $args_result, new RuntimeException("Hidemaru Macro doFunction(...):\n" . $function_name), "");
+		}
+    }
+
     function doStatement(string $statement_name, ...$args): array {
 		
 		list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
