@@ -117,6 +117,9 @@ class _TMacro {
 }
 
 class _TOutputPane {
+	/**
+	 * アウトプット枠への出力
+	 */
 	function output(string $message): bool {
 		$mod_message = str_replace("\n", "\r\n", $message);
 		$mod_message = str_replace("\r\r", "\r", $mod_message);
@@ -188,12 +191,32 @@ class _TOutputPane {
 }
 
 class _TExplorerPane {
-	function setMode(int $mode): int {
+	/**
+	 * ファイルマネージャ枠のモード設定
+	 */
+	function setMode(int $mode): bool {
 		return hidemaru_explorerpane_setmode($mode);
 	}
 
+	/**
+	 * ファイルマネージャ枠のモード取得
+	 */
 	function getMode(): int {
 		return hidemaru_explorerpane_getmode();
+	}
+
+	/**
+	 * ファイルマネージャ枠にプロジェクトを読み込み
+	 */
+	function loadProject(string $filepath): bool {
+		return hidemaru_explorerpane_loadproject($filepath);
+	}
+
+	/**
+	 * ファイルマネージャ枠のプロジェクトを保存
+	 */
+	function saveProject(string $filepath): bool {
+		return hidemaru_explorerpane_saveproject($filepath);
 	}
 
 

@@ -601,6 +601,64 @@ PHP_FUNCTION(hidemaru_explorerpane_getmode)
 }
 /* }}}*/
 
+/* {{{ bool hidemaru_explorerpane_loadproject( [ string $var ] ) */
+PHP_FUNCTION(hidemaru_explorerpane_loadproject)
+{
+	char* var = NULL;
+	size_t var_size;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(var, var_size)
+	ZEND_PARSE_PARAMETERS_END();
+
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		if (CHidemaruExeExport::HmExplorerPane_LoadProject) {
+
+			wstring utf16_value = utf8_to_utf16(var);
+
+			auto encode_byte_data = EncodeWStringToOriginalEncodeVector(utf16_value);
+			BOOL result = CHidemaruExeExport::HmExplorerPane_LoadProject(hHidemaruWindow, encode_byte_data.data());
+			if (result) {
+				RETURN_TRUE;
+			}
+		}
+	}
+
+	RETURN_FALSE;
+}
+/* }}}*/
+
+/* {{{ bool hidemaru_explorerpane_saveproject( [ string $var ] ) */
+PHP_FUNCTION(hidemaru_explorerpane_saveproject)
+{
+	char* var = NULL;
+	size_t var_size;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(var, var_size)
+	ZEND_PARSE_PARAMETERS_END();
+
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		if (CHidemaruExeExport::HmExplorerPane_SaveProject) {
+
+			wstring utf16_value = utf8_to_utf16(var);
+
+			auto encode_byte_data = EncodeWStringToOriginalEncodeVector(utf16_value);
+			BOOL result = CHidemaruExeExport::HmExplorerPane_SaveProject(hHidemaruWindow, encode_byte_data.data());
+			if (result) {
+				RETURN_TRUE;
+			}
+		}
+	}
+
+	RETURN_FALSE;
+}
+/* }}}*/
+
 
 /*
 * 
