@@ -128,20 +128,102 @@ class _TMacro {
     }
 
     function doStatement(string $statement_name, ...$args): array {
-        $normalized_args = array();
-        foreach ( $args as $item ) {
-            if ( is_int($item) || is_float($item) || is_boolean($item) ) {
-                array_push($normalized_args, intval($item));
+		
+		list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
+
+        $arg_varname_join = join(',', $args_key);
+        $expression = $statement_name . ' ' . $arg_varname_join . ';';
+        $result_array = $Hm->Macro->doEval($expression);
+
+		$args_result = $this->_clearMacroVarAndUpdateArgs($args_key, $args_value);
+
+        return array($result_array[0], $args_result, $result_array[1], $result_array[2]);
+    }
+
+
+    private function _setMacroVarAndMakeMacroKeyArray(array $args) {
+        $base_random = strval(rand (1, 10000));
+        $curr_random = strval(rand (1, 10000));
+
+		$args_key = array();
+        $args_value = array();
+
+        for ( $ix = 0; $ix < count($args); $ix++ ) {
+            $item = $args[$ix];
+            if ( is_int($item) || is_float($item) || is_bool($item) ) {
+                $value = intval($item);
+                $varname = '#AsMacroArs_' . strval($base_random) . '_' . strval($curr_random + $ix);
+                array_push($args_key, $varname);
+                array_push($args_value, $value);
+                $Hm->Macro->setVar($varname, $value);
             } else if ( is_array($item) ) {
-                array_push($normalized_args, $item);
+                array_push($args_value, $item);
+                $intcheck_array = array_filter($item, function($elem) { return is_int($elem) || is_float($elem) || is_bool($elem); } );
+                if (count($item) == count($intcheck_array) ) {
+                    $varname = '#AsIntArrayOfMacroArs_' . strval($base_random) . '_' . strval($curr_random + $ix);
+                    array_push($args_key, $varname);
+                    for ( $aix = 0; $aix < count($item); $aix++ ) {
+                        $elem = $item[$aix];
+                        $value = intval($elem);
+                        $index_varname = $varname . '[' . strval($aix) . ']';
+                        $Hm->Macro->setVar($index_varname, $value);
+                    }
+                } else {
+                    $varname = '$AsStrArrayOfMacroArs_' . strval($base_random) . '_' . strval($curr_random + $ix);
+                    array_push($args_key, $varname);
+                    for ( $aix = 0; $aix < count($item); $aix++ ) {
+                        $elem = $item[$aix];
+                        $value = strval($elem);
+                        $index_varname = $varname . '[' . strval($aix) . ']';
+                        $Hm->Macro->setVar($index_varname, $value);
+                    }
+                }
             } else {
-                array_push($normalized_args, strval($item));
+                $value = strval($item);
+                $varname = '$AsMacroArs_' . strval($base_random) . '_' . strval($curr_random + $ix);
+                array_push($args_key, $varname);
+                array_push($args_value, $value);
+                $Hm->Macro->setVar($varname, $value);
             }
         }
 
-        $statement_result_params = hidemaru_macro_statement($statement_name, $normalized_args);
-        return $statement_result_params;
+		return array($args_key, $args_value);
     }
+
+    private function _clearMacroVarAndUpdateArgs(array $args_key, array $args_value) {
+        $args_result = array();
+
+        for($ix = 0; $ix < count($args_key); $ix++) {
+            $varname = $args_key[$ix];
+            if ( strpos($varname, '#AsMacroArs_') === 0) {
+                array_push( $args_result, $Hm->Macro->getVar($varname) );
+                $Hm->Macro->setVar($varname, 0);
+            }
+            else if ( strpos($varname, '$AsMacroArs_') === 0) {
+                array_push( $args_result, $Hm->Macro->getVar($varname) );
+                $Hm->Macro->setVar($varname, "");
+            }
+            else if ( strpos($varname, '#AsIntArrayOfMacroArs_') === 0) {
+                $arr = $args_value[$ix];
+                array_push( $args_result, $arr );
+                for($aix = 0; $aix < count($arr); $aix++) {
+                    $index_varname = $varname . '[' . strval($aix) . ']';
+                    $Hm->Macro->setVar($index_varname, 0);
+                }
+            }
+            else if ( strpos($varname, '$AsStrArrayOfMacroArs_') === 0) {
+                $arr = $args_value[$ix];
+                array_push( $args_result, $arr );
+                for($aix = 0; $aix < count($arr); $aix++) {
+                    $index_varname = $varname . '[' . strval($aix) . ']';
+                    $Hm->Macro->setVar($index_varname, "");
+                }
+            }
+        }
+
+        return $args_result;
+    }
+
 }
 
 class _TOutputPane {
