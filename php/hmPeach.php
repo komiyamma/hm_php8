@@ -81,6 +81,13 @@ class _TEdit {
 class _TMacro {
 
 	/**
+	 * 秀丸マクロ実行中かどうかの判定。原則的に、hmPeachではtrueが返る。
+	 */
+	function isExecuting(): bool {
+		return hidemaru_macro_isexecuting();
+	}
+
+	/**
 	 * 秀丸マクロ変数(もしくはシンボル)の値を取得する。
 	 */
 	function getVar(string $simbol): string|int {
