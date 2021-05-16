@@ -1,17 +1,25 @@
-﻿  hidemaru_php_func.cpp
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(77,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(181,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(226,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(271,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(307,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(334,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(368,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+﻿  convert_string.cpp
+  dllfunc_interface_internal.cpp
+  dllmain.cpp
+  hidemaru_php_func.cpp
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(48,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(152,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(197,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(242,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(278,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(305,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(339,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(392,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
 G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(421,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru_php_func.cpp(450,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
+  hidemaruexe_export.cpp
+  hidemaru_interface.cpp
+  hm_original_encode_map.cpp
+  hm_original_encode_mapfunc.cpp
+  output_debugstream.cpp
+  self_dll_info.cpp
      ライブラリ G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.lib とオブジェクト G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.exp を作成中
   コード生成しています。
-  603 of 618 functions (97.6%) were compiled, the rest were copied from previous compilation.
-    8 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB not found, fall back to full compilation.
+  All 618 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   コード生成が終了しました。
   php_hidemaru.vcxproj -> G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.dll
