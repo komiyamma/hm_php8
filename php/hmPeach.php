@@ -78,19 +78,37 @@ class _TEdit {
     }
 }
 
+class _TMacroStatement {
+    public function __call($statement_name, $args) {
+       return $Hm->Macro->__Statement($statement_name, ...$args);
+    }
+}
+class _TMacroFunction {
+    public function __call($statement_name, $args) {
+       return $Hm->Macro->__Function($statement_name, ...$args);
+    }
+}
+
 class _TMacro {
 
+    public $doStatement;
+    public $doFunction;
+
+    public function __construct() {
+        $this->doStatement = new _TMacroStatement();
+        $this->doFunction = new _TMacroFunction();
+	}
     /**
      * 秀丸マクロ実行中かどうかの判定。原則的に、hmPeachではtrueが返る。
      */
-    function isExecuting(): bool {
+    public function isExecuting(): bool {
         return hidemaru_macro_isexecuting();
     }
 
     /**
      * 秀丸マクロ変数(もしくはシンボル)の値を取得する。
      */
-    function getVar(string $simbol): string|int {
+    public function getVar(string $simbol): string|int {
         if ( is_string($simbol) ) {
             return hidemaru_macro_getvar($simbol);
         } else {
@@ -101,7 +119,7 @@ class _TMacro {
     /**
      * 秀丸マクロ変数に、指定の数値もしくは文字列を代入する。
      */
-    function setVar(string $simbol, string|int|float|bool $value): bool {
+    public function setVar(string $simbol, string|int|float|bool $value): bool {
         if ( is_string($simbol) ) {
             if (is_bool($value) || is_float($value)) {
                 $value = intval($value); // 一度整数にまるめてから...
@@ -118,7 +136,7 @@ class _TMacro {
      * 秀丸マクロを文字列で実行する。
      * 「シングルクォーテーション」の「ヒアドキュメント」で記述するのがオススメ。
      */
-    function doEval(string $expression): array {
+    public function doEval(string $expression): array {
         $success = hidemaru_macro_eval($expression);
         if ($success) {
             return array($success, null, "");
@@ -127,7 +145,7 @@ class _TMacro {
         }
     }
 
-    function doFunction(string $function_name, ...$args): array {
+    function __Function(string $function_name, ...$args): array {
 		
 		list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
 
@@ -139,12 +157,11 @@ class _TMacro {
 		if ($success) {
 	        return array($result, $args_result, null, "");
 		} else {
-            var_fump($args_result);
 	        return array(null, $args_result, new RuntimeException("Hidemaru Macro doFunction(...):\n" . $function_name), "");
 		}
     }
 
-    function doStatement(string $statement_name, ...$args): array {
+    function __Statement(string $statement_name, ...$args): array {
 		
 		list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
 
@@ -156,7 +173,6 @@ class _TMacro {
 
         return array($result_array[0], $args_result, $result_array[1], $result_array[2]);
     }
-
 
     private function _setMacroVarAndMakeMacroKeyArray(array $args) {
         $base_random = strval(rand (1, 10000));
@@ -247,7 +263,7 @@ class _TOutputPane {
     /**
      * アウトプット枠への出力
      */
-    function output(string $message): bool {
+    public function output(string $message): bool {
         $mod_message = str_replace("\n", "\r\n", $message);
         $mod_message = str_replace("\r\r", "\r", $mod_message);
         return hidemaru_outputpane_output($mod_message);
@@ -256,21 +272,21 @@ class _TOutputPane {
     /**
      * アウトプット枠のクリア
      */
-    function clear(): int {
+    public function clear(): int {
         return hidemaru_outputpane_clear();
     }
 
     /**
      * アウトプット枠の内容を一時的に対比し、アウトプット枠をクリア
      */
-    function push(): bool {
+    public function push(): bool {
         return hidemaru_outputpane_push();
     }
 
     /**
      * push()で一時的に退避しておいた内容を、アプトプット枠へと復元
      */
-    function pop(): bool {
+    public function pop(): bool {
         return hidemaru_outputpane_pop();
     }
 
@@ -278,7 +294,7 @@ class _TOutputPane {
      * アウトプット枠出力となる際ベースとなるディレクトリを変更する。
      * ジャンプタグ形式などの際に影響を与える
      */
-    function setBaseDir(string $dirpath): bool {
+    public function setBaseDir(string $dirpath): bool {
         return hidemaru_outputpane_setbasedir($dirpath);
     }
 
@@ -304,7 +320,7 @@ class _TOutputPane {
      * 1102 位置：上
      * 1103 位置：下
      */
-    function sendMessage(int $command): int {
+    public function sendMessage(int $command): int {
         return hidemaru_outputpane_sendmessage($command);
     }
 
@@ -312,7 +328,7 @@ class _TOutputPane {
      * アウトプット枠のウィンドウハンドル。
      * 通常はスクリプト層から利用することはないが、win32ウィンドウ関連プログラムを組む際には必要となる。
      */
-    function getWindowHandle(): int {
+    public function getWindowHandle(): int {
         return hidemaru_outputpane_getwindowhandle();
     }
 }
@@ -321,42 +337,42 @@ class _TExplorerPane {
     /**
      * ファイルマネージャ枠のモード設定
      */
-    function setMode(int $mode): bool {
+    public function setMode(int $mode): bool {
         return hidemaru_explorerpane_setmode($mode);
     }
 
     /**
      * ファイルマネージャ枠のモード取得
      */
-    function getMode(): int {
+    public function getMode(): int {
         return hidemaru_explorerpane_getmode();
     }
 
     /**
      * ファイルマネージャ枠にプロジェクトを読み込み
      */
-    function loadProject(string $filepath): bool {
+    public function loadProject(string $filepath): bool {
         return hidemaru_explorerpane_loadproject($filepath);
     }
 
     /**
      * ファイルマネージャ枠のプロジェクトを保存
      */
-    function saveProject(string $filepath): bool {
+    public function saveProject(string $filepath): bool {
         return hidemaru_explorerpane_saveproject($filepath);
     }
 
     /**
      * ファイルマネージャ枠のプロジェクトのファイルパスを取得する
      */
-    function getProject(): string {
+    public function getProject(): string {
         return hidemaru_explorerpane_getproject();
     }
 
     /**
      * ファイルマネージャ枠のカレントディレクトリ
      */
-    function getCurrentDir(): string {
+    public function getCurrentDir(): string {
         return hidemaru_explorerpane_getcurrentdir();
     }
 
@@ -364,7 +380,7 @@ class _TExplorerPane {
     /**
      * ファイルマネージャ枠の表示がプロジェクトのとき、更新された状態であるかどうかを返します。
      */
-    function getUpdated(): bool {
+    public function getUpdated(): bool {
         return hidemaru_explorerpane_getupdated();
     }
 
@@ -419,7 +435,7 @@ class _TExplorerPane {
      * 902 プロジェクト：上へ
      * 903 プロジェクト：下へ
      */
-    function sendMessage(int $command): int {
+    public function sendMessage(int $command): int {
         return hidemaru_explorerpane_sendmessage($command);
     }
 
@@ -427,7 +443,7 @@ class _TExplorerPane {
      * アウトプット枠のウィンドウハンドル。
      * 通常はスクリプト層から利用することはないが、win32ウィンドウ関連プログラムを組む際には必要となる。
      */
-    function getWindowHandle(): int {
+    public function getWindowHandle(): int {
         return hidemaru_explorerpane_getwindowhandle();
     }
 }
@@ -454,7 +470,7 @@ class _THidemaru {
      */
     public $ExplorerPane;
 
-    function __construct() {
+    public function __construct() {
         $this->Edit = new _TEdit();
         $this->Macro = new _TMacro();
         $this->OutputPane = new _TOutputPane();
@@ -465,21 +481,21 @@ class _THidemaru {
      * 秀丸エディタのバージョンの取得。
      * 秀丸エディタ 「8.73 正式版」⇒「873.99」、「8.74 β6」⇒「874.06」といった浮動小数値が返ってくる。
      */
-    function getVersion(): float {
+    public function getVersion(): float {
         return hidemaru_version();
     }
 
     /**
      * 秀丸のウィンドウハンドル。hidemaruhandle(0)と同じ値。
      */
-    function getWindowHandle(): int {
+    public function getWindowHandle(): int {
         return hidemaru_getwindowhandle();
     }
 
     /**
      * hmPeach.dll が解放される直前のタイミングで実行されるメソッド。
      */
-    function onDisposeScope(): void {
+    public function onDisposeScope(): void {
         if (function_exists("onDestroyScope")) {
             onDestroyScope();
         }
