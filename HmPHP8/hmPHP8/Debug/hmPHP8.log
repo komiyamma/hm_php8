@@ -1,0 +1,15 @@
+﻿  dllfunc_interface.cpp
+  dllfunc_interface_internal.cpp
+  dllmain.cpp
+  embed_hidemaru.cpp
+  convert_string.cpp
+  hidemaruexe_export.cpp
+  hm_original_encode_map.cpp
+  hm_original_encode_mapfunc.cpp
+  output_debugstream.cpp
+  self_dll_info.cpp
+  コードを生成中...
+     ライブラリ G:\repogitory\hm_php8\HmPHP8\Debug\hmPeach.lib とオブジェクト G:\repogitory\hm_php8\HmPHP8\Debug\hmPeach.exp を作成中
+LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
+php8embed.lib(php_embed.obj) : warning LNK4099: PDB 'vc140.pdb' が 'php8embed.lib(php_embed.obj)' で、または 'G:\repogitory\hm_php8\HmPHP8\Debug\vc140.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+  hmPHP8.vcxproj -> G:\repogitory\hm_php8\HmPHP8\Debug\hmPeach.dll

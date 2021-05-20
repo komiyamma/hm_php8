@@ -1,6 +1,6 @@
 ﻿<?php
 /*-------------------- coding: utf-8 ---------------------------
- * hmPeach 1.8.1.1用 ライブラリ
+ * hmPeach 1.9.0.1用 ライブラリ
  * Copyright (c) 2021-2021 Akitsugu Komiyama
  * under the Apache License Version 2.0
  *
@@ -84,8 +84,8 @@ class _TMacroStatement {
     }
 }
 class _TMacroFunction {
-    public function __call($statement_name, $args) {
-       return $Hm->Macro->__Function($statement_name, ...$args);
+    public function __call($function_name, $args) {
+       return $Hm->Macro->__Function($function_name, ...$args);
     }
 }
 
