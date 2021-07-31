@@ -5,6 +5,7 @@
 
 #include <windows.h>
 #include <shlwapi.h>
+#include <memory>
 
 #include "hidemaruexe_export.h"
 #include "hidemaru_interface.h"
@@ -30,6 +31,7 @@ CHidemaruExeExport::PFNEvalMacro CHidemaruExeExport::Hidemaru_EvalMacro = NULL;
 CHidemaruExeExport::PFNGetCurrentWindowHandle CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle = NULL;
 // アウトプットパネル
 CHidemaruExeExport::PFNHmOutputPane_Output CHidemaruExeExport::HmOutputPane_Output = NULL;
+CHidemaruExeExport::PFNHmOutputPane_OutputW CHidemaruExeExport::HmOutputPane_OutputW = NULL;
 CHidemaruExeExport::PFNHmOutputPane_Push CHidemaruExeExport::HmOutputPane_Push = NULL;
 CHidemaruExeExport::PFNHmOutputPane_Pop CHidemaruExeExport::HmOutputPane_Pop = NULL;
 CHidemaruExeExport::PFNHmOutputPane_GetWindowHandle CHidemaruExeExport::HmOutputPane_GetWindowHandle = NULL;
@@ -49,24 +51,20 @@ CHidemaruExeExport::PFNHmExplorerPane_GetCurrentDir CHidemaruExeExport::HmExplor
 double CHidemaruExeExport::hm_version = 0;
 double CHidemaruExeExport::QueryFileVersion(wchar_t* path){
 	VS_FIXEDFILEINFO* v;
-	DWORD dwZero = 0;
 	UINT len;
-	DWORD sz = GetFileVersionInfoSize(path, &dwZero);
-	if (sz){
-		void* buf = new char[sz];
-		GetFileVersionInfo(path, dwZero, sz, buf);
+	DWORD sz = GetFileVersionInfoSize(path, NULL);
+	if (sz) {
+		unique_ptr<BYTE[]> mngBuf = make_unique<BYTE[]>(sz);
+		LPVOID buf = (LPVOID)mngBuf.get();
+		GetFileVersionInfo(path, NULL, sz, buf);
 
-		if (VerQueryValue(buf, L"\\", (LPVOID*)&v, &len)){
+		if (VerQueryValue(buf, L"\\", (LPVOID*)&v, &len)) {
 			double ret = 0;
 			ret = double(HIWORD(v->dwFileVersionMS)) * 100 +
 				double(LOWORD(v->dwFileVersionMS)) * 10 +
 				double(HIWORD(v->dwFileVersionLS)) +
 				double(LOWORD(v->dwFileVersionLS)) * 0.01;
-			delete[] buf;
 			return ret;
-		}
-		else{
-			delete[] buf;
 		}
 	}
 
@@ -129,6 +127,9 @@ BOOL CHidemaruExeExport::init() {
 					HmOutputPane_GetWindowHandle = (PFNHmOutputPane_GetWindowHandle)GetProcAddress(hHmOutputPaneDLL, "GetWindowHandle");
 					if (hm_version > 877) {
 						HmOutputPane_SetBaseDir = (PFNHmOutputPane_SetBaseDir)GetProcAddress(hHmOutputPaneDLL, "SetBaseDir");
+					}
+					if (hm_version > 898) {
+						HmOutputPane_OutputW = (PFNHmOutputPane_OutputW)GetProcAddress(hHmOutputPaneDLL, "OutputW");
 					}
 				}
 

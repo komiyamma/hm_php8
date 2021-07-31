@@ -1,6 +1,6 @@
 ﻿<?php
 /*-------------------- coding: utf-8 ---------------------------
- * hmPeach 1.9.2.1用 ライブラリ
+ * hmPeach 1.9.2.2用 ライブラリ
  * Copyright (c) 2021-2021 Akitsugu Komiyama
  * under the Apache License Version 2.0
  *
@@ -35,28 +35,28 @@ class _TEdit {
 
     /**
      * 単純選択している内容を取得する（複数選択や矩形選択は対象外）
-     */    
+     */
     public function getSelectedText(): string {
         return hidemaru_edit_getselectedtext();
     }
 
     /**
      * 単純選択している内容のテキストの内容を、指定のテキストへと置き換える
-     */    
+     */
     public function setSelectedText(string $text): bool {
         return hidemaru_edit_setselectedtext($text);
     }
 
     /**
      * カーソルがある行のテキスト内容を取得する
-     */    
+     */
     public function getLineText(): string {
         return hidemaru_edit_getlinetext();
     }
 
     /**
      * カーソルがある行のテキスト内容を、指定の文字列へと置き換える 
-     */    
+     */
     public function setLineText(string $text): bool {
         return hidemaru_edit_setlinetext($text);
     }
@@ -146,7 +146,7 @@ class _TMacro {
     }
 
     function __Function(string $function_name, ...$args): array {
-		
+
 		list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
 
         $arg_varname_join = join(',', $args_key);
@@ -162,7 +162,7 @@ class _TMacro {
     }
 
     function __Statement(string $statement_name, ...$args): array {
-		
+
 		list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
 
         $arg_varname_join = join(',', $args_key);

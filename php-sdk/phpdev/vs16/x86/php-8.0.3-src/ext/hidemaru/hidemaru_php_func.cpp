@@ -1,4 +1,4 @@
-/* mytest extension for PHP */
+﻿/* mytest extension for PHP */
 #define ZEND_DEBUG 0
 
 /* hidemaru extension for PHP */
@@ -572,10 +572,17 @@ PHP_FUNCTION(hidemaru_outputpane_output)
 	// ちゃんと関数がある時だけ
 	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
 		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
-		if (CHidemaruExeExport::HmOutputPane_Output) {
+		if (CHidemaruExeExport::HmOutputPane_OutputW) {
 
 			wstring utf16_value = utf8_to_utf16(var);
+			BOOL result = CHidemaruExeExport::HmOutputPane_OutputW(hHidemaruWindow, (wchar_t*)utf16_value.data());
+			if (result) {
+				RETURN_TRUE;
+			}
+		}
+		else if (CHidemaruExeExport::HmOutputPane_Output) {
 
+			wstring utf16_value = utf8_to_utf16(var);
 			auto encode_byte_data = EncodeWStringToOriginalEncodeVector(utf16_value);
 			BOOL result = CHidemaruExeExport::HmOutputPane_Output(hHidemaruWindow, encode_byte_data.data());
 			if (result) {

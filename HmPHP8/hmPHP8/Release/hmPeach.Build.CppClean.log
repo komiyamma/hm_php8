@@ -5,10 +5,10 @@ g:\repogitory\hm_php8\hmphp8\hmphp8\release\hm_original_encode_mapfunc.obj
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\hm_original_encode_map.obj
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\hidemaruexe_export.obj
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\convert_string.obj
-g:\repogitory\hm_php8\hmphp8\hmphp8\release\embed_hidemaru.obj
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\dllmain.obj
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\dllfunc_interface_internal.obj
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\dllfunc_interface.obj
+g:\repogitory\hm_php8\hmphp8\hmphp8\release\embed_hidemaru.obj
 g:\repogitory\hm_php8\hmphp8\release\hmpeach.lib
 g:\repogitory\hm_php8\hmphp8\release\hmpeach.exp
 g:\repogitory\hm_php8\hmphp8\release\hmpeach.dll
@@ -21,7 +21,6 @@ g:\repogitory\hm_php8\hmphp8\hmphp8\release\hmpeach.tlog\cl.read.1.tlog
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\hmpeach.tlog\cl.write.1.tlog
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\hmpeach.tlog\hmpeach.write.1u.tlog
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\hmpeach.tlog\link.command.1.tlog
-g:\repogitory\hm_php8\hmphp8\hmphp8\release\hmpeach.tlog\link.delete.1.tlog
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\hmpeach.tlog\link.read.1.tlog
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\hmpeach.tlog\link.write.1.tlog
 g:\repogitory\hm_php8\hmphp8\hmphp8\release\hmpeach.tlog\rc.command.1.tlog
