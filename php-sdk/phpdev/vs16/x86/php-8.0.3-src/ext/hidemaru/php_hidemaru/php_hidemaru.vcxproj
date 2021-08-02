@@ -90,6 +90,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;PHPHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;COMPILE_DL_HIDEMARU</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\main;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\Zend;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\TSRM;</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -111,6 +112,7 @@
       <AdditionalIncludeDirectories>C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\main;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\Zend;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\TSRM;</AdditionalIncludeDirectories>
       <StringPooling>false</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,6 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;PHPHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;COMPILE_DL_HIDEMARU</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,6 +146,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;PHPHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;COMPILE_DL_HIDEMARU</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
