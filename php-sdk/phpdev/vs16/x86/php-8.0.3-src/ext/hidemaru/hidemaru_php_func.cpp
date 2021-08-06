@@ -707,9 +707,8 @@ PHP_FUNCTION(hidemaru_outputpane_sendmessage)
 	HWND OutputWindowHandle = OutputPane_GetWindowHanndle();
 	if (OutputWindowHandle) {
 		// (#h,0x111/*WM_COMMAND*/,1009,0); //1009=クリア
-		// 0x111 = WM_COMMAND
 		zend_long command_id = var;
-		LRESULT r = SendMessageW(OutputWindowHandle, 0x111, command_id, 0);
+		LRESULT r = SendMessageW(OutputWindowHandle, WM_COMMAND, command_id, 0);
 		retval = r;
 		RETURN_LONG(retval);
 	}
@@ -729,9 +728,8 @@ PHP_FUNCTION(hidemaru_outputpane_clear)
 	HWND OutputWindowHandle = OutputPane_GetWindowHanndle();
 	if (OutputWindowHandle) {
 		// (#h,0x111/*WM_COMMAND*/,1009,0); //1009=クリア
-		// 0x111 = WM_COMMAND
 		zend_long command_id = 1009;
-		LRESULT r = SendMessageW(OutputWindowHandle, 0x111, command_id, 0);
+		LRESULT r = SendMessageW(OutputWindowHandle, WM_COMMAND, command_id, 0);
 		retval = r;
 		RETURN_LONG(retval);
 	}
