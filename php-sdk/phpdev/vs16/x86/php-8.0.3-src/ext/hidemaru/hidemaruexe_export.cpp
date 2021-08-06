@@ -119,7 +119,7 @@ BOOL CHidemaruExeExport::init() {
 				// HmOutputPane.dllがあるかどうか。
 				wstring hmoutputpane_fullpath = wstring(hidemarudir) + wstring(L"\\HmOutputPane.dll");
 				hHmOutputPaneDLL = LoadLibrary(hmoutputpane_fullpath.data());
-				// あれば、Output関数をセッティングしておく
+				// あれば、関数をセッティングしておく
 				if (hHmOutputPaneDLL) {
 					HmOutputPane_Output = (PFNHmOutputPane_Output)GetProcAddress(hHmOutputPaneDLL, "Output");
 					HmOutputPane_Push = (PFNHmOutputPane_Push)GetProcAddress(hHmOutputPaneDLL, "Push");
@@ -136,7 +136,7 @@ BOOL CHidemaruExeExport::init() {
 				// HmExplorerPane.dllがあるかどうか。
 				wstring hmexplorerpane_fullpath = wstring(hidemarudir) + wstring(L"\\HmExplorerPane.dll");
 				hHmExplorerPaneDLL = LoadLibrary(hmexplorerpane_fullpath.data());
-				// あれば、Output関数をセッティングしておく
+				// あれば、関数をセッティングしておく
 				if (hHmExplorerPaneDLL) {
 					HmExplorerPane_SetMode = (PFNHmExplorerPane_SetMode)GetProcAddress(hHmExplorerPaneDLL, "SetMode");
 					HmExplorerPane_GetMode = (PFNHmExplorerPane_GetMode)GetProcAddress(hHmExplorerPaneDLL, "GetMode");
