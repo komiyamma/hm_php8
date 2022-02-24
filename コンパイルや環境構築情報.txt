@@ -1,5 +1,6 @@
 # 環境整備基本
 - https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2
+- https://zenn.dev/book000/articles/compile_php8-0-0_windows10
 
 # 拡張を作る
 - https://field-notes.hatenablog.jp/entry/20110723/1311410469
