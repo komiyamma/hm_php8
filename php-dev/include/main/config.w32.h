@@ -141,25 +141,25 @@
 /* values determined by configure.js */
 
 /* Windows build system version */
-#define PHP_BUILD_SYSTEM "Microsoft Windows Server 2016 Standard [10.0.14393]"
+#define PHP_BUILD_SYSTEM "Microsoft Windows Server 2019 Datacenter [10.0.17763]"
 
 /* Configure line */
-#define CONFIGURE_COMMAND "cscript /nologo /e:jscript configure.js  \"--enable-snapshot-build\"" " \"--enable-debug-pack\" \"--with-pdo-oci=c:\\php-snap-build\\dep-aux\\oracle\\x86\\instantclient_19_9\\sdk,shared\"" " \"--with-oci8-12c=c:\\php-snap-build\\dep-aux\\oracle\\x86\\instantclient_12_1\\sdk,shared\"" " \"--with-oci8-19=c:\\php-snap-build\\dep-aux\\oracle\\x86\\instantclient_19_9\\sdk,shared\"" " \"--enable-object-out-dir=../obj/\" \"--enable-com-dotnet=shared\"" " \"--without-analyzer\" \"--with-pgo\""
+#define CONFIGURE_COMMAND "cscript /nologo /e:jscript configure.js  \"--enable-snapshot-build\"" " \"--enable-debug-pack\" \"--with-pdo-oci=..\\..\\..\\..\\instantclient\\sdk,shared\"" " \"--with-oci8-19=..\\..\\..\\..\\instantclient\\sdk,shared\" \"--enable-object-out-dir=../obj/\"" " \"--enable-com-dotnet=shared\" \"--without-analyzer\" \"--with-pgo\""
 
 /* Detected compiler version */
-#define COMPILER "Visual C++ 2019"
+#define PHP_BUILD_COMPILER "Visual C++ 2019"
 
 /* Compiler compatibility ID */
 #define PHP_COMPILER_ID "VS16"
 
 /* Detected compiler architecture */
-#define ARCHITECTURE "x86"
+#define PHP_BUILD_ARCH "x86"
 
 /* Linker major version */
 #define PHP_LINKER_MAJOR 14
 
 /* Linker minor version */
-#define PHP_LINKER_MINOR 28
+#define PHP_LINKER_MINOR 29
 
 #define HAVE_STRNLEN 1
 
@@ -244,8 +244,47 @@
 /* Have FTP support */
 #define HAVE_FTP 1
 
+/* WebP support */
+#define HAVE_LIBWEBP 1
+
+/* WebP support */
+#define HAVE_GD_WEBP 1
+
 /* GD support */
 #define HAVE_LIBGD 1
+
+/* Bundled GD */
+#define HAVE_GD_BUNDLED 1
+
+/* PNG support */
+#define HAVE_GD_PNG 1
+
+/* BMP support */
+#define HAVE_GD_BMP 1
+
+/* TGA support */
+#define HAVE_GD_TGA 1
+
+/* PNG support */
+#define HAVE_LIBPNG 1
+
+/* JPEG support */
+#define HAVE_LIBJPEG 1
+
+/* JPEG support */
+#define HAVE_GD_JPG 1
+
+/* XPM support */
+#define HAVE_XPM 1
+
+/* XPM support */
+#define HAVE_GD_XPM 1
+
+/* Freetype support */
+#define HAVE_LIBFREETYPE 1
+
+/* Freetype support */
+#define HAVE_GD_FREETYPE 1
 
 /* GMP support */
 #define HAVE_GMP 1
@@ -458,3 +497,7 @@
 
 /* Define if xsl extension is enabled */
 #define HAVE_XSL 1
+
+#if __has_include("main/config.pickle.h")
+#include "main/config.pickle.h"
+#endif

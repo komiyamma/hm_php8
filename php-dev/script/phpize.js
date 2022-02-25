@@ -1,14 +1,13 @@
 var PHP_PREFIX="C:\\php"
 var PHP_ZTS="Yes"
-var VC_VERSION=1928
+var VC_VERSION=1929
 var PHP_VERSION=8
-var PHP_MINOR_VERSION=0
+var PHP_MINOR_VERSION=1
 var PHP_RELEASE_VERSION=3
 var PHP_EXTRA_VERSION=""
-var PHP_VERSION_STRING="8.0.3"
+var PHP_VERSION_STRING="8.1.3"
 
 /* Generated extensions list with mode (static/shared) */
-PHP_PHPDBG_WEBHELPER_SHARED=true;
 PHP_BCMATH_SHARED=false;
 PHP_BZ2_SHARED=true;
 PHP_CALENDAR_SHARED=false;
@@ -33,7 +32,6 @@ PHP_JSON_SHARED=false;
 PHP_LDAP_SHARED=true;
 PHP_MBSTRING_SHARED=true;
 PHP_MYSQLND_SHARED=false;
-PHP_OCI8_12C_SHARED=true;
 PHP_OCI8_19_SHARED=true;
 PHP_ODBC_SHARED=true;
 PHP_OPCACHE_SHARED=true;
@@ -85,7 +83,7 @@ PHP_XSL_SHARED=true;
   | This source file is subject to version 3.01 of the PHP license,      |
   | that is bundled with this package in the file LICENSE, and is        |
   | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
+  | https://www.php.net/license/3_01.txt                                 |
   | If you did not receive a copy of the PHP license and are unable to   |
   | obtain it through the world-wide-web, please send a note to          |
   | license@php.net so we can mail you a copy immediately.               |

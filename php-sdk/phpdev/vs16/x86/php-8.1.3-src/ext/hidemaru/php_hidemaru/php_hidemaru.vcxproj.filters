@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{884e77d7-e22e-4406-b8b6-343ca7656de7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="秀丸本体のexeの関数やバージョン">
+      <UniqueIdentifier>{799b39bb-1310-4b72-8bee-78b5fe646cf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="文字列の相互変換 utf16⇔utf8">
+      <UniqueIdentifier>{64ae2e35-e505-4624-8f85-2a027588480e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PHP用に登録するグローバル関数">
+      <UniqueIdentifier>{7d93b899-ba9a-4a83-a217-86ad7cc78de7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="このphp_hidemaru.dll自身の情報">
+      <UniqueIdentifier>{36f98a5c-1455-4784-bc03-873d411e96b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="秀丸デバッグモニター表示用">
+      <UniqueIdentifier>{8fc39702-8095-4fde-83a1-82f5aa5f9187}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="秀丸独自のChar渡しでのUnicode扱い">
+      <UniqueIdentifier>{434983b6-6111-4361-9ec5-d95156c9ec1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="★わけのわからないコンパイルエラーが出たら">
+      <UniqueIdentifier>{c5d8a722-09c7-4b88-a081-719a4deead1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="秀丸マクロとのAPI Interface">
+      <UniqueIdentifier>{a5bc00ec-beb9-4015-bb8f-c45f11185bf4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\hidemaru_interface.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\convert_string.cpp">
+      <Filter>文字列の相互変換 utf16⇔utf8</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hidemaruexe_export.cpp">
+      <Filter>秀丸本体のexeの関数やバージョン</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hidemaru_php_func.cpp">
+      <Filter>PHP用に登録するグローバル関数</Filter>
+    </ClCompile>
+    <ClCompile Include="..\dllmain.cpp">
+      <Filter>このphp_hidemaru.dll自身の情報</Filter>
+    </ClCompile>
+    <ClCompile Include="..\self_dll_info.cpp">
+      <Filter>このphp_hidemaru.dll自身の情報</Filter>
+    </ClCompile>
+    <ClCompile Include="..\output_debugstream.cpp">
+      <Filter>秀丸デバッグモニター表示用</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hm_original_encode_map.cpp">
+      <Filter>秀丸独自のChar渡しでのUnicode扱い</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hm_original_encode_mapfunc.cpp">
+      <Filter>秀丸独自のChar渡しでのUnicode扱い</Filter>
+    </ClCompile>
+    <ClCompile Include="..\dllfunc_interface_internal.cpp">
+      <Filter>秀丸マクロとのAPI Interface</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\Release_TS\php8ts.lib">
+      <Filter>lib</Filter>
+    </Library>
+    <Library Include="..\..\..\Release_TS\php.lib">
+      <Filter>lib</Filter>
+    </Library>
+    <Library Include="..\..\..\Release_TS\php_opcache.lib">
+      <Filter>lib</Filter>
+    </Library>
+    <Library Include="..\..\..\Release_TS\php8embed.lib">
+      <Filter>lib</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\hidemaruexe_export.h">
+      <Filter>秀丸本体のexeの関数やバージョン</Filter>
+    </ClInclude>
+    <ClInclude Include="..\convert_string.h">
+      <Filter>文字列の相互変換 utf16⇔utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\hidemaru_interface.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\self_dll_info.h">
+      <Filter>このphp_hidemaru.dll自身の情報</Filter>
+    </ClInclude>
+    <ClInclude Include="..\output_debugstream.h">
+      <Filter>秀丸デバッグモニター表示用</Filter>
+    </ClInclude>
+    <ClInclude Include="..\hidemaru_arginfo.h">
+      <Filter>PHP用に登録するグローバル関数</Filter>
+    </ClInclude>
+    <ClInclude Include="..\hm_original_encode_mapfunc.h">
+      <Filter>秀丸独自のChar渡しでのUnicode扱い</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dllfunc_interface_internal.h">
+      <Filter>秀丸マクロとのAPI Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dllfunc_interface.h">
+      <Filter>秀丸マクロとのAPI Interface</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\embed_hidemaru.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="★わけのわからないコンパイルエラーが出たら.txt">
+      <Filter>★わけのわからないコンパイルエラーが出たら</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

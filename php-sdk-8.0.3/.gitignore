@@ -1,0 +1,26 @@
+php53
+php54
+php55
+php56
+php70
+php71
+php72
+phpmaster
+php
+!lib/php
+!bin/php
+rmtools-client
+rmtools.base
+logs
+PFTT
+\.tmp
+\.cache
+oracle
+# either these two become submodules, or uncomment them
+#pgo-build
+#rmtools*
+phpsdk-local.bat
+pgo/work
+!pgo/tpl/php
+!lib/php/libsdk/SDK/Build/PGO/Server/PHP
+*.swp
