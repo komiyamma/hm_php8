@@ -1,7 +1,7 @@
 ﻿<?php
 /*-------------------- coding: utf-8 ---------------------------
  * hmPeach 1.9.3.1用 ライブラリ
- * Copyright (c) 2021-2021 Akitsugu Komiyama
+ * Copyright (c) 2021-2022 Akitsugu Komiyama
  * under the Apache License Version 2.0
  *
  * This product includes PHP, freely available from
