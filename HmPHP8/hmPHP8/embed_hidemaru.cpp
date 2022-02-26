@@ -57,7 +57,7 @@ BOOL HmOutputPane_Output(wstring utf16_message) {
 }
 
 
-static size_t php_ub_write(const char* str, unsigned int str_length)
+static size_t php_ub_write(const char* str, size_t str_length)
 {
     // printf(str);
     wstring utf16_message = utf8_to_utf16(str);

@@ -1,0 +1,7 @@
+﻿  embed_hidemaru.cpp
+C:\php-dev_x64\include\Zend\zend_gc.h(120,22): warning C4244: '=': '__int64' から 'int' への変換です。データが失われる可能性があります。
+     ライブラリ G:\repogitory\hm_php8\HmPHP8\x64\Release\hmPeach.lib とオブジェクト G:\repogitory\hm_php8\HmPHP8\x64\Release\hmPeach.exp を作成中
+dllfunc_interface.obj : error LNK2001: 外部シンボル "__int64 __cdecl PHPSetNumVar(wchar_t const *,__int64)" (?PHPSetNumVar@@YA_JPEB_W_J@Z) は未解決です
+    定義済みの一致する可能性があるシンボルに関するヒント:
+      "int __cdecl PHPSetNumVar(wchar_t const *,__int64)" (?PHPSetNumVar@@YAHPEB_W_J@Z)
+G:\repogitory\hm_php8\HmPHP8\x64\Release\hmPeach.dll : fatal error LNK1120: 1 件の未解決の外部参照
