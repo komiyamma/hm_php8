@@ -170,6 +170,7 @@ wstring CHidemaruExeExport::GetTotalText() {
 			GlobalFree(hGlobal); // 元のは解放
 			return text;
 		}
+		GlobalFree(hGlobal); // 元のは解放
 	}
 	return L"";
 }
@@ -185,6 +186,7 @@ wstring CHidemaruExeExport::GetSelectedText() {
 			GlobalFree(hGlobal); // 元のは解放
 			return text;
 		}
+		GlobalFree(hGlobal); // 元のは解放
 	}
 	return L"";
 }
@@ -204,6 +206,7 @@ wstring CHidemaruExeExport::GetLineText(int lineno) {
 			GlobalFree(hGlobal); // 元のは解放
 			return text;
 		}
+		GlobalFree(hGlobal); // 元のは解放
 	}
 	return L"";
 }
@@ -268,6 +271,7 @@ wstring CHidemaruExeExport::LoadFileUnicode(wstring filename, int nHmEncode, UIN
 				*success = true;
 				return text;
 			}
+			GlobalFree(hGlobal); // 元のは解放
 		}
 	}
 
