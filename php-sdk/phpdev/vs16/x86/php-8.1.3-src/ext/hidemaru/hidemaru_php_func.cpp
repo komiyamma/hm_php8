@@ -913,7 +913,17 @@ PHP_FUNCTION(hidemaru_explorerpane_getcurrentdir)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
-	if (CHidemaruExeExport::HmExplorerPane_GetCurrentDir) {
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		if (CHidemaruExeExport::HmExplorerPane_GetCurrentDir) {
+
+			BYTE* byte_result = CHidemaruExeExport::HmExplorerPane_GetCurrentDir(hHidemaruWindow);
+			wstring wszReturn = DecodeOriginalEncodeVector(byte_result);
+			string utf8_value = utf16_to_utf8(wszReturn);
+			RETURN_STRING(utf8_value.c_str());
+		}
+		/*
 		if (Macro_IsExecuting()) {
 			wstring utf16_expression = LR"RAW(dllfuncstr(loaddll("HmExplorerPane"), "GetCurrentDir", hidemaruhandle(0)))RAW";
 			TestDynamicVar.Clear();
@@ -933,6 +943,7 @@ PHP_FUNCTION(hidemaru_explorerpane_getcurrentdir)
 			string utf8_value = utf16_to_utf8(ret.Message);
 			RETURN_STRING(utf8_value.c_str());
 		}
+		*/
 	}
 
 	RETURN_STRING("");
@@ -944,7 +955,18 @@ PHP_FUNCTION(hidemaru_explorerpane_getproject)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
-	if (CHidemaruExeExport::HmExplorerPane_GetProject) {
+	// ちゃんと関数がある時だけ
+	if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+		HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+		if (CHidemaruExeExport::HmExplorerPane_GetProject) {
+
+			BYTE* byte_result = CHidemaruExeExport::HmExplorerPane_GetProject(hHidemaruWindow);
+			wstring wszReturn = DecodeOriginalEncodeVector(byte_result);
+			string utf8_value = utf16_to_utf8(wszReturn);
+			RETURN_STRING(utf8_value.c_str());
+		}
+
+		/*
 		if (Macro_IsExecuting()) {
 			wstring utf16_expression = LR"RAW(dllfuncstr(loaddll("HmExplorerPane"), "GetProject", hidemaruhandle(0)))RAW";
 			TestDynamicVar.Clear();
@@ -964,6 +986,7 @@ PHP_FUNCTION(hidemaru_explorerpane_getproject)
 			string utf8_value = utf16_to_utf8(ret.Message);
 			RETURN_STRING(utf8_value.c_str());
 		}
+		*/
 	}
 
 	RETURN_STRING("");

@@ -1,6 +1,17 @@
-﻿     ライブラリ G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.1.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.lib とオブジェクト G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.1.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.exp を作成中
+﻿  convert_string.cpp
+  dllfunc_interface_internal.cpp
+  dllmain.cpp
+  hidemaru_php_func.cpp
+  hidemaruexe_export.cpp
+  hidemaru_interface.cpp
+  hm_original_decode_mapfunc.cpp
+  hm_original_encode_map.cpp
+  hm_original_encode_mapfunc.cpp
+  output_debugstream.cpp
+  self_dll_info.cpp
+     ライブラリ G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.1.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.lib とオブジェクト G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.1.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.exp を作成中
   コード生成しています。
-  Previous IPDB was built with incompatible compiler, fall back to full compilation.
-  All 679 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Previous IPDB not found, fall back to full compilation.
+  All 690 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   コード生成が終了しました。
   php_hidemaru.vcxproj -> G:\repogitory\hm_php8\php-sdk\phpdev\vs16\x86\php-8.1.3-src\ext\hidemaru\php_hidemaru\Release\php_hidemaru.dll

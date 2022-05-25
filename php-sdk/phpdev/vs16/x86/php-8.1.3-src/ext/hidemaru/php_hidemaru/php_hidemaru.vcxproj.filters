@@ -72,6 +72,9 @@
     <ClCompile Include="..\dllfunc_interface_internal.cpp">
       <Filter>秀丸マクロとのAPI Interface</Filter>
     </ClCompile>
+    <ClCompile Include="..\hm_original_decode_mapfunc.cpp">
+      <Filter>秀丸独自のChar渡しでのUnicode扱い</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\..\Release_TS\php8ts.lib">

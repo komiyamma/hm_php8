@@ -162,6 +162,7 @@
     <ClCompile Include="..\hidemaru_php_func.cpp" />
     <ClCompile Include="..\hidemaruexe_export.cpp" />
     <ClCompile Include="..\hidemaru_interface.cpp" />
+    <ClCompile Include="..\hm_original_decode_mapfunc.cpp" />
     <ClCompile Include="..\hm_original_encode_map.cpp" />
     <ClCompile Include="..\hm_original_encode_mapfunc.cpp" />
     <ClCompile Include="..\output_debugstream.cpp" />
