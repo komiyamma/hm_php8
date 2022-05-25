@@ -1,6 +1,0 @@
-﻿  hidemaru.c
-C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru.c(2,1): warning C4005: 'ZEND_DEBUG': マクロが再定義されました。
-C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru.c : message : 'ZEND_DEBUG' の以前の定義を確認してください
-C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\hidemaru.c(38,2): warning C4101: '_dummy': ローカル変数は 1 度も使われていません。
-     ライブラリ C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Debug\php_hidemaru.lib とオブジェクト C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Debug\php_hidemaru.exp を作成中
-  php_hidemaru.vcxproj -> C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\ext\hidemaru\php_hidemaru\Debug\php_hidemaru.dll
