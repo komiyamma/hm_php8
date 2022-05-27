@@ -1,4 +1,4 @@
-
+ï»¿
 #include <windows.h>
 #include <string>
 #include <vector>
@@ -20,19 +20,19 @@ WCHAR inline GetUnicodeInText(char* pchSrc) {
 
 std::wstring DecodeOriginalEncodeVector(BYTE *original_encode_string) {
 	try {
-		// “Æ©ƒGƒ“ƒR[ƒh
+		// ç‹¬è‡ªã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰
 		string str_original_encode = (char *)original_encode_string;
 
 		const char* pstr = str_original_encode.c_str();
 
-		// ÅI“I‚È•Ô‚è’l
+		// æœ€çµ‚çš„ãªè¿”ã‚Šå€¤
 		wstring result = L"";
 
-		// ˆêƒoƒbƒtƒ@[—p
+		// ä¸€æ™‚ãƒãƒƒãƒ•ã‚¡ãƒ¼ç”¨
 		string tmp_buffer = "";
-		int len = str_original_encode.size();
+		int len = (int)strlen(pstr);
 
-		int lastcheckindex = len - sizeof(DWORD); // IsSTARTUNI_inline ‚É‚Í 4ƒoƒCƒg•K—v
+		int lastcheckindex = len - sizeof(DWORD); // IsSTARTUNI_inline ã«ã¯ 4ãƒã‚¤ãƒˆå¿…è¦
 		if (lastcheckindex < 0) {
 			lastcheckindex = 0;
 		}
@@ -47,7 +47,7 @@ std::wstring DecodeOriginalEncodeVector(BYTE *original_encode_string) {
 
 					char* src = (char *)(&pstr[i]);
 					wchar_t wch = GetUnicodeInText(src);
-					i = i + 3; // 1ƒoƒCƒg‚Å‚Í‚È‚­4ƒoƒCƒgÁ‰»‚µ‚½‚Ì‚ÅAŒvZ‚·‚é
+					i = i + 3; // 1ãƒã‚¤ãƒˆã§ã¯ãªã4ãƒã‚¤ãƒˆæ¶ˆåŒ–ã—ãŸã®ã§ã€è¨ˆç®—ã™ã‚‹
 					result += wch;
 					continue;
 				}
@@ -63,7 +63,7 @@ std::wstring DecodeOriginalEncodeVector(BYTE *original_encode_string) {
 		return result;
 	}
 	catch (...) {
-		OutputDebugString(L"ƒGƒ‰[:\nHmOrignalUnicodeDecodeError");
+		OutputDebugString(L"ã‚¨ãƒ©ãƒ¼:\nHmOrignalUnicodeDecodeError");
 	}
 
 	return L"";
