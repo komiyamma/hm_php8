@@ -1,7 +1,0 @@
-ARG_ENABLE('hidemaru', 'hidemaru support', 'no');
-
-if (PHP_HIDEMARU != 'no') {
-	AC_DEFINE('HAVE_HIDEMARU', 1, 'hidemaru support enabled');
-
-	EXTENSION('hidemaru', 'hidemaru.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
-}
