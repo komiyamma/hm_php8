@@ -1,6 +1,6 @@
 ﻿<?php
 /*-------------------- coding: utf-8 ---------------------------
- * hmPeach 1.9.3.3用 ライブラリ
+ * hmPeach 1.9.3.4用 ライブラリ
  * Copyright (c) 2021-2022 Akitsugu Komiyama
  * under the Apache License Version 2.0
  *
@@ -97,7 +97,7 @@ class _TMacro {
     public function __construct() {
         $this->doStatement = new _TMacroStatement();
         $this->doFunction = new _TMacroFunction();
-	}
+    }
     /**
      * 秀丸マクロ実行中かどうかの判定。原則的に、hmPeachではtrueが返る。
      */
@@ -147,30 +147,34 @@ class _TMacro {
 
     function __Function(string $function_name, ...$args): array {
 
-		list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
+        list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
 
         $arg_varname_join = join(',', $args_key);
         $expression = $function_name . '(' . $arg_varname_join . ')';
         list($success, $result) = hidemaru_macro_eval_function($expression);
 
-		$args_result = $this->_clearMacroVarAndUpdateArgs($args_key, $args_value);
-		if ($success) {
-	        return array($result, $args_result, null, "");
-		} else {
-	        return array(null, $args_result, new RuntimeException("Hidemaru Macro doFunction(...):\n" . $function_name), "");
-		}
+        $args_result = $this->_clearMacroVarAndUpdateArgs($args_key, $args_value);
+        if ($success) {
+            return array($result, $args_result, null, "");
+        } else {
+            return array(null, $args_result, new RuntimeException("Hidemaru Macro doFunction(...):\n" . $function_name), "");
+        }
     }
 
     function __Statement(string $statement_name, ...$args): array {
 
-		list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
+        list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
 
         $arg_varname_join = join(',', $args_key);
         $expression = $statement_name . ' ' . $arg_varname_join . ';';
         $result_array = $Hm->Macro->doEval($expression);
-
-		$args_result = $this->_clearMacroVarAndUpdateArgs($args_key, $args_value);
-
+        $macro_result = $Hm->Macro->getVar("result");
+        $args_result = $this->_clearMacroVarAndUpdateArgs($args_key, $args_value);
+        if ($result_array[0] > 0) {
+            if ($macro_result == 0) {
+                return array(0, $args_result, new RuntimeException("Hidemaru Macro doStatement(...):\n" . $statement_name . "\n" . "Hidemaru Macro Result Zero"), $result_array[2]);
+            }
+        }
         return array($result_array[0], $args_result, $result_array[1], $result_array[2]);
     }
 
@@ -178,7 +182,7 @@ class _TMacro {
         $base_random = strval(rand (1, 10000));
         $curr_random = strval(rand (1, 10000));
 
-		$args_key = array();
+        $args_key = array();
         $args_value = array();
 
         for ( $ix = 0; $ix < count($args); $ix++ ) {
@@ -220,7 +224,7 @@ class _TMacro {
             }
         }
 
-		return array($args_key, $args_value);
+        return array($args_key, $args_value);
     }
 
     private function _clearMacroVarAndUpdateArgs(array $args_key, array $args_value) {
