@@ -171,9 +171,7 @@ class _TMacro {
         $macro_result = $Hm->Macro->getVar("result");
         $args_result = $this->_clearMacroVarAndUpdateArgs($args_key, $args_value);
         if ($result_array[0] > 0) {
-            if ($macro_result == 0) {
-                return array(0, $args_result, new RuntimeException("Hidemaru Macro doStatement(...):\n" . $statement_name . "\n" . "Hidemaru Macro Result Zero"), $result_array[2]);
-            }
+            return array($macro_result, $args_result, null, $result_array[2]);
         }
         return array($result_array[0], $args_result, $result_array[1], $result_array[2]);
     }
