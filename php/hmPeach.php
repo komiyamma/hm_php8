@@ -145,6 +145,76 @@ class _TMacro {
         }
     }
 
+
+	function doProxyMethod(string $name, string $t, ...$args) {
+	    if ($t == "fn" ||  $t == "fs") {
+	        $count = count($args);
+	        if ($count == 0) {
+	            return $Hm->Macro->getVar($name);
+	        }
+	        else if ($count > 0) {
+	            list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
+	            return $_result;
+	        }
+	    }
+	    else if ($t == "fsn") {
+	        $count = count($args);
+	        if ($count == 0) {
+	            return $Hm->Macro->getVar($name);
+	        }
+	        else if ($count > 0) {
+	            list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
+	            return $_result;
+	        }
+	    }
+	    else if ($t == "fn1s") {
+	        $list_args = $args;
+	        $count = count($list_args);
+	        if ($count >= 1) {
+	            $list_args[0] = "$args[0]";
+	        }
+	        list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$list_args);
+	        return $_result;
+	    }
+	    else if ($t == "fn1s2s") {
+	        $list_args = $args;
+	        $count = count($list_args);
+	        if ($count >= 1) {
+	            $list_args[0] = "$args[0]";
+	        }
+	        if ($count >= 2) {
+	            $list_args[1] = "$args[1]";
+	        }
+	        list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$list_args);
+	        return $_result;
+	    }
+	    else if ($t == "st") {
+	        list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$args);
+	        return $_result;
+	    }
+	    else if ($t == "st1s") {
+	        $list_args = $args;
+	        $count = count($list_args);
+	        if ($count >= 1) {
+	            $list_args[0] = "$args[0]";
+	        }
+	        list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$list_args);
+	        return $_result;
+	    }
+	    else if ($t == "st1s2s") {
+	        $list_args = $args;
+	        $count = count($list_args);
+	        if ($count >= 1) {
+	            $list_args[0] = "$args[0]";
+	        }
+	        if ($count >= 2) {
+	            $list_args[1] = "$args[1]";
+	        }
+	        list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$list_args);
+	        return $_result;
+	    }
+	}
+
     function __Function(string $function_name, ...$args): array {
 
         list($args_key, $args_value) = $this->_setMacroVarAndMakeMacroKeyArray($args);
@@ -506,4 +576,6 @@ class _THidemaru {
 }
 
 $Hm = new _THidemaru();
+
+require(dirname(__FILE__) . "\\hmMacro.php");
 ?>
