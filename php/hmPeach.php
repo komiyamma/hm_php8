@@ -1390,20 +1390,20 @@ if (!function_exists("getconfig")) {
     }
 }
 
-if (!function_exists("member_num")) {
+if (!function_exists("member_rnum")) {
     function member_rnum(...$args) {
         $arg_name_list = [];
-        for($i=0; $i<count($arg_name_list); $i++) {
+        for($i=0; $i<count($args); $i++) {
             $arg = $args[$i];
             $typename = gettype($arg);
             if ($typename == gettype(true) || $typename == gettype(10) || $typename == gettype(10.5)) {
-                $var_name = "#__member_rnum_arg" . str($i) . "__";
+                $var_name = '#__member_rnum_arg' . "$i" . "__";
                 array_push($arg_name_list, $var_name);
                 $Hm->Macro->setVar($var_name, intval($arg));
             } else {
-                $var_name = "$__member_rnum_arg" . str($i) . "__";
+                $var_name = '$__member_rnum_arg' . "$i" . "__";
                 array_push($arg_name_list, $var_name);
-                $Hm->Macro->setVar($var_name, str($arg));
+                $Hm->Macro->setVar($var_name, "$arg");
             }
         }
 
@@ -1422,20 +1422,22 @@ if (!function_exists("member_num")) {
 
         return $func_ret;
     }
+}
 
+if (!function_exists("member_rstr")) {
     function member_rstr(...$args) {
         $arg_name_list = [];
-        for($i=0; $i<count($arg_name_list); $i++) {
+        for($i=0; $i<count($args); $i++) {
             $arg = $args[$i];
             $typename = gettype($arg);
             if ($typename == gettype(true) || $typename == gettype(10) || $typename == gettype(10.5)) {
-                $var_name = "#__member_rstr_arg" . str($i) . "__";
+                $var_name = '#__member_rstr_arg' . "$i" . "__";
                 array_push($arg_name_list, $var_name);
                 $Hm->Macro->setVar($var_name, intval($arg));
             } else {
-                $var_name = "$__member_rstr_arg" . str($i) . "__";
+                $var_name = '$__member_rstr_arg' . "$i" . "__";
                 array_push($arg_name_list, $var_name);
-                $Hm->Macro->setVar($var_name, str($arg));
+                $Hm->Macro->setVar($var_name, "$arg");
             }
         }
 
