@@ -1328,13 +1328,13 @@ if (!function_exists("getresultex")) {
     function getresultex(...$args){ 
         // この時だけ文字列が返る
         if ($args[0] == -1) {
-            return getresultex_str(...$args);
+            return getresultex_rstr(...$args);
         }
         else {
             return $Hm->Macro->doProxyMethod("getresultex", "fsn", ...$args);
         }
     }
-    function getresultex_str(...$args){ 
+    function getresultex_rstr(...$args){ 
         $Hm->Macro->setVar('#__getresultex_rstr_arg0__', $args[0]);
         $eval_ret = $Hm->Macro->doEval('$__temp_getresultex_rstr__ = getresultex(#__getresultex_rstr_arg0__);');
         $func_ret = $Hm->Macro->getVar('$__temp_getresultex_rstr__');
@@ -1348,13 +1348,13 @@ if (!function_exists("geteventparam")) {
     function geteventparam(...$args){ 
         // この時だけ文字列が返る
         if ($args[0] == 0 && event() == 9) {
-            return geteventparam_str(...$args);
+            return geteventparam_rstr(...$args);
         }
         else {
             return $Hm->Macro->doProxyMethod("geteventparam", "fsn", ...$args);
         }
     }
-    function geteventparam_str(...$args) {
+    function geteventparam_rstr(...$args) {
         $Hm->Macro->setVar('#__geteventparam_rstr_arg0__', $args[0]);
         $eval_ret = $Hm->Macro->doEval('$__temp_geteventparam_rstr__ = geteventparam(#__geteventparam_rstr_arg0__);');
         $func_ret = $Hm->Macro->getVar('$__temp_geteventparam_rstr__');
@@ -1376,7 +1376,7 @@ if (!function_exists("getconfig")) {
     }
 
     # 数値型で欲しい場合には、こちらを使えば、数値に変換可能なら数値型に変換して返す。
-    function getconfig_num(...$args) {
+    function getconfig_rnum(...$args) {
         $ret = getconfig(...$args);
         try {
             $num = intval($ret);
