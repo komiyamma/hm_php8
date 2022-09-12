@@ -1390,68 +1390,69 @@ if (!function_exists("getconfig")) {
     }
 }
 
-/*
-# 返り値の型が分岐するもの
-class _MemberFunction:
+if (!function_exists("member_num")) {
+    function member_rnum(...$args) {
+        $arg_name_list = [];
+        for($i=0; $i<count($arg_name_list); $i++) {
+            $arg = $args[$i];
+            $typename = gettype($arg);
+            if ($typename == gettype(true) || $typename == gettype(10) || $typename == gettype(10.5)) {
+                $var_name = "#__member_rnum_arg" . str($i) . "__";
+                array_push($arg_name_list, $var_name);
+                $Hm->Macro->setVar($var_name, intval($arg));
+            } else {
+                $var_name = "$__member_rnum_arg" . str($i) . "__";
+                array_push($arg_name_list, $var_name);
+                $Hm->Macro->setVar($var_name, str($arg));
+            }
+        }
 
-    def rnum(self, ...$args){
-        arg_name_list = []
-        for i, arg in enumerate(args){
-            # bool か int か float なら 整数にして
-            if type(arg) == type(True) or type(arg) == type(10) or type(arg) == type(10.5){
-                var_name = "#__member_rnum_arg" + str(i) + "__"
-                arg_name_list.append(var_name)
-                hm.Macro.Var[var_name] = int(arg); }
-            else:
-                var_name = "$__member_rnum_arg" + str(i) + "__"
-                arg_name_list.append(var_name)
-                hm.Macro.Var[var_name] = str(arg); }
-        
-        var_arg_list = ", ".join(arg_name_list)
-        eval_ret = hm.Macro.Eval(r'''#__temp_member_rnum__ = member( ''' + var_arg_list + r''');'''); }
-        func_ret = hm.Macro.Var["#__temp_member_rnum__"];
-        hm.Macro.Var["#__temp_member_rnum__"] = 0;
+        $var_arg_list = join(', ', $arg_name_list);
+        $eval_ret = $Hm->Macro->doEval('#__temp_member_rnum__ = member( ' . $var_arg_list . ');');
+        $func_ret = $Hm->Macro->getVar('#__temp_member_rnum__');
+        $Hm->Macro->setVar('#__temp_member_rnum__',  0);
 
-        for var_name in arg_name_list:
-            
-            if var_name.startswith('#'){
-                hm.Macro.Var[var_name] = 0;
-            else:
-                hm.Macro.Var[var_name] = "";
+        foreach($arg_name_list as $var_name) {
+            if (str_starts_with($var_name, '#')) {
+                $Hm->Macro->setVar($var_name, 0);
+            } else {
+                $Hm->Macro->setVar($var_name, "");
+            }
+        }
 
-        return func_ret
-        
-    def rstr(self, ...$args){
-        arg_name_list = []
-        for i, arg in enumerate(args){
-            # bool か int か float なら 整数にして
-            if type(arg) == type(True) or type(arg) == type(10) or type(arg) == type(10.5){
-                var_name = "#__member_rstr_arg" + str(i) + "__"
-                arg_name_list.append(var_name)
-                hm.Macro.Var[var_name] = int(arg); }
-            else:
-                var_name = "$__member_rstr_arg" + str(i) + "__"
-                arg_name_list.append(var_name)
-                hm.Macro.Var[var_name] = str(arg); }
-            
-        var_arg_list = ", ".join(arg_name_list)
-        eval_ret = hm.Macro.Eval(r'''$__temp_member_rstr__ = member( ''' + var_arg_list + r''');'''); }
-        func_ret = hm.Macro.Var["$__temp_member_rstr__"];
-        hm.Macro.Var["$__temp_member_rstr__"] = "";
+        return $func_ret;
+    }
 
-        for var_name in arg_name_list:
-            
-            if var_name.startswith('#'){
-                hm.Macro.Var[var_name] = 0;
-            else:
-                hm.Macro.Var[var_name] = "";
+    function member_rstr(...$args) {
+        $arg_name_list = [];
+        for($i=0; $i<count($arg_name_list); $i++) {
+            $arg = $args[$i];
+            $typename = gettype($arg);
+            if ($typename == gettype(true) || $typename == gettype(10) || $typename == gettype(10.5)) {
+                $var_name = "#__member_rstr_arg" . str($i) . "__";
+                array_push($arg_name_list, $var_name);
+                $Hm->Macro->setVar($var_name, intval($arg));
+            } else {
+                $var_name = "$__member_rstr_arg" . str($i) . "__";
+                array_push($arg_name_list, $var_name);
+                $Hm->Macro->setVar($var_name, str($arg));
+            }
+        }
 
-        return func_ret
+        $var_arg_list = join(', ', $arg_name_list);
+        $eval_ret = $Hm->Macro->doEval('$__temp_member_rstr__ = member( ' . $var_arg_list . ');');
+        $func_ret = $Hm->Macro->getVar('$__temp_member_rstr__');
+        $Hm->Macro->setVar('$__temp_member_rstr__',  "");
 
-# member
-member = _MemberFunction(); }
-*/
+        foreach($arg_name_list as $var_name) {
+            if (str_starts_with($var_name, '#')) {
+                $Hm->Macro->setVar($var_name, 0);
+            } else {
+                $Hm->Macro->setVar($var_name, "");
+            }
+        }
 
-
-// require(dirname(__FILE__) . "\\hmMacro.php");
+        return $func_ret;
+    }
+}
 ?>
