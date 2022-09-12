@@ -1328,16 +1328,19 @@ if (!function_exists("getresultex")) {
     function getresultex(...$args){ 
         // この時だけ文字列が返る
         if ($args[0] == -1) {
-            $Hm->Macro->setVar('#__getresultex_rstr_arg0__', $args[0]);
-            $eval_ret = $Hm->Macro->doEval('$__temp_getresultex_rstr__ = getresultex(#__getresultex_rstr_arg0__);');
-            $func_ret = $Hm->Macro->getVar('$__temp_getresultex_rstr__');
-            $Hm->Macro->setVar('$__temp_getresultex_rstr__', '');
-            $Hm->Macro->setVar('#__getresultex_rstr_arg0__', 0);
-            return $func_ret;
+            return getresultex_str(...$args);
         }
         else {
             return $Hm->Macro->doProxyMethod("getresultex", "fsn", ...$args);
         }
+    }
+    function getresultex_str(...$args){ 
+        $Hm->Macro->setVar('#__getresultex_rstr_arg0__', $args[0]);
+        $eval_ret = $Hm->Macro->doEval('$__temp_getresultex_rstr__ = getresultex(#__getresultex_rstr_arg0__);');
+        $func_ret = $Hm->Macro->getVar('$__temp_getresultex_rstr__');
+        $Hm->Macro->setVar('$__temp_getresultex_rstr__', '');
+        $Hm->Macro->setVar('#__getresultex_rstr_arg0__', 0);
+        return $func_ret;
     }
 }
 
@@ -1345,16 +1348,19 @@ if (!function_exists("geteventparam")) {
     function geteventparam(...$args){ 
         // この時だけ文字列が返る
         if ($args[0] == 0 && event() == 9) {
-            $Hm->Macro->setVar('#__geteventparam_rstr_arg0__', $args[0]);
-            $eval_ret = $Hm->Macro->doEval('$__temp_geteventparam_rstr__ = geteventparam(#__geteventparam_rstr_arg0__);');
-            $func_ret = $Hm->Macro->getVar('$__temp_geteventparam_rstr__');
-            $Hm->Macro->setVar('$__temp_geteventparam_rstr__', '');
-            $Hm->Macro->setVar('#__geteventparam_rstr_arg0__', 0);
-            return $func_ret;
+            return geteventparam_str(...$args);
         }
         else {
             return $Hm->Macro->doProxyMethod("geteventparam", "fsn", ...$args);
         }
+    }
+    function geteventparam_str(...$args) {
+        $Hm->Macro->setVar('#__geteventparam_rstr_arg0__', $args[0]);
+        $eval_ret = $Hm->Macro->doEval('$__temp_geteventparam_rstr__ = geteventparam(#__geteventparam_rstr_arg0__);');
+        $func_ret = $Hm->Macro->getVar('$__temp_geteventparam_rstr__');
+        $Hm->Macro->setVar('$__temp_geteventparam_rstr__', '');
+        $Hm->Macro->setVar('#__geteventparam_rstr_arg0__', 0);
+        return $func_ret;
     }
 }
 
@@ -1367,6 +1373,20 @@ if (!function_exists("getconfig")) {
         $Hm->Macro->setVar('$__temp_getconfig_rstr__', '');
         $Hm->Macro->setVar('#__getconfig_rstr_arg0__', 0);
         return $func_ret;
+    }
+
+    # 数値型で欲しい場合には、こちらを使えば、数値に変換可能なら数値型に変換して返す。
+    function getconfig_num(...$args) {
+        $ret = getconfig(...$args);
+        try {
+            $num = intval($ret);
+            if ("$num" == $ret ) {
+                return $num;
+            }
+        } catch(e) {
+
+        }
+        return 0;
     }
 }
 
