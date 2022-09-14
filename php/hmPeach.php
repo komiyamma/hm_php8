@@ -146,74 +146,78 @@ class _TMacro {
     }
 
 
-	function doProxyMethod(string $name, string $t, ...$args) {
-	    if ($t == "fn" ||  $t == "fs") {
-	        $count = count($args);
-	        if ($count == 0) {
-	            return $Hm->Macro->getVar($name);
-	        }
-	        else if ($count > 0) {
-	            list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
-	            return $_result;
-	        }
-	    }
-	    else if ($t == "fsn") {
-	        $count = count($args);
-	        if ($count == 0) {
-	            return $Hm->Macro->getVar($name);
-	        }
-	        else if ($count > 0) {
-	            list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
-	            return $_result;
-	        }
-	    }
-	    else if ($t == "fn1s") {
-	        $list_args = $args;
-	        $count = count($list_args);
-	        if ($count >= 1) {
-	            $list_args[0] = "$args[0]";
-	        }
-	        list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$list_args);
-	        return $_result;
-	    }
-	    else if ($t == "fn1s2s") {
-	        $list_args = $args;
-	        $count = count($list_args);
-	        if ($count >= 1) {
-	            $list_args[0] = "$args[0]";
-	        }
-	        if ($count >= 2) {
-	            $list_args[1] = "$args[1]";
-	        }
-	        list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$list_args);
-	        return $_result;
-	    }
-	    else if ($t == "st") {
-	        list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$args);
-	        return $_result;
-	    }
-	    else if ($t == "st1s") {
-	        $list_args = $args;
-	        $count = count($list_args);
-	        if ($count >= 1) {
-	            $list_args[0] = "$args[0]";
-	        }
-	        list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$list_args);
-	        return $_result;
-	    }
-	    else if ($t == "st1s2s") {
-	        $list_args = $args;
-	        $count = count($list_args);
-	        if ($count >= 1) {
-	            $list_args[0] = "$args[0]";
-	        }
-	        if ($count >= 2) {
-	            $list_args[1] = "$args[1]";
-	        }
-	        list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$list_args);
-	        return $_result;
-	    }
-	}
+    function doProxyMethod(string $name, string $t, ...$args) {
+        if ($t == "fn" ||  $t == "fs") {
+            $count = count($args);
+            if ($count == 0) {
+                return $Hm->Macro->getVar($name);
+            }
+            else if ($count > 0) {
+                list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
+                return $_result;
+            }
+        }
+        else if ($t == "fs0") {
+            list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
+            return $_result;
+        }
+        else if ($t == "fsn") {
+            $count = count($args);
+            if ($count == 0) {
+                return $Hm->Macro->getVar($name);
+            }
+            else if ($count > 0) {
+                list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
+                return $_result;
+            }
+        }
+        else if ($t == "fn1s") {
+            $list_args = $args;
+            $count = count($list_args);
+            if ($count >= 1) {
+                $list_args[0] = "$args[0]";
+            }
+            list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$list_args);
+            return $_result;
+        }
+        else if ($t == "fn1s2s") {
+            $list_args = $args;
+            $count = count($list_args);
+            if ($count >= 1) {
+                $list_args[0] = "$args[0]";
+            }
+            if ($count >= 2) {
+                $list_args[1] = "$args[1]";
+            }
+            list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$list_args);
+            return $_result;
+        }
+        else if ($t == "st") {
+            list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$args);
+            return $_result;
+        }
+        else if ($t == "st1s") {
+            $list_args = $args;
+            $count = count($list_args);
+            if ($count >= 1) {
+                $list_args[0] = "$args[0]";
+            }
+            list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$list_args);
+            return $_result;
+        }
+        else if ($t == "st1s2s") {
+            $list_args = $args;
+            $count = count($list_args);
+            if ($count >= 1) {
+                $list_args[0] = "$args[0]";
+            }
+            if ($count >= 2) {
+                $list_args[1] = "$args[1]";
+            }
+            list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$list_args);
+            return $_result;
+        }
+    }
 
     function __Function(string $function_name, ...$args): array {
 
@@ -578,6 +582,9 @@ class _THidemaru {
 $Hm = new _THidemaru();
 
 
+if (!function_exists("gettotaltext")) { function gettotaltext(...$args){ return $Hm->Macro->doProxyMethod("gettotaltext", "fs0", ...$args); } }
+if (!function_exists("getlinetext")) { function getlinetext(...$args){ return $Hm->Macro->doProxyMethod("getlinetext", "fs0", ...$args); } }
+if (!function_exists("getselectedtext")) { function getselectedtext(...$args){ return $Hm->Macro->doProxyMethod("getselectedtext", "fs0", ...$args); } }
 
 if (!function_exists("version")) { function version(...$args){ return $Hm->Macro->doProxyMethod("version", "fn", ...$args); } }
 if (!function_exists("platform")) { function platform(...$args){ return $Hm->Macro->doProxyMethod("platform", "fn", ...$args); } }
@@ -673,19 +680,20 @@ if (!function_exists("filehistcount")) { function filehistcount(...$args){ retur
 
 # 分岐あり
 if (!function_exists("overwrite")) {
-	function overwrite(...$args){
-	    if (count($args)==0) {
-	        return $Hm->Macro->doProxyMethod("overwrite", "fn", ...$args);
-	    }
-	    else {
-	        return $Hm->Macro->doProxyMethod("overwrite", "st1s", ...$args);
-	    }
-	}
+    function overwrite(...$args){
+        if (count($args)==0) {
+            return $Hm->Macro->doProxyMethod("overwrite", "fn", ...$args);
+        }
+        else {
+            return $Hm->Macro->doProxyMethod("overwrite", "st1s", ...$args);
+        }
+    }
 }
 
 if (!function_exists("updated")) { function updated(...$args){ return $Hm->Macro->doProxyMethod("updated", "fn", ...$args); } }
 if (!function_exists("updatecount")) { function updatecount(...$args){ return $Hm->Macro->doProxyMethod("updatecount", "fn", ...$args); } }
 if (!function_exists("anyclipboard")) { function anyclipboard(...$args){ return $Hm->Macro->doProxyMethod("anyclipboard", "fn", ...$args); } }
+if (!function_exists("inputstates")) { function inputstates(...$args){ return $Hm->Macro->doProxyMethod("inputstates", "fn", ...$args); } }
 if (!function_exists("imestate")) { function imestate(...$args){ return $Hm->Macro->doProxyMethod("imestate", "fn", ...$args); } }
 if (!function_exists("browsemode")) { function browsemode(...$args){ return $Hm->Macro->doProxyMethod("browsemode", "fn", ...$args); } }
 if (!function_exists("keypressed")) { function keypressed(...$args){ return $Hm->Macro->doProxyMethod("keypressed", "fn", ...$args); } }
@@ -873,54 +881,54 @@ if (!function_exists("decodeuri")) { function decodeuri(...$args){ return $Hm->M
 
 # ２つの値を返す
 if (!function_exists("enumregvalue")) {
-	function enumregvalue(...$args){
-	    list($_result, $_args, $_error, $_message) = $Hm->Macro->doFunction->enumregvalue(...$args);
-	    return array($_result, $_args[1]);
-	}
+    function enumregvalue(...$args){
+        list($_result, $_args, $_error, $_message) = $Hm->Macro->doFunction->enumregvalue(...$args);
+        return array($_result, $_args[1]);
+    }
 }
 
 # ２つの値を返す
 if (!function_exists("getlinecount")) {
-	function getlinecount(...$args){
-	    list($_result, $_args, $_error, $_message) = $Hm->Macro->doFunction->getlinecount(...$args);
-	    return array($_result, $_args[2]);
-	}
+    function getlinecount(...$args){
+        list($_result, $_args, $_error, $_message) = $Hm->Macro->doFunction->getlinecount(...$args);
+        return array($_result, $_args[2]);
+    }
 }
 
 # 分岐あり
 if (!function_exists("toupper")) {
-	function toupper(...$args){
-	    if (count($args)>=1 && gettype($args[0]) == "string") {
-	        return $Hm->Macro->doProxyMethod("toupper", "fs", ...$args);
-	    }
-	    else {
-	        return $Hm->Macro->doProxyMethod("toupper", "st", ...$args);
-	    }
-	}
+    function toupper(...$args){
+        if (count($args)>=1 && gettype($args[0]) == "string") {
+            return $Hm->Macro->doProxyMethod("toupper", "fs", ...$args);
+        }
+        else {
+            return $Hm->Macro->doProxyMethod("toupper", "st", ...$args);
+        }
+    }
 }
 
 # 分岐あり
 if (!function_exists("tolower")) {
-	function tolower(...$args){
-	    if (count($args)>=1 && gettype($args[0]) == "string") {
-	        return $Hm->Macro->doProxyMethod("tolower", "fs", ...$args);
-	    }
-	    else {
-	        return $Hm->Macro->doProxyMethod("tolower", "st", ...$args);
-	    }
-	}
+    function tolower(...$args){
+        if (count($args)>=1 && gettype($args[0]) == "string") {
+            return $Hm->Macro->doProxyMethod("tolower", "fs", ...$args);
+        }
+        else {
+            return $Hm->Macro->doProxyMethod("tolower", "st", ...$args);
+        }
+    }
 }
 
 # 分岐あり
 if (!function_exists("filter")) {
-	function filter(...$args){
-	    if (count($args)>=4) {
-	        return $Hm->Macro->doProxyMethod("filter", "fs", ...$args);
-	    }
-	    else {
-	        return $Hm->Macro->doProxyMethod("filter", "st", ...$args);
-	    }
-	}
+    function filter(...$args){
+        if (count($args)>=4) {
+            return $Hm->Macro->doProxyMethod("filter", "fs", ...$args);
+        }
+        else {
+            return $Hm->Macro->doProxyMethod("filter", "st", ...$args);
+        }
+    }
 }
 
 if (!function_exists("input")) { function input(...$args){ return $Hm->Macro->doProxyMethod("input", "fs", ...$args); } }
