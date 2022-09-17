@@ -1312,6 +1312,7 @@ if (!function_exists("browsemodeswitch")) { function browsemodeswitch(...$args){
 if (!function_exists("clist")) { function clist(...$args){ return $Hm->Macro->doProxyMethod("clist", "st", ...$args); } }
 if (!function_exists("clearupdated")) { function clearupdated(...$args){ return $Hm->Macro->doProxyMethod("clearupdated", "st", ...$args); } }
 if (!function_exists("refreshtabstop")) { function refreshtabstop(...$args){ return $Hm->Macro->doProxyMethod("refreshtabstop", "st", ...$args); } }
+if (!function_exists("refreshtabstop_pause")) { function refreshtabstop_pause(...$args){ return $Hm->Macro->doProxyMethod("refreshtabstop_pause", "st", ...$args); } }
 if (!function_exists("refreshtabstop_shrink")) { function refreshtabstop_shrink(...$args){ return $Hm->Macro->doProxyMethod("refreshtabstop_shrink", "st", ...$args); } }
 if (!function_exists("refreshtabstop_current")) { function refreshtabstop_current(...$args){ return $Hm->Macro->doProxyMethod("refreshtabstop_current", "st", ...$args); } }
 if (!function_exists("autospellcheckswitch")) { function autospellcheckswitch(...$args){ return $Hm->Macro->doProxyMethod("autospellcheckswitch", "st", ...$args); } }
@@ -1347,6 +1348,7 @@ if (!function_exists("runex")) { function runex(...$args){ return $Hm->Macro->do
 if (!function_exists("disabledraw")) { function disabledraw(...$args){ return $Hm->Macro->doProxyMethod("disabledraw", "st", ...$args); } }
 if (!function_exists("enabledraw")) { function enabledraw(...$args){ return $Hm->Macro->doProxyMethod("enabledraw", "st", ...$args); } }
 if (!function_exists("disabledraw2")) { function disabledraw2(...$args){ return $Hm->Macro->doProxyMethod("disabledraw2", "st", ...$args); } }
+if (!function_exists("enablebreak")) { function enablebreak(...$args){ return $Hm->Macro->doProxyMethod("enablebreak", "st", ...$args); } }
 if (!function_exists("disablebreak")) { function disablebreak(...$args){ return $Hm->Macro->doProxyMethod("disablebreak", "st", ...$args); } }
 if (!function_exists("disableinvert")) { function disableinvert(...$args){ return $Hm->Macro->doProxyMethod("disableinvert", "st", ...$args); } }
 if (!function_exists("enableinvert")) { function enableinvert(...$args){ return $Hm->Macro->doProxyMethod("enableinvert", "st", ...$args); } }
