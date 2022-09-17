@@ -1,6 +1,6 @@
 ﻿<?php
 /*-------------------- coding: utf-8 ---------------------------
- * hmPeach 2.0.0.5用 ライブラリ
+ * hmPeach 2.0.0.6用 ライブラリ
  * Copyright (c) 2021-2022 Akitsugu Komiyama
  * under the Apache License Version 2.0
  *
@@ -78,6 +78,105 @@ class _TEdit {
     }
 }
 
+class _TFlagsEncode {
+    public $Sjis = 0x01;
+    public $Utf16 = 0x02;
+    public $Euc = 0x03;
+    public $Jis = 0x04;
+    public $Utf7 = 0x05;
+    public $Utf8 = 0x06;
+    public $Utf16_be = 0x07;
+    public $Euro = 0x08;
+    public $Gb2312 = 0x09;
+    public $Big5 = 0x0a;
+    public $Euckr = 0x0b;
+    public $Johab = 0x0c;
+    public $Easteuro = 0x0d;
+    public $Baltic = 0x0e;
+    public $Greek = 0x0f;
+    public $Russian = 0x10;
+    public $Symbol = 0x11;
+    public $Turkish = 0x12;
+    public $Hebrew = 0x13;
+    public $Arabic = 0x14;
+    public $Thai = 0x15;
+    public $Vietnamese = 0x16;
+    public $Mac = 0x17;
+    public $Oem = 0x18;
+    public $Default = 0x19;
+    public $Utf32 = 0x1b;
+    public $Utf32_be = 0x1c;
+    public $Binary = 0x1a;
+    public $LF = 0x40;
+    public $CR = 0x80;
+
+    public $Bom = 0x0600;
+    public $NoBom = 0x0400;
+    public $Selection = 0x2000;
+
+    public $NoAddHist = 0x0100;
+    public $WS = 0x0800;
+    public $WB = 0x1000;
+}
+
+class _FlagsSearchOption {
+    public $Word = 0x00000001;
+    public $Casesense = 0x00000002;
+    public $NoCasesense = 0x00000000;
+    public $Regular = 0x00000010;
+    public $NoRegular = 0x00000000;
+    public $Fuzzy = 0x00000020;
+    public $Hilight = 0x00003800;
+    public $NoHilight = 0x00002000;
+    public $LinkNext = 0x00000080;
+    public $Loop = 0x01000000;
+
+    public $MaskComment = 0x00020000;
+    public $MaskIfdef = 0x00040000;
+    public $MaskNormal = 0x00010000;
+    public $MaskScript = 0x00080000;
+    public $MaskString = 0x00100000;
+    public $MaskTag = 0x00200000;
+    public $MaskOnly = 0x00400000;
+    public $FEnableMaskFlags = 0x00800000;
+
+    public $FEnableReplace = 0x00000004;
+    public $Ask = 0x00000008;
+    public $NoClose = 0x02000000;
+
+    public $SubDir = 0x00000100;
+    public $Icon = 0x00000200;
+    public $Filelist = 0x00000040;
+    public $FullPath = 0x00000400;
+    public $OutputSingle = 0x10000000;
+    public $OutputSameTab = 0x20000000;
+
+    public $BackUp = 0x04000000;
+    public $Preview = 0x08000000;
+
+    public $FEnableSearchOption2 = 0x80000000;
+}
+
+class _FlagsSearchOption2 {
+    public $UnMatch = 0x00000001;
+    public $InColorMarker = 0x00000002;
+    public $FGrepFormColumn = 0x00000008;
+    public $FGrepFormHitOnly = 0x00000010;
+    public $FGrepFormSortDate = 0x00000020;
+}
+
+class _TFlags {
+    public $Encode;
+    public $SearchOption;
+    public $SearchOption2;
+
+    public function __construct() {
+        $this->Encode = new _TFlagsEncode();
+        $this->SearchOption = new _FlagsSearchOption();
+        $this->SearchOption2 = new _FlagsSearchOption2();
+    }
+}
+
 class _TMacroStatement {
     public function __call($statement_name, $args) {
        return $Hm->Macro->__Statement($statement_name, ...$args);
@@ -93,10 +192,12 @@ class _TMacro {
 
     public $doStatement;
     public $doFunction;
+    public $Flags;
 
     public function __construct() {
         $this->doStatement = new _TMacroStatement();
         $this->doFunction = new _TMacroFunction();
+        $this->Flags = new _TFlags();
     }
     /**
      * 秀丸マクロ実行中かどうかの判定。原則的に、hmPeachではtrueが返る。
