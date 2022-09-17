@@ -119,7 +119,7 @@ class _TFlagsEncode {
     public $WB = 0x1000;
 }
 
-class _FlagsSearchOption {
+class _TFlagsSearchOption {
     public $Word = 0x00000001;
     public $Casesense = 0x00000002;
     public $NoCasesense = 0x00000000;
@@ -157,7 +157,7 @@ class _FlagsSearchOption {
     public $FEnableSearchOption2 = 0x80000000;
 }
 
-class _FlagsSearchOption2 {
+class _TFlagsSearchOption2 {
     public $UnMatch = 0x00000001;
     public $InColorMarker = 0x00000002;
     public $FGrepFormColumn = 0x00000008;
@@ -172,8 +172,8 @@ class _TFlags {
 
     public function __construct() {
         $this->Encode = new _TFlagsEncode();
-        $this->SearchOption = new _FlagsSearchOption();
-        $this->SearchOption2 = new _FlagsSearchOption2();
+        $this->SearchOption = new _TFlagsSearchOption();
+        $this->SearchOption2 = new _TFlagsSearchOption2();
     }
 }
 
