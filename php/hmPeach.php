@@ -925,8 +925,8 @@ if (!function_exists("grepfolderbuffer")) { function grepfolderbuffer(...$args){
 if (!function_exists("foundbuffer")) { function foundbuffer(...$args){ return $Hm->Macro->doProxyMethod("foundbuffer", "fs", ...$args); } }
 if (!function_exists("currentconfigset")) { function currentconfigset(...$args){ return $Hm->Macro->doProxyMethod("currentconfigset", "fs", ...$args); } }
 if (!function_exists("fontname")) { function fontname(...$args){ return $Hm->Macro->doProxyMethod("fontname", "fs", ...$args); } }
-if (!function_exists("date2")) { function date2(...$args){ return $Hm->Macro->doProxyMethod("date", "fs", ...$args); } }
-if (!function_exists("time2")) { function time2(...$args){ return $Hm->Macro->doProxyMethod("time", "fs", ...$args); } }
+if (!function_exists("date1")) { function date2(...$args){ return $Hm->Macro->doProxyMethod("date", "fs", ...$args); } }
+if (!function_exists("time1")) { function time2(...$args){ return $Hm->Macro->doProxyMethod("time", "fs", ...$args); } }
 if (!function_exists("year")) { function year(...$args){ return $Hm->Macro->doProxyMethod("year", "fs", ...$args); } }
 if (!function_exists("month")) { function month(...$args){ return $Hm->Macro->doProxyMethod("month", "fs", ...$args); } }
 if (!function_exists("day")) { function day(...$args){ return $Hm->Macro->doProxyMethod("day", "fs", ...$args); } }
@@ -937,7 +937,7 @@ if (!function_exists("dayofweek")) { function dayofweek(...$args){ return $Hm->M
 if (!function_exists("str")) { function str(...$args){ return $Hm->Macro->doProxyMethod("str", "fs", ...$args); } }
 if (!function_exists("char")) { function char(...$args){ return $Hm->Macro->doProxyMethod("char", "fs", ...$args); } }
 if (!function_exists("unichar")) { function unichar(...$args){ return $Hm->Macro->doProxyMethod("unichar", "fs", ...$args); } }
-if (!function_exists("sprintf2")) { function sprintf2(...$args){ return $Hm->Macro->doProxyMethod("sprintf", "fs", ...$args); } }
+if (!function_exists("sprintf1")) { function sprintf2(...$args){ return $Hm->Macro->doProxyMethod("sprintf", "fs", ...$args); } }
 if (!function_exists("leftstr")) { function leftstr(...$args){ return $Hm->Macro->doProxyMethod("leftstr", "fs", ...$args); } }
 if (!function_exists("rightstr")) { function rightstr(...$args){ return $Hm->Macro->doProxyMethod("rightstr", "fs", ...$args); } }
 if (!function_exists("midstr")) { function midstr(...$args){ return $Hm->Macro->doProxyMethod("midstr", "fs", ...$args); } }
@@ -976,7 +976,7 @@ if (!function_exists("gettitle")) { function gettitle(...$args){ return $Hm->Mac
 if (!function_exists("browsefile")) { function browsefile(...$args){ return $Hm->Macro->doProxyMethod("browsefile", "fs", ...$args); } }
 if (!function_exists("quote")) { function quote(...$args){ return $Hm->Macro->doProxyMethod("quote", "fs", ...$args); } }
 if (!function_exists("strreplace")) { function strreplace(...$args){ return $Hm->Macro->doProxyMethod("strreplace", "fs", ...$args); } }
-# jsmodeには無いがpythonには必要
+# jsmodeには無いがphpには必要
 if (!function_exists("encodeuri")) { function encodeuri(...$args){ return $Hm->Macro->doProxyMethod("encodeuri", "fs", ...$args); } }
 if (!function_exists("decodeuri")) { function decodeuri(...$args){ return $Hm->Macro->doProxyMethod("decodeuri", "fs", ...$args); } }
 
@@ -1059,7 +1059,7 @@ if (!function_exists("readonlyopenfile")) { function readonlyopenfile(...$args){
 if (!function_exists("readonlyloadfile")) { function readonlyloadfile(...$args){ return $Hm->Macro->doProxyMethod("readonlyloadfile", "st", ...$args); } }
 if (!function_exists("save")) { function save(...$args){ return $Hm->Macro->doProxyMethod("save", "st", ...$args); } }
 if (!function_exists("savelf")) { function savelf(...$args){ return $Hm->Macro->doProxyMethod("savelf", "st", ...$args); } }
-if (!function_exists("print2")) { function print2(...$args){ return $Hm->Macro->doProxyMethod("print", "st", ...$args); } }
+if (!function_exists("print1")) { function print2(...$args){ return $Hm->Macro->doProxyMethod("print", "st", ...$args); } }
 if (!function_exists("saveall")) { function saveall(...$args){ return $Hm->Macro->doProxyMethod("saveall", "st", ...$args); } }
 if (!function_exists("saveupdatedall")) { function saveupdatedall(...$args){ return $Hm->Macro->doProxyMethod("saveupdatedall", "st", ...$args); } }
 if (!function_exists("openbyshell")) { function openbyshell(...$args){ return $Hm->Macro->doProxyMethod("openbyshell", "st", ...$args); } }
@@ -1355,7 +1355,7 @@ if (!function_exists("enableinvert")) { function enableinvert(...$args){ return 
 if (!function_exists("disableerrormsg")) { function disableerrormsg(...$args){ return $Hm->Macro->doProxyMethod("disableerrormsg", "st", ...$args); } }
 if (!function_exists("enableerrormsg")) { function enableerrormsg(...$args){ return $Hm->Macro->doProxyMethod("enableerrormsg", "st", ...$args); } }
 if (!function_exists("disablehistory")) { function disablehistory(...$args){ return $Hm->Macro->doProxyMethod("disablehistory", "st", ...$args); } }
-if (!function_exists("sleep2")) { function sleep2(...$args){ return $Hm->Macro->doProxyMethod("sleep", "st", ...$args); } }
+if (!function_exists("sleep1")) { function sleep2(...$args){ return $Hm->Macro->doProxyMethod("sleep", "st", ...$args); } }
 if (!function_exists("setfloatmode")) { function setfloatmode(...$args){ return $Hm->Macro->doProxyMethod("setfloatmode", "st", ...$args); } }
 if (!function_exists("seterrormode")) { function seterrormode(...$args){ return $Hm->Macro->doProxyMethod("seterrormode", "st", ...$args); } }
 if (!function_exists("setbackgroundmode")) { function setbackgroundmode(...$args){ return $Hm->Macro->doProxyMethod("setbackgroundmode", "st", ...$args); } }
@@ -1482,7 +1482,7 @@ if (!function_exists("getconfig")) {
         $eval_ret = $Hm->Macro->doEval('$__temp_getconfig_rstr__ = getconfig($__getconfig_rstr_arg0__);');
         $func_ret = $Hm->Macro->getVar('$__temp_getconfig_rstr__');
         $Hm->Macro->setVar('$__temp_getconfig_rstr__', '');
-        $Hm->Macro->setVar('#__getconfig_rstr_arg0__', 0);
+        $Hm->Macro->setVar('$__getconfig_rstr_arg0__', '');
         return $func_ret;
     }
 
