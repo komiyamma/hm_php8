@@ -1043,7 +1043,7 @@ if (!function_exists("getstaticvariable")) { function getstaticvariable(...$args
 if (!function_exists("getclipboard")) { function getclipboard(...$args){ return $Hm->Macro->doProxyMethod("getclipboard", "fs", ...$args); } }
 if (!function_exists("dllfuncstr")) { function dllfuncstr(...$args){ return $Hm->Macro->doProxyMethod("dllfuncstr", "fs", ...$args); } }
 if (!function_exists("dllfuncstrw")) { function dllfuncstrw(...$args){ return $Hm->Macro->doProxyMethod("dllfuncstrw", "fs", ...$args); } }
-if (!function_exists("loaddllfile")) { function loaddllfile(...$args){ return $Hm->Macro->doProxyMethod("loaddllfile", "fs", ...$args); } }
+if (!function_exists("getloaddllfile")) { function getloaddllfile(...$args){ return $Hm->Macro->doProxyMethod("getloaddllfile", "fs", ...$args); } }
 
 if (!function_exists("refreshdatetime")) { function refreshdatetime(...$args){ return $Hm->Macro->doProxyMethod("refreshdatetime", "st", ...$args); } }
 if (!function_exists("newfile")) { function newfile(...$args){ return $Hm->Macro->doProxyMethod("newfile", "st", ...$args); } }
