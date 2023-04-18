@@ -1,6 +1,6 @@
 ﻿<?php
 /*-------------------- coding: utf-8 ---------------------------
- * hmPeach 2.0.0.6用 ライブラリ
+ * hmPeach 2.0.0.7用 ライブラリ
  * Copyright (c) 2021-2022 Akitsugu Komiyama
  * under the Apache License Version 2.0
  *
@@ -993,6 +993,18 @@ if (!function_exists("getlinecount")) {
     function getlinecount(...$args){
         list($_result, $_args, $_error, $_message) = $Hm->Macro->doFunction->getlinecount(...$args);
         return array($_result, $_args[2]);
+    }
+}
+
+# 分岐あり
+if (!function_exists("hidemaruversion")) {
+    function hidemaruversion(...$args){
+        if (count($args)>=1 && gettype($args[0]) == "string") {
+            return $Hm->Macro->doProxyMethod("hidemaruversion", "st", ...$args);
+        }
+        else {
+            return $Hm->Macro->doProxyMethod("hidemaruversion", "fs", ...$args);
+        }
     }
 }
 
