@@ -1,6 +1,6 @@
 ﻿<?php
 /*-------------------- coding: utf-8 ---------------------------
- * hmPeach 2.0.0.7用 ライブラリ
+ * hmPeach 2.0.0.8用 ライブラリ
  * Copyright (c) 2021-2022 Akitsugu Komiyama
  * under the Apache License Version 2.0
  *
@@ -253,26 +253,26 @@ class _TMacro {
             if ($count == 0) {
                 return $Hm->Macro->getVar($name);
             }
-            else if ($count > 0) {
+            elseif ($count > 0) {
                 list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
                 return $_result;
             }
         }
-        else if ($t == "fs0") {
+        elseif ($t == "fs0") {
             list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
             return $_result;
         }
-        else if ($t == "fsn") {
+        elseif ($t == "fsn") {
             $count = count($args);
             if ($count == 0) {
                 return $Hm->Macro->getVar($name);
             }
-            else if ($count > 0) {
+            elseif ($count > 0) {
                 list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
                 return $_result;
             }
         }
-        else if ($t == "fn1s") {
+        elseif ($t == "fn1s") {
             $list_args = $args;
             $count = count($list_args);
             if ($count >= 1) {
@@ -281,7 +281,7 @@ class _TMacro {
             list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$list_args);
             return $_result;
         }
-        else if ($t == "fn1s2s") {
+        elseif ($t == "fn1s2s") {
             $list_args = $args;
             $count = count($list_args);
             if ($count >= 1) {
@@ -293,11 +293,11 @@ class _TMacro {
             list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$list_args);
             return $_result;
         }
-        else if ($t == "st") {
+        elseif ($t == "st") {
             list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$args);
             return $_result;
         }
-        else if ($t == "st1s") {
+        elseif ($t == "st1s") {
             $list_args = $args;
             $count = count($list_args);
             if ($count >= 1) {
@@ -306,7 +306,7 @@ class _TMacro {
             list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$list_args);
             return $_result;
         }
-        else if ($t == "st1s2s") {
+        elseif ($t == "st1s2s") {
             $list_args = $args;
             $count = count($list_args);
             if ($count >= 1) {
@@ -366,7 +366,7 @@ class _TMacro {
                 array_push($args_key, $varname);
                 array_push($args_value, $value);
                 $Hm->Macro->setVar($varname, $value);
-            } else if ( is_array($item) ) {
+            } elseif ( is_array($item) ) {
                 array_push($args_value, $item);
                 $intcheck_array = array_filter($item, function($elem) { return is_int($elem) || is_float($elem) || is_bool($elem); } );
                 if (count($item) == count($intcheck_array) ) {
@@ -409,11 +409,11 @@ class _TMacro {
                 array_push( $args_result, $Hm->Macro->getVar($varname) );
                 $Hm->Macro->setVar($varname, 0);
             }
-            else if ( strpos($varname, '$AsMacroArs_') === 0) {
+            elseif ( strpos($varname, '$AsMacroArs_') === 0) {
                 array_push( $args_result, $Hm->Macro->getVar($varname) );
                 $Hm->Macro->setVar($varname, "");
             }
-            else if ( strpos($varname, '#AsIntArrayOfMacroArs_') === 0) {
+            elseif ( strpos($varname, '#AsIntArrayOfMacroArs_') === 0) {
                 $arr = $args_value[$ix];
                 array_push( $args_result, $arr );
                 for($aix = 0; $aix < count($arr); $aix++) {
@@ -421,7 +421,7 @@ class _TMacro {
                     $Hm->Macro->setVar($index_varname, 0);
                 }
             }
-            else if ( strpos($varname, '$AsStrArrayOfMacroArs_') === 0) {
+            elseif ( strpos($varname, '$AsStrArrayOfMacroArs_') === 0) {
                 $arr = $args_value[$ix];
                 array_push( $args_result, $arr );
                 for($aix = 0; $aix < count($arr); $aix++) {
@@ -893,6 +893,10 @@ if (!function_exists("dllfunc")) { function dllfunc(...$args){ return $Hm->Macro
 if (!function_exists("dllfuncw")) { function dllfuncw(...$args){ return $Hm->Macro->doProxyMethod("dllfuncw", "fn", ...$args); } }
 if (!function_exists("dllfuncexist")) { function dllfuncexist(...$args){ return $Hm->Macro->doProxyMethod("dllfuncexist", "fn", ...$args); } }
 if (!function_exists("createobject")) { function createobject(...$args){ return $Hm->Macro->doProxyMethod("createobject", "fn", ...$args); } }
+if (!function_exists("browserpanehandle")) { function browserpanehandle(...$args){ return $Hm->Macro->doProxyMethod("browserpanehandle", "fn", ...$args); } }
+if (!function_exists("browserpanesize")) { function browserpanesize(...$args){ return $Hm->Macro->doProxyMethod("browserpanesize", "fn", ...$args); } }
+if (!function_exists("keyhook")) { function keyhook(...$args){ return $Hm->Macro->doProxyMethod("keyhook", "fn", ...$args); } }
+if (!function_exists("registercallback")) { function registercallback(...$args){ return $Hm->Macro->doProxyMethod("registercallback", "fn", ...$args); } }
 
 if (!function_exists("findmarker")) { function findmarker(...$args){ return $Hm->Macro->doProxyMethod("findmarker", "fs", ...$args); } }
 if (!function_exists("diff")) { function diff(...$args){ return $Hm->Macro->doProxyMethod("diff", "fs", ...$args); } }
@@ -1056,6 +1060,10 @@ if (!function_exists("getclipboard")) { function getclipboard(...$args){ return 
 if (!function_exists("dllfuncstr")) { function dllfuncstr(...$args){ return $Hm->Macro->doProxyMethod("dllfuncstr", "fs", ...$args); } }
 if (!function_exists("dllfuncstrw")) { function dllfuncstrw(...$args){ return $Hm->Macro->doProxyMethod("dllfuncstrw", "fs", ...$args); } }
 if (!function_exists("getloaddllfile")) { function getloaddllfile(...$args){ return $Hm->Macro->doProxyMethod("getloaddllfile", "fs", ...$args); } }
+if (!function_exists("browserpaneurl")) { function browserpaneurl(...$args){ return $Hm->Macro->doProxyMethod("browserpaneurl", "fs", ...$args); } }
+if (!function_exists("browserpanecommand")) { function browserpanecommand(...$args){ return $Hm->Macro->doProxyMethod("browserpanecommand", "fs", ...$args); } }
+if (!function_exists("renderpanecommand")) { function renderpanecommand(...$args){ return $Hm->Macro->doProxyMethod("renderpanecommand", "fs", ...$args); } }
+if (!function_exists("getselectedrange")) { function getselectedrange(...$args){ return $Hm->Macro->doProxyMethod("getselectedrange", "fs", ...$args); } }
 
 if (!function_exists("refreshdatetime")) { function refreshdatetime(...$args){ return $Hm->Macro->doProxyMethod("refreshdatetime", "st", ...$args); } }
 if (!function_exists("newfile")) { function newfile(...$args){ return $Hm->Macro->doProxyMethod("newfile", "st", ...$args); } }
@@ -1423,6 +1431,13 @@ if (!function_exists("keepdll")) { function keepdll(...$args){ return $Hm->Macro
 if (!function_exists("setcomdetachmethod")) { function setcomdetachmethod(...$args){ return $Hm->Macro->doProxyMethod("setcomdetachmethod", "st", ...$args); } }
 if (!function_exists("keepobject")) { function keepobject(...$args){ return $Hm->Macro->doProxyMethod("keepobject", "st", ...$args); } }
 if (!function_exists("releaseobject")) { function releaseobject(...$args){ return $Hm->Macro->doProxyMethod("releaseobject", "st", ...$args); } }
+if (!function_exists("showbrowserpane")) { function showbrowserpane(...$args){ return $Hm->Macro->doProxyMethod("showbrowserpane", "st", ...$args); } }
+if (!function_exists("refreshbrowserpane")) { function refreshbrowserpane(...$args){ return $Hm->Macro->doProxyMethod("refreshbrowserpane", "st", ...$args); } }
+if (!function_exists("setbrowserpanesize")) { function setbrowserpanesize(...$args){ return $Hm->Macro->doProxyMethod("setbrowserpanesize", "st", ...$args); } }
+if (!function_exists("setbrowserpaneurl")) { function setbrowserpaneurl(...$args){ return $Hm->Macro->doProxyMethod("setbrowserpaneurl", "st", ...$args); } }
+if (!function_exists("setbrowserpanetarget")) { function setbrowserpanetarget(...$args){ return $Hm->Macro->doProxyMethod("setbrowserpanetarget", "st", ...$args); } }
+if (!function_exists("setselectionrange")) { function setselectionrange(...$args){ return $Hm->Macro->doProxyMethod("setselectionrange", "st", ...$args); } }
+if (!function_exists("clearkeyhook")) { function clearkeyhook(...$args){ return $Hm->Macro->doProxyMethod("clearkeyhook", "st", ...$args); } }
 
 # 配列展開
 if (!function_exists("menuarray")) { function menuarray(...$args){ return menu(...$args[0]); } }
@@ -1471,6 +1486,9 @@ if (!function_exists("geteventparam")) {
     function geteventparam(...$args){ 
         // この時だけ文字列が返る
         if ($args[0] == 0 && event() == 9) {
+            return geteventparam_rstr(...$args);
+        }
+        elseif ($args[0] == 0 && event() == 10) {
             return geteventparam_rstr(...$args);
         }
         else {
