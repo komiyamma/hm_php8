@@ -253,26 +253,26 @@ class _TMacro {
             if ($count == 0) {
                 return $Hm->Macro->getVar($name);
             }
-            elseif ($count > 0) {
+            else if ($count > 0) {
                 list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
                 return $_result;
             }
         }
-        elseif ($t == "fs0") {
+        else if ($t == "fs0") {
             list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
             return $_result;
         }
-        elseif ($t == "fsn") {
+        else if ($t == "fsn") {
             $count = count($args);
             if ($count == 0) {
                 return $Hm->Macro->getVar($name);
             }
-            elseif ($count > 0) {
+            else if ($count > 0) {
                 list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
                 return $_result;
             }
         }
-        elseif ($t == "fn1s") {
+        else if ($t == "fn1s") {
             $list_args = $args;
             $count = count($list_args);
             if ($count >= 1) {
@@ -281,7 +281,7 @@ class _TMacro {
             list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$list_args);
             return $_result;
         }
-        elseif ($t == "fn1s2s") {
+        else if ($t == "fn1s2s") {
             $list_args = $args;
             $count = count($list_args);
             if ($count >= 1) {
@@ -293,11 +293,11 @@ class _TMacro {
             list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$list_args);
             return $_result;
         }
-        elseif ($t == "st") {
+        else if ($t == "st") {
             list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$args);
             return $_result;
         }
-        elseif ($t == "st1s") {
+        else if ($t == "st1s") {
             $list_args = $args;
             $count = count($list_args);
             if ($count >= 1) {
@@ -306,7 +306,7 @@ class _TMacro {
             list($_result, $_args, $_error, $_message) = $this->__Statement($name, ...$list_args);
             return $_result;
         }
-        elseif ($t == "st1s2s") {
+        else if ($t == "st1s2s") {
             $list_args = $args;
             $count = count($list_args);
             if ($count >= 1) {
@@ -366,7 +366,7 @@ class _TMacro {
                 array_push($args_key, $varname);
                 array_push($args_value, $value);
                 $Hm->Macro->setVar($varname, $value);
-            } elseif ( is_array($item) ) {
+            } else if ( is_array($item) ) {
                 array_push($args_value, $item);
                 $intcheck_array = array_filter($item, function($elem) { return is_int($elem) || is_float($elem) || is_bool($elem); } );
                 if (count($item) == count($intcheck_array) ) {
@@ -409,11 +409,11 @@ class _TMacro {
                 array_push( $args_result, $Hm->Macro->getVar($varname) );
                 $Hm->Macro->setVar($varname, 0);
             }
-            elseif ( strpos($varname, '$AsMacroArs_') === 0) {
+            else if ( strpos($varname, '$AsMacroArs_') === 0) {
                 array_push( $args_result, $Hm->Macro->getVar($varname) );
                 $Hm->Macro->setVar($varname, "");
             }
-            elseif ( strpos($varname, '#AsIntArrayOfMacroArs_') === 0) {
+            else if ( strpos($varname, '#AsIntArrayOfMacroArs_') === 0) {
                 $arr = $args_value[$ix];
                 array_push( $args_result, $arr );
                 for($aix = 0; $aix < count($arr); $aix++) {
@@ -421,7 +421,7 @@ class _TMacro {
                     $Hm->Macro->setVar($index_varname, 0);
                 }
             }
-            elseif ( strpos($varname, '$AsStrArrayOfMacroArs_') === 0) {
+            else if ( strpos($varname, '$AsStrArrayOfMacroArs_') === 0) {
                 $arr = $args_value[$ix];
                 array_push( $args_result, $arr );
                 for($aix = 0; $aix < count($arr); $aix++) {
@@ -1488,7 +1488,7 @@ if (!function_exists("geteventparam")) {
         if ($args[0] == 0 && event() == 9) {
             return geteventparam_rstr(...$args);
         }
-        elseif ($args[0] == 0 && event() == 10) {
+        else if ($args[0] == 0 && event() == 10) {
             return geteventparam_rstr(...$args);
         }
         else {
