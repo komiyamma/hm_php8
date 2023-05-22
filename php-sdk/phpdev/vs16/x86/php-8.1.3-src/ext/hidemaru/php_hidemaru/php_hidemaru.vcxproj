@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;PHPHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;COMPILE_DL_HIDEMARU</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\main;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\Zend;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src;C:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\TSRM;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\main;G:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\Zend;G:\php-sdk\phpdev\vs16\x86\php-8.0.3-src;G:\php-sdk\phpdev\vs16\x86\php-8.0.3-src\TSRM;</AdditionalIncludeDirectories>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -97,7 +97,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>C:\php-sdk\phpdev\vs16\x86\php-8.1.3-src\main</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\php-sdk\phpdev\vs16\x86\php-8.1.3-src\main</AdditionalIncludeDirectories>
       <Culture>0x0411</Culture>
     </ResourceCompile>
   </ItemDefinitionGroup>
@@ -109,7 +109,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;PHPHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;COMPILE_DL_HIDEMARU;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\php-sdk\phpdev\vs16\x86\php-8.1.3-src\main;C:\php-sdk\phpdev\vs16\x86\php-8.1.3-src\Zend;C:\php-sdk\phpdev\vs16\x86\php-8.1.3-src;C:\php-sdk\phpdev\vs16\x86\php-8.1.3-src\TSRM;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\php-sdk\phpdev\vs16\x86\php-8.1.3-src\main;G:\php-sdk\phpdev\vs16\x86\php-8.1.3-src\Zend;G:\php-sdk\phpdev\vs16\x86\php-8.1.3-src;G:\php-sdk\phpdev\vs16\x86\php-8.1.3-src\TSRM;</AdditionalIncludeDirectories>
       <StringPooling>false</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
@@ -121,7 +121,7 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>C:\php-sdk\phpdev\vs16\x86\php-8.1.3-src\main</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\php-sdk\phpdev\vs16\x86\php-8.1.3-src\main</AdditionalIncludeDirectories>
       <Culture>0x0411</Culture>
     </ResourceCompile>
   </ItemDefinitionGroup>

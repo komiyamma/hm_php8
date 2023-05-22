@@ -90,7 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;EMBEDHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\php-dev\include;C:\php-dev\include\Zend;C:\php-dev\include\TSRM;C:\php-dev\include\main</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\php-dev\include;G:\php-dev\include\Zend;G:\php-dev\include\TSRM;G:\php-dev\include\main</AdditionalIncludeDirectories>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -107,7 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;EMBEDHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\php-dev\include;C:\php-dev\include\Zend;C:\php-dev\include\TSRM;C:\php-dev\include\main</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\php-dev\include;G:\php-dev\include\Zend;G:\php-dev\include\TSRM;G:\php-dev\include\main</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -125,7 +125,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;EMBEDHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\php-deev\include;C:\php-deev\include\Zend;C:\php-deev\include\TSRM;C:\php-deev\include\main</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\php-dev\include;C:\php-dev\include\Zend;C:\php-dev\include\TSRM;C:\php-dev\include\main</AdditionalIncludeDirectories>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -142,7 +142,7 @@
       <PreprocessorDefinitions>NDEBUG;EMBEDHIDEMARU_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PHP_WIN32;ZEND_WIN32;ZTS;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>C:\php-dev_x64\include;C:\php-dev_x64\include\Zend;C:\php-dev_x64\include\TSRM;C:\php-dev_x64\include\main</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\php-dev_x64\include;G:\php-dev_x64\include\Zend;G:\php-dev_x64\include\TSRM;G:\php-dev_x64\include\main</AdditionalIncludeDirectories>
       <OmitFramePointers>false</OmitFramePointers>
     </ClCompile>
     <Link>
