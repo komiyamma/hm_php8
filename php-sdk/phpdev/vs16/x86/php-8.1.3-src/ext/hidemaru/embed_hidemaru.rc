@@ -49,8 +49,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 2,0,0,8
- PRODUCTVERSION 2,0,0,8
+ FILEVERSION 2,0,1,1
+ PRODUCTVERSION 2,0,1,1
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -73,11 +73,11 @@ BEGIN
 			VALUE "ProductName", "秀丸マクロ・組込 php_hidemaru x86 版"
 #endif
 
-			VALUE "FileVersion", "2.0.0.8"
+			VALUE "FileVersion", "2.0.1.1"
 			VALUE "InternalName", "php_hidemaru.dll"
 			VALUE "LegalCopyright", "Copyright © 2021-2024 Akitsugu Komiyama"
 			VALUE "OriginalFilename", "php_hidemaru.dll"
-			VALUE "ProductVersion", "2.0.0.8"
+			VALUE "ProductVersion", "2.0.1.1"
 		END
     END
     BLOCK "VarFileInfo"
