@@ -162,6 +162,7 @@ PHP_FUNCTION(hidemaru_edit_settotaltext)
 	PushStrVar(utf16_value.data());
 	wstring cmd =
 		L"begingroupundo;\n"
+		L"rangeeditout;\n"
 		L"selectall;\n"
 		L"insert dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n"
 		L"endgroupundo;\n";
