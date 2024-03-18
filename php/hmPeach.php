@@ -982,6 +982,8 @@ if (!function_exists("gettitle")) { function gettitle(...$args){ return $Hm->Mac
 if (!function_exists("browsefile")) { function browsefile(...$args){ return $Hm->Macro->doProxyMethod("browsefile", "fs", ...$args); } }
 if (!function_exists("quote")) { function quote(...$args){ return $Hm->Macro->doProxyMethod("quote", "fs", ...$args); } }
 if (!function_exists("strreplace")) { function strreplace(...$args){ return $Hm->Macro->doProxyMethod("strreplace", "fs", ...$args); } }
+if (!function_exists("getimecandidate")) { function getimecandidate(...$args){ return $Hm->Macro->doProxyMethod("getimecandidate", "fs", ...$args); } }
+
 # jsmodeには無いがphpには必要
 if (!function_exists("encodeuri")) { function encodeuri(...$args){ return $Hm->Macro->doProxyMethod("encodeuri", "fs", ...$args); } }
 if (!function_exists("decodeuri")) { function decodeuri(...$args){ return $Hm->Macro->doProxyMethod("decodeuri", "fs", ...$args); } }
@@ -1111,6 +1113,8 @@ if (!function_exists("shiftup")) { function shiftup(...$args){ return $Hm->Macro
 if (!function_exists("shiftdown")) { function shiftdown(...$args){ return $Hm->Macro->doProxyMethod("shiftdown", "st", ...$args); } }
 if (!function_exists("shiftright")) { function shiftright(...$args){ return $Hm->Macro->doProxyMethod("shiftright", "st", ...$args); } }
 if (!function_exists("shiftleft")) { function shiftleft(...$args){ return $Hm->Macro->doProxyMethod("shiftleft", "st", ...$args); } }
+if (!function_exists("shifthome")) { function shifthome(...$args){ return $Hm->Macro->doProxyMethod("shifthome", "st", ...$args); } }
+if (!function_exists("shiftend")) { function shiftend(...$args){ return $Hm->Macro->doProxyMethod("shiftend", "st", ...$args); } }
 if (!function_exists("gofileend")) { function gofileend(...$args){ return $Hm->Macro->doProxyMethod("gofileend", "st", ...$args); } }
 if (!function_exists("gofiletop")) { function gofiletop(...$args){ return $Hm->Macro->doProxyMethod("gofiletop", "st", ...$args); } }
 if (!function_exists("gokakko")) { function gokakko(...$args){ return $Hm->Macro->doProxyMethod("gokakko", "st", ...$args); } }
