@@ -683,7 +683,8 @@ class _THidemaru {
 $Hm = new _THidemaru();
 
 
-if (!function_exists("gettotaltext")) { function gettotaltext(...$args){ return $Hm->Macro->doProxyMethod("gettotaltext", "fs0", ...$args); } }
+if (!function_exists("gettotaltext")) { function gettotaltext() { return $Hm->Edit->getTotalText(); } }
+if (!function_exists("settotaltext")) { function settotaltext($text) { $Hm->Edit->setTotalText($text); return $Hm->Macro->getVar("result"); } }
 if (!function_exists("getlinetext")) { function getlinetext(...$args){ return $Hm->Macro->doProxyMethod("getlinetext", "fs0", ...$args); } }
 if (!function_exists("getselectedtext")) { function getselectedtext(...$args){ return $Hm->Macro->doProxyMethod("getselectedtext", "fs0", ...$args); } }
 
