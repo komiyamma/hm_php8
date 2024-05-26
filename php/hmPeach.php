@@ -1384,7 +1384,7 @@ if (!function_exists("enableerrormsg")) { function enableerrormsg(...$args){ ret
 if (!function_exists("disablehistory")) { function disablehistory(...$args){ return $Hm->Macro->doProxyMethod("disablehistory", "st", ...$args); } }
 if (!function_exists("sleep1")) { function sleep2(...$args){ return $Hm->Macro->doProxyMethod("sleep", "st", ...$args); } }
 if (!function_exists("setfloatmode")) { function setfloatmode(...$args){ return $Hm->Macro->doProxyMethod("setfloatmode", "st", ...$args); } }
-if (!function_exists("seterrormode")) { function seterrormode(...$args){ return $Hm->Macro->doProxyMethod("seterrormode", "st", ...$args); } }
+if (!function_exists("seterrormode")) { function seterrormode(...$args){ return $Hm->Macro->doProxyMethod("seterrormode", "fn", ...$args); } }
 if (!function_exists("setbackgroundmode")) { function setbackgroundmode(...$args){ return $Hm->Macro->doProxyMethod("setbackgroundmode", "st", ...$args); } }
 if (!function_exists("inputpos")) { function inputpos(...$args){ return $Hm->Macro->doProxyMethod("inputpos", "st", ...$args); } }
 if (!function_exists("menu")) { function menu(...$args){ return $Hm->Macro->doProxyMethod("menu", "st", ...$args); } }
