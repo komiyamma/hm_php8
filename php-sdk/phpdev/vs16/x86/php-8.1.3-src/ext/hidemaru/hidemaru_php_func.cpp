@@ -1,4 +1,4 @@
-﻿/* mytest extension for PHP */
+/* mytest extension for PHP */
 #define ZEND_DEBUG 0
 
 /* hidemaru extension for PHP */
@@ -168,6 +168,7 @@ PHP_FUNCTION(hidemaru_edit_settotaltext)
 	else {
 		cmd =
 			L"begingroupundo;\n"
+			L"rangeeditout;\n"
 			L"selectall;\n"
 			L"insert dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n"
 			L"endgroupundo;\n";
