@@ -168,8 +168,8 @@ PHP_FUNCTION(hidemaru_edit_settotaltext)
 	else {
 		cmd =
 			L"begingroupundo;\n"
-			L"selectall;\n"
 			L"rangeeditout;\n"
+			L"selectall;\n"
 			L"insert dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n"
 			L"endgroupundo;\n";
 	}

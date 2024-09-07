@@ -1,4 +1,4 @@
-/* mytest extension for PHP */
+﻿/* mytest extension for PHP */
 #define ZEND_DEBUG 0
 
 /* hidemaru extension for PHP */
