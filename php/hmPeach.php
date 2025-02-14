@@ -258,6 +258,10 @@ class _TMacro {
                 return $_result;
             }
         }
+        else if ($t == "fnfo") {
+            list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
+            return $_result;
+        }
         else if ($t == "fs0") {
             list($_result, $_args, $_error, $_message) = $this->__Function($name, ...$args);
             return $_result;
@@ -984,6 +988,7 @@ if (!function_exists("browsefile")) { function browsefile(...$args){ return $Hm-
 if (!function_exists("quote")) { function quote(...$args){ return $Hm->Macro->doProxyMethod("quote", "fs", ...$args); } }
 if (!function_exists("strreplace")) { function strreplace(...$args){ return $Hm->Macro->doProxyMethod("strreplace", "fs", ...$args); } }
 if (!function_exists("getimecandidate")) { function getimecandidate(...$args){ return $Hm->Macro->doProxyMethod("getimecandidate", "fs", ...$args); } }
+if (!function_exists("getdpi")) { function getdpi(...$args){ return $Hm->Macro->doProxyMethod("getdpi", "fnfo", ...$args); } }
 
 # jsmodeには無いがphpには必要
 if (!function_exists("encodeuri")) { function encodeuri(...$args){ return $Hm->Macro->doProxyMethod("encodeuri", "fs", ...$args); } }
