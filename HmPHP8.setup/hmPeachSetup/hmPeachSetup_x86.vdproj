@@ -2313,8 +2313,8 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:hmPeach x86 版"
-        "ProductCode" = "8:{4F49F6A8-1E98-4AC5-A4EA-50C13B7C576D}"
-        "PackageCode" = "8:{68D49F41-3904-40EA-A0DD-E98F0D835756}"
+        "ProductCode" = "8:{AEB028D3-C5CC-420D-A752-980F4A14F7C0}"
+        "PackageCode" = "8:{999B91E4-FF25-42BE-8645-3A334853DC55}"
         "UpgradeCode" = "8:{44A3E624-F5FC-42BE-88BE-D4E1EDC22651}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

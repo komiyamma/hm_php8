@@ -3,7 +3,7 @@ This product includes PHP software, freely available from <http://www.php.net/so
 
 - hmPeach.dll・hmPeach.php・php_hidemaru.dll
 
-   Copyright (c) 2021-2024 Akitsugu Komiyama
+   Copyright (c) 2021-2025 Akitsugu Komiyama
 
 
                                  Apache License
